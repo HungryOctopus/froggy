@@ -21,13 +21,12 @@ Our application is divided between a client-side ReactJS application and a serve
 | DELETE | /authentication/sign-out | Sign Out |
 | GET | /settings | Get settings for current account (e-mail) |
 
-
 ## Client-side
 
 ### Views
 
 | NAME | DESCRIPTION |
-| Home | ?? -  to be decided |
+| Home | ?? - to be decided |
 | SignUp | Show sign up form
 | SignIn | Show sign in form
 | Settings | Allow viewers to change account settings (username, e-mail, password) |
