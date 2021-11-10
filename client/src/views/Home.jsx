@@ -11,7 +11,7 @@ class Home extends Component {
   render() {
     return (
       <>
-        <h4>Home</h4>
+        <h5>Home view</h5>
         <div>Google maps api: event location</div>
       </>
     );
