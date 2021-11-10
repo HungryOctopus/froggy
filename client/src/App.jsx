@@ -1,10 +1,11 @@
-import "./App.scss";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Home from "./views/Home";
-import Navbar from "./components/Navbar";
-import Statistics from "./views/Statistics";
-import Calendar from "./views/Calendar";
-import Signup from "./views/Signup";
+import './App.scss';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './views/Home';
+import Navbar from './components/Navbar';
+import Statistics from './views/Statistics';
+import Calendar from './views/Calendar';
+import Signup from './views/Signup';
+import FrogCounter from './views/FrogCounter';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/statistics" component={Statistics} exact />
+          <Route path="/frog-counter" component={FrogCounter} exact />
           <Route path="/calendar" component={Calendar} exact />
           <Route path="/signup" component={Signup} exact />
           <Route path="/" component={Home} exact />

@@ -12,6 +12,7 @@ Our application is divided between a client-side ReactJS application and a serve
   - email
   - passwordHashAndSalt
 
+- frog counter
 - Notification
 - Admin
 - Calender (?)
@@ -40,7 +41,7 @@ Our application is divided between a client-side ReactJS application and a serve
 | SignUp | Show sign up form + User google maps pin
 | SignIn | Show sign in form
 | Settings | Allow viewers to change account settings (username, e-mail, password) |
-| Catch | Shows form to fill in infos about the catch of the day (how many frogs, how many toads...) |
+| FrogCounter | Shows form to fill in the collected frogs & toads |
 | PersonalStatistics | Shows statistics about the user's volunteer activity (for volunteer and organizer)
 -> statistics per day / per week / since the beginning of the season / of all times + gamification |
 | GlobalStatistics | Shows statistics about all volunteer activities | Google maps all users
@@ -66,11 +67,14 @@ Our application is divided between a client-side ReactJS application and a serve
 
 ## OPEN QUESTIONS
 
-- mobile first? => yes
 - what should be displayed in the home view? General info if not authenticated and general info + personal statistics if authenticated? Same sign-up for volunteer and organizer?
 - how to block people that register as an organizer but are not organizers? => create it in the API directly
-- do we need the organizer profile? What should an organizer do that the volunteer can't?
+- do we need the organizer profile? What should an organizer do that the volunteer can't? => no organizer profile
 - should volunteers be able to see the profile of others? => no
+
+## DESIGN
+
+- mobile first
 
 ## TODO'S
 
