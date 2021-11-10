@@ -4,6 +4,7 @@ import Home from "./views/Home";
 import Navbar from "./components/Navbar";
 import Statistics from "./views/Statistics";
 import Calendar from "./views/Calendar";
+import Signup from "./views/Signup";
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route path="/" component={Home} exact />
           <Route path="/statistics" component={Statistics} exact />
           <Route path="/calendar" component={Calendar} exact />
+          <Route path="/signup" component={Signup} exact />
+          <Route path="/" component={Home} exact />
         </Switch>
       </BrowserRouter>
     </div>
