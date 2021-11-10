@@ -7,6 +7,7 @@ Our application is divided between a client-side ReactJS application and a serve
 ### Models
 
 - User
+
   - name
   - email
   - passwordHashAndSalt
@@ -35,14 +36,14 @@ Our application is divided between a client-side ReactJS application and a serve
 ### Views
 
 | NAME | DESCRIPTION |
-| Home | ?? - to be decided |
-| SignUp | Show sign up form
+| Home | ?? - to be decided | Event location google maps
+| SignUp | Show sign up form + User google maps pin
 | SignIn | Show sign in form
 | Settings | Allow viewers to change account settings (username, e-mail, password) |
 | Catch | Shows form to fill in infos about the catch of the day (how many frogs, how many toads...) |
 | PersonalStatistics | Shows statistics about the user's volunteer activity (for volunteer and organizer)
 -> statistics per day / per week / since the beginning of the season / of all times + gamification |
-| GlobalStatistics | Shows statistics about all volunteer activities |
+| GlobalStatistics | Shows statistics about all volunteer activities | Google maps all users
 -> statistics per day / per week / since the beginning of the season / of all times |
 | Calender | Displays calender |
 | Calender entry | Shows form for volunteers to register in the calender |
@@ -50,12 +51,15 @@ Our application is divided between a client-side ReactJS application and a serve
 
 - instant notification / npm package ?
 
+> Google maps api
+> Home -> Event location pinned
+> Statistics -> All user pins
+> Sign-up -> Set user pin
 
 ## WHISHLIST
 
 - General info (static)
 
-- google maps
 - social media (post your score on Facebook / Twitter)
 - picture gallery
 - gamification / trophy

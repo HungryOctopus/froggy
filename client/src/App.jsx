@@ -1,8 +1,9 @@
 import "./App.scss";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./views/Home";
 import Navbar from "./components/Navbar";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Statistics from "./views/Statistics";
+import Calendar from "./views/Calendar";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/statistics" component={Statistics} exact />
+          <Route path="/calendar" component={Calendar} exact />
         </Switch>
       </BrowserRouter>
     </div>
