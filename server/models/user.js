@@ -3,10 +3,22 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  name: {
+  firstName: {
     type: String,
     trim: true,
     required: true
+  },
+  secondName: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  location: {
+    long: Number,
+    lat: Number
+  },
+  distance: {
+    km: Number
   },
   email: {
     type: String,
@@ -22,6 +34,18 @@ const schema = new mongoose.Schema({
     type: String,
     enum: ['volunteer', 'admin'],
     required: true
+  },
+  maleFrogs: {
+    count: Number
+  },
+  femaleFrogs: {
+    count: Number
+  },
+  maleToads: {
+    count: Number
+  },
+  femaleToads: {
+    count: Number
   }
 });
 
