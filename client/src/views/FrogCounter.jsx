@@ -1,5 +1,20 @@
 import { Component } from 'react';
 
+class CounterButton extends Component {
+  constructor() {
+    super();
+  }
+  render() {
+    return (
+      <>
+        <span>{this.props.count}</span>
+        <button onClick={this.props.onIncrement}>+</button>
+      </>
+    );
+  }
+}
+export { CounterButton };
+
 class FrogCounter extends Component {
   constructor(props) {
     super(props);
@@ -7,15 +22,16 @@ class FrogCounter extends Component {
       username: '',
       temperature: '',
       wayinfrogs: 0,
-      wayinfrogscouple: 0,
+      // wayinfrogscouple: 0,
       wayintoadsmale: 0,
       wayintoadsfemale: 0,
-      wayintoadscouple: 0,
+      //wayintoadscouple: 0,
       waybackfrogs: 0,
-      waybackfrogscouple: 0,
+      // waybackfrogscouple: 0,
       waybacktoadsmale: 0,
       waybacktoadsfemale: 0,
-      waybacktoadscouple: 0
+      //waybacktoadscouple: 0
+      count: 0
     };
     this.handleChange = this.handleChange.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,9 +43,14 @@ class FrogCounter extends Component {
   }
 
   handleSubmit(event) {
-    alert('Thank you. Your form has been submitted');
+    // alert('Thank you. Your form has been submitted');
     event.preventDefault();
   }
+
+  //For counter buttons:
+  handleIncrement = () => {
+    this.setState((currentState) => ({ count: currentState.count + 1 }));
+  };
 
   componentDidMount() {}
 
@@ -48,6 +69,12 @@ class FrogCounter extends Component {
               onChange={this.handleChange}
             />
           </label>
+
+          <CounterButton
+            count={this.state.count}
+            onIncrement={this.handleIncrement}
+          />
+
           <label>
             Outside temperature:
             <input
@@ -69,15 +96,15 @@ class FrogCounter extends Component {
               onChange={this.handleChange}
             />
           </label>
-          <label>
+          {/* <label>
             Couple frogs
             <input
               type="number"
               name="wayinfrogscouple"
               value={this.state.wayinfrogscouple}
               onChange={this.handleChange}
-            />
-          </label>
+            /> 
+          </label>*/}
           <label>
             Female toads
             <input
@@ -117,7 +144,7 @@ class FrogCounter extends Component {
               onChange={this.handleChange}
             />
           </label>
-          <label>
+          {/* <label>
             Couple frogs
             <input
               type="number"
@@ -125,7 +152,7 @@ class FrogCounter extends Component {
               value={this.state.waybackfrogscouple}
               onChange={this.handleChange}
             />
-          </label>
+          </label> */}
           <label>
             Female toads
             <input
@@ -144,7 +171,7 @@ class FrogCounter extends Component {
               onChange={this.handleChange}
             />
           </label>
-          <label>
+          {/* <label>
             Couple toads
             <input
               type="number"
@@ -152,7 +179,7 @@ class FrogCounter extends Component {
               value={this.state.waybacktoadscouple}
               onChange={this.handleChange}
             />
-          </label>
+          </label> */}
 
           <input type="submit" value="Submit"></input>
         </form>
