@@ -11,11 +11,13 @@ Our application is divided between a client-side ReactJS application and a serve
   - name
   - email
   - passwordHashAndSalt
+  - role: volunteer or admin
 
 - frog counter
 - Notification
 - Admin
 - Calender (?)
+- Message dashboard: this will be the message model that the Admin POSTs messages to. We will then GET these messages and display them in volunteer user profile
 
 ### Controllers (REST API endpoints)
 
