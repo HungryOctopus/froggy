@@ -1,6 +1,7 @@
 import { Component } from "react";
 import GoogleMapsSignUp from "../components/GoogleMapsSignUp";
 // import { signUp } from "./../services/authentication";
+
 class Signup extends Component {
   constructor() {
     super();
@@ -34,7 +35,6 @@ class Signup extends Component {
     return (
       <>
         <h5>Signup view</h5>
-        <div>Google maps api: set user pin</div>
         <div style={{ width: "500px" }}>
           <form
             onSubmit={this.handleFormSubmission}
