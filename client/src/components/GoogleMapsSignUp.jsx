@@ -9,7 +9,7 @@ class GoogleMapsSignUp extends Component {
         lat: 50.0,
         lng: 10.0,
       },
-      zoom: 14,
+      zoom: 11,
     };
   }
 
