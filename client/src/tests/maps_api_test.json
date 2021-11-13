@@ -1,6 +1,7 @@
 [
   {
     "firstName": "Alex",
+    "userImage": "alex.png",
     "location": {
       "long": 47.9782593,
       "lat": 7.8410856
@@ -8,6 +9,7 @@
   },
   {
     "firstName": "Gabriela",
+    "userImage": "gabriela.png",
     "location": {
       "long": 47.9870151,
       "lat": 7.8580894
@@ -15,6 +17,7 @@
   },
   {
     "firstName": "Jenny",
+    "userImage": "jenny.png",
     "location": {
       "long": 47.9911295,
       "lat": 7.8527143
@@ -22,6 +25,7 @@
   },
   {
     "firstName": "Monique",
+    "userImage": "monique.png",
     "location": {
       "long": 47.9893954,
       "lat": 7.8447589
@@ -29,6 +33,7 @@
   },
   {
     "firstName": "Robert",
+    "userImage": "robert.png",
     "location": {
       "long": 48.0216508,
       "lat": 7.8518667
@@ -36,6 +41,7 @@
   },
   {
     "firstName": "Roger",
+    "userImage": "roger.png",
     "location": {
       "long": 47.9672875,
       "lat": 7.9145529
@@ -43,6 +49,7 @@
   },
   {
     "firstName": "Sofia",
+    "userImage": "sofia.png",
     "location": {
       "long": 47.9666985,
       "lat": 7.9371049
@@ -50,6 +57,7 @@
   },
   {
     "firstName": "Stephanie",
+    "userImage": "stephanie.png",
     "location": {
       "long": 47.9758025,
       "lat": 7.9337408
@@ -57,6 +65,7 @@
   },
   {
     "firstName": "Tyler",
+    "userImage": "tyler.png",
     "location": {
       "long": 47.9867688,
       "lat": 7.9369487
@@ -64,6 +73,7 @@
   },
   {
     "firstName": "Victor",
+    "userImage": "victor.png",
     "location": {
       "long": 47.9843488,
       "lat": 7.9187848
