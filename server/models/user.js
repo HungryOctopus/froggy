@@ -13,6 +13,9 @@ const schema = new mongoose.Schema({
     trim: true,
     required: true
   },
+  imageUrl: {
+    type: String
+  },
   location: {
     long: Number,
     lat: Number
