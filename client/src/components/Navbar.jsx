@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -29,8 +29,8 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/frog-counter" className="nav-link">
-                Frog counter
+              <Link to="/counter" className="nav-link">
+                Counter
               </Link>
             </li>
             <li className="nav-item">
