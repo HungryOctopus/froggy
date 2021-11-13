@@ -1,0 +1,72 @@
+[
+  {
+    "firstName": "Alex",
+    "location": {
+      "long": 47.9782593,
+      "lat": 7.8410856
+    }
+  },
+  {
+    "firstName": "Gabriela",
+    "location": {
+      "long": 47.9870151,
+      "lat": 7.8580894
+    }
+  },
+  {
+    "firstName": "Jenny",
+    "location": {
+      "long": 47.9911295,
+      "lat": 7.8527143
+    }
+  },
+  {
+    "firstName": "Monique",
+    "location": {
+      "long": 47.9893954,
+      "lat": 7.8447589
+    }
+  },
+  {
+    "firstName": "Robert",
+    "location": {
+      "long": 48.0216508,
+      "lat": 7.8518667
+    }
+  },
+  {
+    "firstName": "Roger",
+    "location": {
+      "long": 47.9672875,
+      "lat": 7.9145529
+    }
+  },
+  {
+    "firstName": "Sofia",
+    "location": {
+      "long": 47.9666985,
+      "lat": 7.9371049
+    }
+  },
+  {
+    "firstName": "Stephanie",
+    "location": {
+      "long": 47.9758025,
+      "lat": 7.9337408
+    }
+  },
+  {
+    "firstName": "Tyler",
+    "location": {
+      "long": 47.9867688,
+      "lat": 7.9369487
+    }
+  },
+  {
+    "firstName": "Victor",
+    "location": {
+      "long": 47.9843488,
+      "lat": 7.9187848
+    }
+  }
+]
