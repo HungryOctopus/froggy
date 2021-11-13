@@ -1,15 +1,22 @@
-import { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import { Component } from "react";
+import GoogleMapReact from "google-map-react";
+import frogmarker from "../images/frogmarker.png"; // relative path to image
+
+const FrogMarker = () => (
+  <div>
+    <img id="frog-marker" src={frogmarker} alt="Frog marker" />
+  </div>
+);
 
 class GoogleMapsHome extends Component {
   constructor() {
     super();
     this.state = {
       center: {
-        lat: 47.95821,
-        lng: 7.901442
+        lat: 47.97621,
+        lng: 7.901442,
       },
-      zoom: 11
+      zoom: 12,
     };
   }
 
@@ -28,7 +35,9 @@ class GoogleMapsHome extends Component {
           }}
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
-        ></GoogleMapReact>
+        >
+          <FrogMarker lat={47.9582669} lng={7.9012855} />
+        </GoogleMapReact>
       </div>
     );
   }
