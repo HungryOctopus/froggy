@@ -1,5 +1,16 @@
 import { Component } from "react";
 import GoogleMapReact from "google-map-react";
+import frogmarker from "../images/frogmarker.png"; // relative path to image
+
+const FrogMarker = () => (
+  <div>
+    <img
+      src={frogmarker}
+      alt="Frog marker"
+      style={{ width: "25px", left: "1000px" }}
+    />
+  </div>
+);
 
 class GoogleMapsHome extends Component {
   constructor() {
@@ -28,7 +39,9 @@ class GoogleMapsHome extends Component {
           }}
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
-        ></GoogleMapReact>
+        >
+          <FrogMarker lat={this.state.center.lat} lng={this.state.center.lng} />
+        </GoogleMapReact>
       </div>
     );
   }
