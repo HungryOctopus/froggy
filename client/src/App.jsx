@@ -74,7 +74,18 @@ class App extends Component {
             )}
             exact
           />
-          <Route path="/login" component={Login} exact />
+          <ProtectedRoute
+            path="/login"
+            authorized={!this.state.loaded || !this.state.user}
+            redirect="/counter"
+            render={(props) => (
+              <Login
+                {...props}
+                onAuthenticationChange={this.handleAuthenticationChange}
+              />
+            )}
+            exact
+          />
           <Route path="/" component={Home} exact />
         </Switch>
       </BrowserRouter>

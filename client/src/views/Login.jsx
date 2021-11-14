@@ -1,12 +1,12 @@
-import { Component } from "react";
-// import { loigIn } from "./../services/authentication";
+import { Component } from 'react';
+import { signIn } from './../services/authentication';
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: "",
+      email: '',
+      password: ''
     };
   }
 
@@ -15,22 +15,30 @@ class Login extends Component {
   handleInputChange = (event) => {
     const { value, name } = event.target;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
   handleFormSubmission = (event) => {
     event.preventDefault();
+    const { email, password } = this.state;
+    signIn({ email, password })
+      .then((user) => {
+        this.props.onAuthenticationChange(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   render() {
     return (
       <>
         <h5>Login view</h5>
-        <div style={{ width: "500px" }}>
+        <div style={{ width: '500px' }}>
           <form
             onSubmit={this.handleFormSubmission}
-            style={{ display: "flex", flexDirection: "column" }}
+            style={{ display: 'flex', flexDirection: 'column' }}
           >
             <label htmlFor="input-email">Email</label>
             <input
