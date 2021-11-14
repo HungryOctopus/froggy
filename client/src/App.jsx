@@ -8,6 +8,8 @@ import Login from './views/Login';
 import TotalCounter from './views/TotalCounter';
 import IndividualStatistics from './views/IndividualStatistics';
 import { Component } from 'react';
+import { signOut, loadAuthenticatedUser } from './services/authentication';
+import ProtectedRoute from './components/ProtectedRoute';
 
 class App extends Component {
   constructor() {
@@ -18,14 +20,39 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    this.loadUser();
+  }
+
+  loadUser = () => {
+    loadAuthenticatedUser()
+      .then((user) => {
+        if (user) {
+          this.setState({ user });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        this.setState({ loaded: true });
+      });
+  };
+
   handleAuthenticationChange = (user) => {
     this.setState({ user });
+  };
+
+  handleSignOut = () => {
+    signOut().then(() => {
+      this.setState({ user: null });
+    });
   };
 
   render() {
     return (
       <BrowserRouter>
-        <Navbar />
+        <Navbar user={this.state.user} onSignOut={this.handleSignOut} />
         <Switch>
           <Route path="/statistics" component={Statistics} exact />
           <Route
@@ -35,8 +62,10 @@ class App extends Component {
           />
           <Route path="/counter" component={TotalCounter} exact />
           <Route path="/calendar" component={Calendar} exact />
-          <Route
+          <ProtectedRoute
             path="/signup"
+            authorized={!this.state.loaded || !this.state.user}
+            redirect="/counter"
             render={(props) => (
               <Signup
                 {...props}

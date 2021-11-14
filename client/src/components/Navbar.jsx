@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <nav className="navbar navbar-expand-md navbar-light bg-light">
       <div className="container-fluid">
@@ -43,16 +43,30 @@ const Navbar = () => {
                 Individual Statistics
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/login" className="nav-link">
-                Log in
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/signup" className="nav-link">
-                Sign up
-              </Link>
-            </li>
+            {(props.user && (
+              <li className="nav-item">
+                <Link
+                  to="/login"
+                  className="nav-link"
+                  onClick={props.onSignOut}
+                >
+                  Sign out
+                </Link>
+              </li>
+            )) || (
+              <>
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link">
+                    Log in
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/signup" className="nav-link">
+                    Sign up
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
