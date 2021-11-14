@@ -1,18 +1,19 @@
-import { Component } from "react";
-import GoogleMapsSignUp from "../components/GoogleMapsSignUp";
-// import { signUp } from "./../services/authentication";
+import { Component } from 'react';
+import GoogleMapsSignUp from '../components/GoogleMapsSignUp';
+import { signUp } from './../services/authentication';
 
 class Signup extends Component {
   constructor() {
     super();
     this.state = {
-      firstName: "",
-      secondName: "",
-      imageUrl: "",
-      location: { long: null, lat: null },
-      distance: null,
-      email: "",
-      password: "",
+      firstName: '',
+      secondName: '',
+      // imageUrl: "",
+      // location: { long: null, lat: null },
+      // distance: null,
+      email: '',
+      password: '',
+      role: 'volunteer'
     };
   }
 
@@ -21,12 +22,21 @@ class Signup extends Component {
   handleInputChange = (event) => {
     const { value, name } = event.target;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
   handleFormSubmission = (event) => {
     event.preventDefault();
+    const { firstName, secondName, email, password, role } = this.state;
+    signUp({ firstName, secondName, email, password, role })
+      .then((user) => {
+        this.props.onAuthenticationChange(user);
+      })
+      .catch((error) => {
+        console.log(error);
+        // alert('There was an error signing up');
+      });
   };
 
   handleFileUpload = () => {};
@@ -34,11 +44,11 @@ class Signup extends Component {
   render() {
     return (
       <>
-        <h5>Signup view</h5>
-        <div style={{ width: "500px" }}>
+        <h5>Volunteer signup view</h5>
+        <div style={{ width: '500px' }}>
           <form
             onSubmit={this.handleFormSubmission}
-            style={{ display: "flex", flexDirection: "column" }}
+            style={{ display: 'flex', flexDirection: 'column' }}
           >
             <label htmlFor="input-firstName">First name</label>
             <input

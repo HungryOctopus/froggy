@@ -7,11 +7,23 @@ import Signup from './views/Signup';
 import Login from './views/Login';
 import TotalCounter from './views/TotalCounter';
 import IndividualStatistics from './views/IndividualStatistics';
+import { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <h2>Froggy App</h2>
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: null,
+      loaded: false
+    };
+  }
+
+  handleAuthenticationChange = (user) => {
+    this.setState({ user });
+  };
+
+  render() {
+    return (
       <BrowserRouter>
         <Navbar />
         <Switch>
@@ -23,13 +35,22 @@ function App() {
           />
           <Route path="/counter" component={TotalCounter} exact />
           <Route path="/calendar" component={Calendar} exact />
-          <Route path="/signup" component={Signup} exact />
+          <Route
+            path="/signup"
+            render={(props) => (
+              <Signup
+                {...props}
+                onAuthenticationChange={this.handleAuthenticationChange}
+              />
+            )}
+            exact
+          />
           <Route path="/login" component={Login} exact />
           <Route path="/" component={Home} exact />
         </Switch>
       </BrowserRouter>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
