@@ -54,14 +54,34 @@ class App extends Component {
       <BrowserRouter>
         <Navbar user={this.state.user} onSignOut={this.handleSignOut} />
         <Switch>
-          <Route path="/statistics" component={Statistics} exact />
-          <Route
+          <ProtectedRoute
+            path="/statistics"
+            redirect="/signup"
+            authorized={!this.state.loaded || this.state.user}
+            component={Statistics}
+            exact
+          />
+          <ProtectedRoute
             path="/individual-statistics"
+            redirect="/signup"
+            authorized={!this.state.loaded || this.state.user}
             component={IndividualStatistics}
             exact
           />
-          <Route path="/counter" component={TotalCounter} exact />
-          <Route path="/calendar" component={Calendar} exact />
+          <ProtectedRoute
+            path="/counter"
+            redirect="/signup"
+            authorized={!this.state.loaded || this.state.user}
+            component={TotalCounter}
+            exact
+          />
+          <ProtectedRoute
+            path="/calendar"
+            redirect="/signup"
+            authorized={!this.state.loaded || this.state.user}
+            component={Calendar}
+            exact
+          />
           <ProtectedRoute
             path="/signup"
             authorized={!this.state.loaded || !this.state.user}
