@@ -1,4 +1,3 @@
-import './App.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './views/Home';
 import Navbar from './components/Navbar';
@@ -7,6 +6,7 @@ import Calendar from './views/Calendar';
 import Signup from './views/Signup';
 import Login from './views/Login';
 import TotalCounter from './views/TotalCounter';
+import IndividualStatistics from './views/IndividualStatistics';
 
 function App() {
   return (
@@ -16,6 +16,11 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/statistics" component={Statistics} exact />
+          <Route
+            path="/individual-statistics"
+            component={IndividualStatistics}
+            exact
+          />
           <Route path="/counter" component={TotalCounter} exact />
           <Route path="/calendar" component={Calendar} exact />
           <Route path="/signup" component={Signup} exact />

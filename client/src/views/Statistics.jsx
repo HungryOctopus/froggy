@@ -1,5 +1,5 @@
-import { Component } from "react";
-import GoogleMapsUsermap from "../components/GoogleMapsUsermap";
+import { Component } from 'react';
+import GoogleMapsUsermap from '../components/GoogleMapsUsermap';
 
 class Statistics extends Component {
   constructor() {
