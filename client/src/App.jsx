@@ -1,22 +1,22 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './views/Home';
-import Navbar from './components/Navbar';
-import Statistics from './views/Statistics';
-import Calendar from './views/Calendar';
-import Signup from './views/Signup';
-import Login from './views/Login';
-import TotalCounter from './views/TotalCounter';
-import IndividualStatistics from './views/IndividualStatistics';
-import { Component } from 'react';
-import { signOut, loadAuthenticatedUser } from './services/authentication';
-import ProtectedRoute from './components/ProtectedRoute';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from "./views/Home";
+import Navbar from "./components/Navbar";
+import Users from "./views/Users";
+import Calendar from "./views/Calendar";
+import Signup from "./views/Signup";
+import Login from "./views/Login";
+import TotalCounter from "./views/TotalCounter";
+import Statistics from "./views/Statistics";
+import { Component } from "react";
+import { signOut, loadAuthenticatedUser } from "./services/authentication";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       user: null,
-      loaded: false
+      loaded: false,
     };
   }
 
@@ -55,17 +55,17 @@ class App extends Component {
         <Navbar user={this.state.user} onSignOut={this.handleSignOut} />
         <Switch>
           <ProtectedRoute
+            path="/users"
+            redirect="/signup"
+            authorized={!this.state.loaded || this.state.user}
+            component={Users}
+            exact
+          />
+          <ProtectedRoute
             path="/statistics"
             redirect="/signup"
             authorized={!this.state.loaded || this.state.user}
             component={Statistics}
-            exact
-          />
-          <ProtectedRoute
-            path="/individual-statistics"
-            redirect="/signup"
-            authorized={!this.state.loaded || this.state.user}
-            component={IndividualStatistics}
             exact
           />
           <ProtectedRoute
