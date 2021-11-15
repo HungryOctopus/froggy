@@ -1,26 +1,28 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import CountInput from '../components/CountInput';
+// import { addStatistic } from './../services/statistics';
 
-export class TotalCounter extends Component {
+class TotalCounter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      FrogsFemaleWayIn: 0,
-      FrogsMaleWayIn: 0,
-      ToadsFemaleWayIn: 0,
-      ToadsMaleWayIn: 0,
-      FrogsFemaleWayBack: 0,
-      FrogsMaleWayBack: 0,
-      ToadsFemaleWayBack: 0,
-      ToadsMaleWayBack: 0
+      FrogsFemaleWayIn: 0
+      // FrogsMaleWayIn: 0,
+      // ToadsFemaleWayIn: 0,
+      // ToadsMaleWayIn: 0,
+      // FrogsFemaleWayBack: 0,
+      // FrogsMaleWayBack: 0,
+      // ToadsFemaleWayBack: 0,
+      // ToadsMaleWayBack: 0
     };
   }
 
-  componentDidMount() {
-    // Call a service that loads the current
-    // wayInFrogs and wayBackToads for date today
-    // and sets those values in the state
-  }
+  // componentDidMount() {
+  //   // Call a service that loads the current
+  //   // wayInFrogs and wayBackToads for date today
+  //   // and sets those values in the state
+  // };
 
   handleCountChange = (value, statePropName) => {
     this.setState({ [statePropName]: value });
@@ -28,13 +30,26 @@ export class TotalCounter extends Component {
 
   handleFormSubmission = (event) => {
     event.preventDefault();
-    // Call a service that submits the counts held in the state
-    // to the REST API.
-    // If there is a count record document for the authenticated user
-    // in which date is today,
-    // update that document with new counts
-    // otherwise, create new document with counts and date today
+    const FrogsFemaleWayIn = this.state.FrogsFemaleWayIn;
+    axios
+      .post('http://localhost:5000/api/stats', { FrogsFemaleWayIn })
+      .then(() => {
+        this.setState({ FrogsFemaleWayIn: '' });
+      })
+      //   this.props.onStatsChange(stats);
+      // })
+      .catch((error) => {
+        alert('There was an error submitting the data');
+        console.log(error);
+      });
   };
+
+  // Call a service that submits the counts held in the state
+  // to the REST API.
+  // If there is a count record document for the authenticated user
+  // in which date is today,
+  // update that document with new counts
+  // otherwise, create new document with counts and date today
 
   render() {
     return (
@@ -44,13 +59,13 @@ export class TotalCounter extends Component {
         <form onSubmit={this.handleFormSubmission}>
           <CountInput
             name="Female frogs"
-            count={this.state.frogsfemalewayin}
+            count={this.state.FrogsFemaleWayIn}
             onCountChange={(value) =>
               this.handleCountChange(value, 'FrogsFemaleWayIn')
             }
           />
 
-          <CountInput
+          {/* <CountInput
             name="Male frogs"
             count={this.state.frogsmalewayin}
             onCountChange={(value) =>
@@ -106,9 +121,11 @@ export class TotalCounter extends Component {
             onCountChange={(value) =>
               this.handleCountChange(value, 'ToadsMaleWayBack')
             }
-          />
+          /> */}
 
-          <input type="submit" value="Submit"></input>
+          <button type="button" onClick={this.handleFormSubmission}>
+            Submit
+          </button>
         </form>
       </div>
     );
