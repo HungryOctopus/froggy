@@ -32,6 +32,13 @@ class AdminMessaging extends Component {
     return formIsValid;
   }
 
+  handleInputChange = (event) => {
+    const { value, name } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
   componentDidMount() {}
 
   render() {
@@ -54,7 +61,7 @@ class AdminMessaging extends Component {
             />
             <span style={{ color: 'red' }}>{this.state.errors['subject']}</span>
             <label htmlFor="input-body">Body</label>
-            <input
+            <textarea
               id="input-body"
               type="text"
               placeholder="Dear volunteers ..."
