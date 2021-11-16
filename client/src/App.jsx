@@ -7,6 +7,7 @@ import Signup from "./views/Signup";
 import Login from "./views/Login";
 import TotalCounter from "./views/TotalCounter";
 import Statistics from "./views/Statistics";
+import Footer from "./components/Footer";
 import { Component } from "react";
 import { signOut, loadAuthenticatedUser } from "./services/authentication";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -108,6 +109,7 @@ class App extends Component {
           />
           <Route path="/" component={Home} exact />
         </Switch>
+        <Footer />
       </BrowserRouter>
     );
   }
