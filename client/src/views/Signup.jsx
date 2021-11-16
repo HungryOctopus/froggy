@@ -71,8 +71,9 @@ class Signup extends Component {
   handleFormSubmission = (event) => {
     event.preventDefault();
     if (this.handleValidation()) {
-      const { firstName, secondName, email, password, role } = this.state;
-      signUp({ firstName, secondName, email, password, role })
+      const { firstName, secondName, email, password, role, location } =
+        this.state;
+      signUp({ firstName, secondName, email, password, role, location })
         .then((user) => {
           this.props.onAuthenticationChange(user);
         })

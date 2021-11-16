@@ -7,7 +7,7 @@ const User = require('./../models/user');
 const router = new Router();
 
 router.post('/sign-up', (req, res, next) => {
-  const { firstName, secondName, email, password, role } = req.body;
+  const { firstName, secondName, email, password, role, location } = req.body;
   bcryptjs
     .hash(password, 10)
     .then((hash) => {
@@ -16,7 +16,8 @@ router.post('/sign-up', (req, res, next) => {
         secondName,
         email,
         passwordHashAndSalt: hash,
-        role
+        role,
+        location
       });
     })
     .then((user) => {
