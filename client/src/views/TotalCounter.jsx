@@ -7,14 +7,14 @@ class TotalCounter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      FrogsFemaleWayIn: 0
-      // FrogsMaleWayIn: 0,
-      // ToadsFemaleWayIn: 0,
-      // ToadsMaleWayIn: 0,
-      // FrogsFemaleWayBack: 0,
-      // FrogsMaleWayBack: 0,
-      // ToadsFemaleWayBack: 0,
-      // ToadsMaleWayBack: 0
+      frogsFemaleWayIn: 0,
+      frogsMaleWayIn: 0
+      // toadsFemaleWayIn: 0,
+      // toadsMaleWayIn: 0,
+      // frogsFemaleWayBack: 0,
+      // frogsMaleWayBack: 0,
+      // toadsFemaleWayBack: 0,
+      // toadsMaleWayBack: 0
     };
   }
 
@@ -25,31 +25,40 @@ class TotalCounter extends Component {
   // };
 
   handleCountChange = (value, statePropName) => {
+    console.log('handleCountChange:', value, statePropName);
     this.setState({ [statePropName]: value });
   };
 
+  // Function handleFormSubmission ==> submits the counts held in the state
+  // to the REST API.
+  //TODO:
+  // If there is a count record document for the authenticated user
+  // in which date is today,
+  // update that document with new counts
+  // otherwise, create new document with counts and date today
   handleFormSubmission = (event) => {
     event.preventDefault();
-    const FrogsFemaleWayIn = this.state.FrogsFemaleWayIn;
+    const FrogsFemaleWayIn = this.state.frogsFemaleWayIn;
+    const FrogsMaleWayIn = this.state.frogsMaleWayIn;
+    // const allAnimals = this.state;
+    //console.log(allAnimals);
     axios
-      .post('http://localhost:5000/api/stats', { FrogsFemaleWayIn })
-      .then(() => {
-        this.setState({ FrogsFemaleWayIn: '' });
+      .post('http://localhost:5000/api/stats', {
+        FrogsFemaleWayIn,
+        FrogsMaleWayIn
+        //allAnimals
       })
-      //   this.props.onStatsChange(stats);
-      // })
+      .then(() => {
+        //what does it mean?
+        this.setState({ frogsFemaleWayIn: '', frogsMaleWayIn: '' });
+        // console.log(allAnimals);
+      })
+
       .catch((error) => {
         alert('There was an error submitting the data');
         console.log(error);
       });
   };
-
-  // Call a service that submits the counts held in the state
-  // to the REST API.
-  // If there is a count record document for the authenticated user
-  // in which date is today,
-  // update that document with new counts
-  // otherwise, create new document with counts and date today
 
   render() {
     return (
@@ -59,33 +68,33 @@ class TotalCounter extends Component {
         <form onSubmit={this.handleFormSubmission}>
           <CountInput
             name="Female frogs"
-            count={this.state.FrogsFemaleWayIn}
+            count={this.state.frogsFemaleWayIn}
             onCountChange={(value) =>
-              this.handleCountChange(value, 'FrogsFemaleWayIn')
+              this.handleCountChange(value, 'frogsFemaleWayIn')
             }
           />
 
-          {/* <CountInput
+          <CountInput
             name="Male frogs"
-            count={this.state.frogsmalewayin}
+            count={this.state.frogsMaleWayIn}
             onCountChange={(value) =>
-              this.handleCountChange(value, 'FrogsMaleWayIn')
+              this.handleCountChange(value, 'frogsMaleWayIn')
             }
           />
 
           <CountInput
             name="Female toads"
-            count={this.state.toadsfemalewayin}
+            count={this.state.toadsFemaleWayIn}
             onCountChange={(value) =>
-              this.handleCountChange(value, 'ToadsFemaleWayIn')
+              this.handleCountChange(value, 'toadsFemaleWayIn')
             }
           />
 
           <CountInput
             name="Male toads"
-            count={this.state.toadsmalewayin}
+            count={this.state.toadsMaleWayIn}
             onCountChange={(value) =>
-              this.handleCountChange(value, 'ToadsMaleWayIn')
+              this.handleCountChange(value, 'toadsMaleWayIn')
             }
           />
 
@@ -93,35 +102,35 @@ class TotalCounter extends Component {
 
           <CountInput
             name="Female frogs"
-            count={this.state.frogsfemalewayback}
+            count={this.state.frogsFemaleWayBack}
             onCountChange={(value) =>
-              this.handleCountChange(value, 'FrogsFemaleWayBack')
+              this.handleCountChange(value, 'frogsFemaleWayBack')
             }
           />
 
           <CountInput
             name="Male frogs"
-            count={this.state.frogsmalewayback}
+            count={this.state.frogsMaleWayBack}
             onCountChange={(value) =>
-              this.handleCountChange(value, 'FrogsMaleWayBack')
+              this.handleCountChange(value, 'frogsMaleWayBack')
             }
           />
 
           <CountInput
             name="Female toads"
-            count={this.state.toadsfemalewayback}
+            count={this.state.toadsFemaleWayBack}
             onCountChange={(value) =>
-              this.handleCountChange(value, 'ToadsFemaleWayBack')
+              this.handleCountChange(value, 'toadsFemaleWayBack')
             }
           />
 
           <CountInput
             name="Male toads"
-            count={this.state.toadsmalewayback}
+            count={this.state.toadsMaleWayBack}
             onCountChange={(value) =>
-              this.handleCountChange(value, 'ToadsMaleWayBack')
+              this.handleCountChange(value, 'toadsMaleWayBack')
             }
-          /> */}
+          />
 
           <button type="button" onClick={this.handleFormSubmission}>
             Submit

@@ -10,23 +10,26 @@ const dailyCatchSchema = new Schema({
     //required: true
   },
   date: {
-    type: Date
-    //required: true
+    type: Date.now
+    //required: truex
     // default: Date.now
   },
-  // AnimalCount: {
-  FrogsFemaleWayIn: {
+
+  frogsFemaleWayIn: {
+    type: Number,
+    min: 0
+  },
+  frogsMaleWayIn: {
     type: Number,
     min: 0
   }
-  // FrogsMaleWayIn: Number,
-  // ToadsFemaleWayIn: Number,
-  // ToadsMaleWayIn: Number,
-  // FrogsFemaleWayBack: Number,
-  // FrogsMaleWayBack: Number,
-  // ToadsFemaleWayBack: Number,
-  // ToadsMaleWayBack: Number
-  // }
+
+  // toadsFemaleWayIn: Number,
+  // toadsMaleWayIn: Number,
+  // frogsFemaleWayBack: Number,
+  // frogsMaleWayBack: Number,
+  // toadsFemaleWayBack: Number,
+  // toadsMaleWayBack: Number
 });
 
 const DailyCatch = model('DailyCatch', dailyCatchSchema);

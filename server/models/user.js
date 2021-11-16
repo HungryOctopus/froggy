@@ -37,18 +37,6 @@ const schema = new mongoose.Schema({
     type: String,
     enum: ['volunteer', 'admin'],
     required: true
-  },
-  maleFrogs: {
-    count: Number
-  },
-  femaleFrogs: {
-    count: Number
-  },
-  maleToads: {
-    count: Number
-  },
-  femaleToads: {
-    count: Number
   }
 });
 

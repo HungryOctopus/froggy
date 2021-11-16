@@ -47,8 +47,8 @@ app.use('/', baseRouter);
 app.use('/authentication', authenticationRouter);
 
 // Handling route for the statistics
-// const statsRouter = require('./routes/statistics');
-// app.use('/api', statsRouter);
+const statsRouter = require('./routes/statistics');
+app.use('/api', statsRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

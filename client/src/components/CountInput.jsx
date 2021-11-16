@@ -8,33 +8,36 @@ class CountInput extends Component {
     };
   }
 
-  handleChange = (event) => {
-    this.setState({ count: event.target.valueAsNumber });
+  handleChange = (value) => {
+    this.setState({ count: value });
+    this.props.onCountChange(value);
   };
 
   render() {
     return (
       <div>
-        {/* <form onSubmit={this.handleSubmit}> */}
         <label>
           {this.props.name}
           <input
             type="number"
+            min={0}
             name={this.props.name}
             value={this.state.count}
-            onChange={(e) => this.handleChange(e)}
+            onChange={(e) => this.handleChange(e.target.valueAsNumber)}
           />
-          {/* onDecrement={this.handleDecrement} */}
+
           <button
             type="button"
-            onClick={() => this.setState({ count: this.state.count + 1 })}
+            onClick={() => this.handleChange(this.state.count + 1)}
+            // maybe a high limit? More than 200 animals shouldn't go through or at least be checked
           >
             +
           </button>
 
           <button
             type="button"
-            onClick={() => this.setState({ count: this.state.count - 1 })}
+            onClick={() => this.handleChange(this.state.count - 1)}
+            //here a logic should be added so the number is not negative
           >
             -
           </button>

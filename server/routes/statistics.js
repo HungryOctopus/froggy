@@ -8,12 +8,12 @@ const DailyCatch = require('./../models/dailyCatch');
 
 // POST route to create new statistics
 router.post('/stats', (req, res, next) => {
-  const { FrogsFemaleWayIn } = req.body;
+  const { allAnimals } = req.body;
 
   DailyCatch.create({
     // volunteer: ,
-    // date: req.DailyCatch.date,
-    FrogsFemaleWayIn
+    // date: req.date,
+    allAnimals
   })
     .then((response) => res.json(response))
     .catch((error) => {
