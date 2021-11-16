@@ -26,7 +26,7 @@ const Navbar = (props) => {
             {props.user && props.user.role === 'admin' && (
               <li className="nav-item">
                 <Link to="/adminmessaging" className="nav-link">
-                  Admin messaging
+                  Messaging
                 </Link>
               </li>
             )}

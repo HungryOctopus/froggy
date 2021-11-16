@@ -37,7 +37,7 @@ class AdminMessaging extends Component {
   render() {
     return (
       <>
-        <h5>Admin Messaging view, visible only to the admin</h5>
+        <h5>Admin Messaging Dashboard</h5>
         <div style={{ width: '500px' }}>
           <form
             onSubmit={this.handleFormSubmission}
