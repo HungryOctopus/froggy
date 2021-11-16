@@ -1,24 +1,25 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './views/Home';
-import Navbar from './components/Navbar';
-import Users from './views/Users';
-import Calendar from './views/Calendar';
-import Signup from './views/Signup';
-import Login from './views/Login';
-import TotalCounter from './views/TotalCounter';
-import Statistics from './views/Statistics';
-import Footer from './components/Footer';
-import { Component } from 'react';
-import { signOut, loadAuthenticatedUser } from './services/authentication';
-import ProtectedRoute from './components/ProtectedRoute';
-import AdminMessaging from './views/AdminMessaging';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from "./views/Home";
+import Navbar from "./components/Navbar";
+import Users from "./views/Users";
+import Calendar from "./views/Calendar";
+import Signup from "./views/Signup";
+import Login from "./views/Login";
+import TotalCounter from "./views/TotalCounter";
+import Statistics from "./views/Statistics";
+import Footer from "./components/Footer";
+import Contact from "./views/Contact";
+import { Component } from "react";
+import { signOut, loadAuthenticatedUser } from "./services/authentication";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminMessaging from "./views/AdminMessaging";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       user: null,
-      loaded: false
+      loaded: false,
     };
   }
 
@@ -115,6 +116,7 @@ class App extends Component {
             )}
             exact
           />
+          <Route path="/contact" component={Contact} exact />
           <Route path="/" component={Home} exact />
         </Switch>
         <Footer />
