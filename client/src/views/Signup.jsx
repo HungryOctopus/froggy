@@ -1,42 +1,89 @@
-import { Component } from 'react';
-import GoogleMapsSignUp from '../components/GoogleMapsSignUp';
-import { signUp } from './../services/authentication';
+import { Component } from "react";
+import GoogleMapsSignUp from "../components/GoogleMapsSignUp";
+import { signUp } from "./../services/authentication";
 
 class Signup extends Component {
   constructor() {
     super();
     this.state = {
-      firstName: '',
-      secondName: '',
+      firstName: "",
+      secondName: "",
       // imageUrl: "",
-      // location: { long: null, lat: null },
+      location: { long: null, lat: null },
       // distance: null,
-      email: '',
-      password: '',
-      role: 'volunteer'
+      email: "",
+      password: "",
+      role: "volunteer",
+      errors: {},
     };
+  }
+
+  handleValidation() {
+    let errors = {};
+    let formIsValid = true;
+
+    // First name
+    if (this.state.firstName === "") {
+      formIsValid = false;
+      errors["firstName"] = "Please include your first name";
+    }
+    // Second name
+    if (this.state.secondName === "") {
+      formIsValid = false;
+      errors["secondName"] = "Please include your last name";
+    }
+    // Email
+    if (this.state.email === "") {
+      formIsValid = false;
+      errors["email"] = "Email field cannot be empty";
+    }
+
+    // Password
+    if (this.state.password === "") {
+      formIsValid = false;
+      errors["password"] = "Please include your password";
+    }
+
+    this.setState({ errors: errors });
+    return formIsValid;
   }
 
   componentDidMount() {}
 
+  getUserCoordinates = (coordinates) => {
+    const { lat, lng } = coordinates;
+    this.setState({
+      location: {
+        long: lng,
+        lat: lat,
+      },
+    });
+    console.log(this.state);
+  };
+
   handleInputChange = (event) => {
     const { value, name } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
   handleFormSubmission = (event) => {
     event.preventDefault();
-    const { firstName, secondName, email, password, role } = this.state;
-    signUp({ firstName, secondName, email, password, role })
-      .then((user) => {
-        this.props.onAuthenticationChange(user);
-      })
-      .catch((error) => {
-        console.log(error);
-        // alert('There was an error signing up');
-      });
+    if (this.handleValidation()) {
+      const { firstName, secondName, email, password, role, location } =
+        this.state;
+      signUp({ firstName, secondName, email, password, role, location })
+        .then((user) => {
+          this.props.onAuthenticationChange(user);
+        })
+        .catch((error) => {
+          console.log(error);
+          // alert('There was an error signing up');
+        });
+    } else {
+      // alert("Form has errors.");
+    }
   };
 
   handleFileUpload = () => {};
@@ -45,10 +92,10 @@ class Signup extends Component {
     return (
       <>
         <h5>Volunteer signup view</h5>
-        <div style={{ width: '500px' }}>
+        <div style={{ width: "500px" }}>
           <form
             onSubmit={this.handleFormSubmission}
-            style={{ display: 'flex', flexDirection: 'column' }}
+            style={{ display: "flex", flexDirection: "column" }}
           >
             <label htmlFor="input-firstName">First name</label>
             <input
@@ -59,6 +106,9 @@ class Signup extends Component {
               value={this.state.firstName}
               onChange={this.handleInputChange}
             />
+            <span style={{ color: "red" }}>
+              {this.state.errors["firstName"]}
+            </span>
             <label htmlFor="input-firstName">Last name</label>
             <input
               id="input-secondName"
@@ -68,6 +118,9 @@ class Signup extends Component {
               value={this.state.secondName}
               onChange={this.handleInputChange}
             />
+            <span style={{ color: "red" }}>
+              {this.state.errors["secondName"]}
+            </span>
             <label htmlFor="input-email">Email</label>
             <input
               id="input-email"
@@ -77,6 +130,7 @@ class Signup extends Component {
               value={this.state.email}
               onChange={this.handleInputChange}
             />
+            <span style={{ color: "red" }}>{this.state.errors["email"]}</span>
             <label htmlFor="input-password">Password</label>
             <input
               id="input-password"
@@ -86,6 +140,9 @@ class Signup extends Component {
               value={this.state.password}
               onChange={this.handleInputChange}
             />
+            <span style={{ color: "red" }}>
+              {this.state.errors["password"]}
+            </span>
             <label htmlFor="user-image-upload">Image</label>
             <input
               id="user-image-upload"
@@ -93,7 +150,7 @@ class Signup extends Component {
               name="imageUrl"
               onChange={this.handleFileUpload}
             />
-            <GoogleMapsSignUp />
+            <GoogleMapsSignUp onGetCoordinates={this.getUserCoordinates} />
             <button>Sign Up</button>
           </form>
         </div>

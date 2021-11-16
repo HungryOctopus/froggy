@@ -8,9 +8,11 @@ import Login from "./views/Login";
 import TotalCounter from "./views/TotalCounter";
 import Statistics from "./views/Statistics";
 import Footer from "./components/Footer";
+import Contact from "./views/Contact";
 import { Component } from "react";
 import { signOut, loadAuthenticatedUser } from "./services/authentication";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminMessaging from "./views/AdminMessaging";
 
 class App extends Component {
   constructor() {
@@ -55,6 +57,13 @@ class App extends Component {
       <BrowserRouter>
         <Navbar user={this.state.user} onSignOut={this.handleSignOut} />
         <Switch>
+          <ProtectedRoute
+            path="/adminmessaging"
+            redirect="/signup"
+            authorized={!this.state.loaded || this.state.user}
+            component={AdminMessaging}
+            exact
+          />
           <ProtectedRoute
             path="/users"
             redirect="/signup"
@@ -107,6 +116,7 @@ class App extends Component {
             )}
             exact
           />
+          <Route path="/contact" component={Contact} exact />
           <Route path="/" component={Home} exact />
         </Switch>
         <Footer />

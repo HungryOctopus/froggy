@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
   return (
@@ -23,6 +23,13 @@ const Navbar = (props) => {
                 Home
               </Link>
             </li>
+            {props.user && props.user.role === 'admin' && (
+              <li className="nav-item">
+                <Link to="/adminmessaging" className="nav-link">
+                  Messaging
+                </Link>
+              </li>
+            )}
             <li className="nav-item">
               <Link to="/calendar" className="nav-link">
                 Calendar

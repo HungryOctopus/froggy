@@ -22,9 +22,9 @@ class GoogleMapsSignUp extends Component {
     };
   }
 
-  onClick = (coordinates) => {
-    const { lat, lng } = coordinates;
-    console.log(lat, lng);
+  setUserMarker = (userCoordinates) => {
+    this.props.onGetCoordinates(userCoordinates);
+    const { lat, lng } = userCoordinates;
     this.setState({
       userMarker: {
         lat: lat,
@@ -48,7 +48,7 @@ class GoogleMapsSignUp extends Component {
           }}
           defaultCenter={this.state.map.center}
           defaultZoom={this.state.map.zoom}
-          onClick={this.onClick}
+          onClick={this.setUserMarker}
         >
           <Marker
             lat={this.state.userMarker.lat}
