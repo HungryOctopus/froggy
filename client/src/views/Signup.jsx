@@ -13,8 +13,39 @@ class Signup extends Component {
       // distance: null,
       email: '',
       password: '',
-      role: 'volunteer'
+      role: 'volunteer',
+      errors: {}
     };
+  }
+
+  handleValidation() {
+    let errors = {};
+    let formIsValid = true;
+
+    // First name
+    if (this.state.firstName === '') {
+      formIsValid = false;
+      errors['firstName'] = 'Please include your first name';
+    }
+    // Second name
+    if (this.state.secondName === '') {
+      formIsValid = false;
+      errors['secondName'] = 'Please include your last name';
+    }
+    // Email
+    if (this.state.email === '') {
+      formIsValid = false;
+      errors['email'] = 'Email field cannot be empty';
+    }
+
+    // Password
+    if (this.state.password === '') {
+      formIsValid = false;
+      errors['password'] = 'Please include your password';
+    }
+
+    this.setState({ errors: errors });
+    return formIsValid;
   }
 
   componentDidMount() {}
@@ -28,15 +59,19 @@ class Signup extends Component {
 
   handleFormSubmission = (event) => {
     event.preventDefault();
-    const { firstName, secondName, email, password, role } = this.state;
-    signUp({ firstName, secondName, email, password, role })
-      .then((user) => {
-        this.props.onAuthenticationChange(user);
-      })
-      .catch((error) => {
-        console.log(error);
-        // alert('There was an error signing up');
-      });
+    if (this.handleValidation()) {
+      const { firstName, secondName, email, password, role } = this.state;
+      signUp({ firstName, secondName, email, password, role })
+        .then((user) => {
+          this.props.onAuthenticationChange(user);
+        })
+        .catch((error) => {
+          console.log(error);
+          // alert('There was an error signing up');
+        });
+    } else {
+      // alert("Form has errors.");
+    }
   };
 
   handleFileUpload = () => {};
@@ -59,6 +94,9 @@ class Signup extends Component {
               value={this.state.firstName}
               onChange={this.handleInputChange}
             />
+            <span style={{ color: 'red' }}>
+              {this.state.errors['firstName']}
+            </span>
             <label htmlFor="input-firstName">Last name</label>
             <input
               id="input-secondName"
@@ -68,6 +106,9 @@ class Signup extends Component {
               value={this.state.secondName}
               onChange={this.handleInputChange}
             />
+            <span style={{ color: 'red' }}>
+              {this.state.errors['secondName']}
+            </span>
             <label htmlFor="input-email">Email</label>
             <input
               id="input-email"
@@ -77,6 +118,7 @@ class Signup extends Component {
               value={this.state.email}
               onChange={this.handleInputChange}
             />
+            <span style={{ color: 'red' }}>{this.state.errors['email']}</span>
             <label htmlFor="input-password">Password</label>
             <input
               id="input-password"
@@ -86,6 +128,9 @@ class Signup extends Component {
               value={this.state.password}
               onChange={this.handleInputChange}
             />
+            <span style={{ color: 'red' }}>
+              {this.state.errors['password']}
+            </span>
             <label htmlFor="user-image-upload">Image</label>
             <input
               id="user-image-upload"
