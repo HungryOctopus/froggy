@@ -1,2 +1,10 @@
-.notification-card {
+.notification {
+  width: 500px;
+  margin-top: 1em;
+  border: 2px solid $dark !important;
+  padding: 0.5em;
+}
+
+.note-subject {
+  font-weight: bold;
 }
