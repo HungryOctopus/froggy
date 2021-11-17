@@ -1,4 +1,4 @@
-.card {
+.about-card {
   background-color: $green !important;
   width: 500px;
   margin-top: 1em;
@@ -10,7 +10,7 @@
   justify-content: center;
 }
 
-.card:hover {
+.about-card:hover {
   box-shadow: 0 3px 8px #00000054;
   transform: scale(1.01);
 }
