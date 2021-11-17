@@ -77,6 +77,11 @@ Our application is divided between a client-side ReactJS application and a serve
 ## DESIGN
 
 - mobile first
+- colors:
+  Background: EDECE9 (whiteish)
+  Primary: 95C60A (green)
+  Secondary: FFC02B (yellow)
+  fonts: 1F1604 (dark brown) // or white?
 
 ## TODO'S
 
