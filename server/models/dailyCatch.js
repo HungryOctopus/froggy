@@ -10,9 +10,9 @@ const dailyCatchSchema = new Schema({
     //required: true
   },
   date: {
-    type: Date.now
+    type: Date,
     //required: truex
-    // default: Date.now
+    default: Date.now
   },
 
   frogsFemaleWayIn: {
