@@ -7,14 +7,16 @@ class TotalCounter extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // way in
       frogsFemaleWayIn: 0,
-      frogsMaleWayIn: 0
-      // toadsFemaleWayIn: 0,
-      // toadsMaleWayIn: 0,
-      // frogsFemaleWayBack: 0,
-      // frogsMaleWayBack: 0,
-      // toadsFemaleWayBack: 0,
-      // toadsMaleWayBack: 0
+      frogsMaleWayIn: 0,
+      toadsFemaleWayIn: 0,
+      toadsMaleWayIn: 0,
+      // way back
+      frogsFemaleWayBack: 0,
+      frogsMaleWayBack: 0,
+      toadsFemaleWayBack: 0,
+      toadsMaleWayBack: 0
     };
   }
 
@@ -38,20 +40,35 @@ class TotalCounter extends Component {
   // otherwise, create new document with counts and date today
   handleFormSubmission = (event) => {
     event.preventDefault();
-    const FrogsFemaleWayIn = this.state.frogsFemaleWayIn;
-    const FrogsMaleWayIn = this.state.frogsMaleWayIn;
-    // const allAnimals = this.state;
-    //console.log(allAnimals);
+    //way in
+    const frogsFemaleWayIn = this.state.frogsFemaleWayIn;
+    const frogsMaleWayIn = this.state.frogsMaleWayIn;
+    const toadsFemaleWayIn = this.state.toadsFemaleWayIn;
+    const toadsMaleWayIn = this.state.toadsMaleWayIn;
+    //way back
+    const frogsFemaleWayBack = this.state.frogsFemaleWayBack;
+    const frogsMaleWayBack = this.state.frogsMaleWayBack;
+    const toadsFemaleWayBack = this.state.toadsFemaleWayBack;
+    const toadsMaleWayBack = this.state.toadsMaleWayBack;
+
+    console.log(frogsFemaleWayIn);
+    console.log(frogsMaleWayIn);
     axios
       .post('http://localhost:5000/api/stats', {
-        FrogsFemaleWayIn,
-        FrogsMaleWayIn
-        //allAnimals
+        //way in
+        frogsFemaleWayIn,
+        frogsMaleWayIn,
+        toadsFemaleWayIn,
+        toadsMaleWayIn,
+        //way back
+        frogsFemaleWayBack,
+        frogsMaleWayBack,
+        toadsFemaleWayBack,
+        toadsMaleWayBack
       })
-      .then(() => {
-        //what does it mean?
-        this.setState({ frogsFemaleWayIn: '', frogsMaleWayIn: '' });
-        // console.log(allAnimals);
+      .then((response) => {
+        console.log(response);
+        //Redirect here?
       })
 
       .catch((error) => {
@@ -62,81 +79,85 @@ class TotalCounter extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Way in</h2>
+      <>
+        <header class="masthead bg-primary text-white text-center">
+          <div className="container d-flex align-items-center flex-column">
+            <h2>Way in</h2>
 
-        <form onSubmit={this.handleFormSubmission}>
-          <CountInput
-            name="Female frogs"
-            count={this.state.frogsFemaleWayIn}
-            onCountChange={(value) =>
-              this.handleCountChange(value, 'frogsFemaleWayIn')
-            }
-          />
+            <form onSubmit={this.handleFormSubmission}>
+              <CountInput
+                name="Female frogs"
+                count={this.state.frogsFemaleWayIn}
+                onCountChange={(value) =>
+                  this.handleCountChange(value, 'frogsFemaleWayIn')
+                }
+              />
 
-          <CountInput
-            name="Male frogs"
-            count={this.state.frogsMaleWayIn}
-            onCountChange={(value) =>
-              this.handleCountChange(value, 'frogsMaleWayIn')
-            }
-          />
+              <CountInput
+                name="Male frogs"
+                count={this.state.frogsMaleWayIn}
+                onCountChange={(value) =>
+                  this.handleCountChange(value, 'frogsMaleWayIn')
+                }
+              />
 
-          <CountInput
-            name="Female toads"
-            count={this.state.toadsFemaleWayIn}
-            onCountChange={(value) =>
-              this.handleCountChange(value, 'toadsFemaleWayIn')
-            }
-          />
+              <CountInput
+                name="Female toads"
+                count={this.state.toadsFemaleWayIn}
+                onCountChange={(value) =>
+                  this.handleCountChange(value, 'toadsFemaleWayIn')
+                }
+              />
 
-          <CountInput
-            name="Male toads"
-            count={this.state.toadsMaleWayIn}
-            onCountChange={(value) =>
-              this.handleCountChange(value, 'toadsMaleWayIn')
-            }
-          />
+              <CountInput
+                name="Male toads"
+                count={this.state.toadsMaleWayIn}
+                onCountChange={(value) =>
+                  this.handleCountChange(value, 'toadsMaleWayIn')
+                }
+              />
 
-          <h2>Way back</h2>
+              <h2>Way back</h2>
 
-          <CountInput
-            name="Female frogs"
-            count={this.state.frogsFemaleWayBack}
-            onCountChange={(value) =>
-              this.handleCountChange(value, 'frogsFemaleWayBack')
-            }
-          />
+              <CountInput
+                name="Female frogs"
+                count={this.state.frogsFemaleWayBack}
+                onCountChange={(value) =>
+                  this.handleCountChange(value, 'frogsFemaleWayBack')
+                }
+              />
 
-          <CountInput
-            name="Male frogs"
-            count={this.state.frogsMaleWayBack}
-            onCountChange={(value) =>
-              this.handleCountChange(value, 'frogsMaleWayBack')
-            }
-          />
+              <CountInput
+                name="Male frogs"
+                count={this.state.frogsMaleWayBack}
+                onCountChange={(value) =>
+                  this.handleCountChange(value, 'frogsMaleWayBack')
+                }
+              />
 
-          <CountInput
-            name="Female toads"
-            count={this.state.toadsFemaleWayBack}
-            onCountChange={(value) =>
-              this.handleCountChange(value, 'toadsFemaleWayBack')
-            }
-          />
+              <CountInput
+                name="Female toads"
+                count={this.state.toadsFemaleWayBack}
+                onCountChange={(value) =>
+                  this.handleCountChange(value, 'toadsFemaleWayBack')
+                }
+              />
 
-          <CountInput
-            name="Male toads"
-            count={this.state.toadsMaleWayBack}
-            onCountChange={(value) =>
-              this.handleCountChange(value, 'toadsMaleWayBack')
-            }
-          />
+              <CountInput
+                name="Male toads"
+                count={this.state.toadsMaleWayBack}
+                onCountChange={(value) =>
+                  this.handleCountChange(value, 'toadsMaleWayBack')
+                }
+              />
 
-          <button type="button" onClick={this.handleFormSubmission}>
-            Submit
-          </button>
-        </form>
-      </div>
+              <button type="button" onClick={this.handleFormSubmission}>
+                Submit
+              </button>
+            </form>
+          </div>
+        </header>
+      </>
     );
   }
 }

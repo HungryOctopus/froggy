@@ -9,12 +9,12 @@ const dailyCatchSchema = new Schema({
     ref: 'User'
     //required: true
   },
-  date: {
-    type: Date.now
-    //required: truex
-    // default: Date.now
+  createdAt: {
+    type: Date,
+    required: true,
+    default: Date.now
   },
-
+  //Way in
   frogsFemaleWayIn: {
     type: Number,
     min: 0
@@ -22,14 +22,35 @@ const dailyCatchSchema = new Schema({
   frogsMaleWayIn: {
     type: Number,
     min: 0
-  }
+  },
+  toadsFemaleWayIn: {
+    type: Number,
+    min: 0
+  },
+  toadsMaleWayIn: {
+    type: Number,
+    min: 0
+  },
+  //Way back
+  frogsFemaleWayBack: {
+    type: Number,
+    min: 0
+  },
 
-  // toadsFemaleWayIn: Number,
-  // toadsMaleWayIn: Number,
-  // frogsFemaleWayBack: Number,
-  // frogsMaleWayBack: Number,
-  // toadsFemaleWayBack: Number,
-  // toadsMaleWayBack: Number
+  frogsMaleWayBack: {
+    type: Number,
+    min: 0
+  },
+
+  toadsFemaleWayBack: {
+    type: Number,
+    min: 0
+  },
+
+  toadsMaleWayBack: {
+    type: Number,
+    min: 0
+  }
 });
 
 const DailyCatch = model('DailyCatch', dailyCatchSchema);
