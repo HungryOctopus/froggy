@@ -9,7 +9,34 @@ class About extends Component {
   componentDidMount() {}
 
   render() {
-    return <div>About us</div>;
+    return (
+      <div>
+        <div className="card">
+          <div className="avatar">
+            <img src="./images/avatars/amelie.png" alt="amelie" />
+          </div>
+          <div className="info-box">
+            <div>Amelie</div>
+          </div>
+        </div>
+        <div className="card">
+          <div className="avatar">
+            <img src="./images/avatars/jamie.png" alt="jamie" />
+          </div>
+          <div className="info-box">
+            <div>Jamie</div>
+          </div>
+        </div>
+        <div className="card">
+          <div className="avatar">
+            <img src="./images/avatars/gregor.jpg" alt="gregor" />
+          </div>
+          <div className="info-box">
+            <div>Gregor</div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
