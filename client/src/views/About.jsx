@@ -11,7 +11,7 @@ class About extends Component {
   render() {
     return (
       <div>
-        <div className="card">
+        <div className="card about-card">
           <div className="avatar">
             <img src="./images/avatars/amelie.png" alt="amelie" />
           </div>
@@ -19,7 +19,7 @@ class About extends Component {
             <div>Amelie</div>
           </div>
         </div>
-        <div className="card">
+        <div className="card about-card">
           <div className="avatar">
             <img src="./images/avatars/jamie.png" alt="jamie" />
           </div>
@@ -27,7 +27,7 @@ class About extends Component {
             <div>Jamie</div>
           </div>
         </div>
-        <div className="card">
+        <div className="card about-card">
           <div className="avatar">
             <img src="./images/avatars/gregor.jpg" alt="gregor" />
           </div>
