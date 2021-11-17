@@ -13,52 +13,56 @@ class Contact extends Component {
       <div>
         Contact view
         <form method="POST">
-          <div class="form-floating mb-3">
+          <div className="form-floating mb-3">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               name="name"
               id="input-name"
               placeholder="name"
               required
             />
-            <label for="input-name">Your full name</label>
+            <label htmlFor="input-name">Your full name</label>
           </div>
-          <div class="form-floating mb-3">
+          <div className="form-floating mb-3">
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               name="email"
               id="input-email"
               placeholder="email"
               required
             />
-            <label for="input-email">Your email address</label>
+            <label htmlFor="input-email">Your email address</label>
           </div>
-          <div class="form-floating mb-3">
+          <div className="form-floating mb-3">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               name="subject"
               id="input-subject"
               placeholder="subject"
               required
             />
-            <label for="input-subject">What can we help you with?</label>
+            <label htmlFor="input-subject">What can we help you with?</label>
           </div>
 
-          <div class="form-floating mb-3">
+          <div className="form-floating mb-3">
             <textarea
-              class="form-control"
+              className="form-control"
               name="message"
               placeholder="message"
               id="input-message"
               required
             ></textarea>
-            <label for="input-message">Your message</label>
+            <label htmlFor="input-message">Your message</label>
           </div>
 
-          <button id="contact-msg-btn" type="submit" class="btn btn-warning">
+          <button
+            id="contact-msg-btn"
+            type="submit"
+            className="btn btn-warning"
+          >
             Send message!
           </button>
         </form>
