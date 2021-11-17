@@ -1,12 +1,14 @@
+@use 'variables';
+
 // ### Import mixins/vars ###
-@import "_mixins", "_variables";
+@import '_mixins', '_variables';
 
 // ### Import scss files ###
-@import "map-pins.scss", "footer.scss", "contact.scss", "about.scss",
-  "calendar.scss", "notification.scss", "statistics.scss";
+@import 'map-pins.scss', 'footer.scss', 'contact.scss', 'about.scss',
+  'calendar.scss', 'notification.scss', 'statistics.scss';
 
 // ### Import fonts ###
-@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 * {
   box-sizing: border-box;
@@ -14,14 +16,31 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: $font-titles, $font-text;
+  // font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  //   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  //   sans-serif;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root {
+  background-color: variables.$white;
+}
+
+.bg-green {
+  background-color: variables.$green;
+}
+
+.bg-white {
+  background-color: variables.$white;
+}
+
+.bg-orange {
+  background-color: variables.$orange;
 }

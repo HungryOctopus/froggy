@@ -1,14 +1,14 @@
-import { Component } from "react";
-import CalendarComponent from "react-calendar";
-import Notification from "../components/Notification";
-import DUMMY_NOTIFICATIONS from "./../tests/notification_api_test.json";
+import { Component } from 'react';
+import CalendarComponent from 'react-calendar';
+import Notification from '../components/Notification';
+import DUMMY_NOTIFICATIONS from './../tests/notification_api_test.json';
 
 class Calendar extends Component {
   constructor() {
     super();
     this.state = {
       day: null,
-      notifications: DUMMY_NOTIFICATIONS,
+      notifications: DUMMY_NOTIFICATIONS
     };
   }
 
@@ -25,17 +25,21 @@ class Calendar extends Component {
   render() {
     return (
       <>
-        <h5>Calendar view</h5>
-        <div>react calendar package</div>
-        <CalendarComponent
-          className="calendar"
-          onChange={this.onUserClick}
-          // value={this.state.value}
-        />
-        <div>User clicked day:{this.state.day}</div>
-        {this.state.notifications.map((el, index) => {
-          return <Notification key={index} notification={el} />;
-        })}
+        <header className="masthead bg-white text-dark text-center mt-5 pt-5">
+          <div className="container d-flex align-items-center flex-column">
+            <h5>Calendar view</h5>
+            <div>react calendar package</div>
+            <CalendarComponent
+              className="calendar"
+              onChange={this.onUserClick}
+              // value={this.state.value}
+            />
+            <div>User clicked day:{this.state.day}</div>
+            {this.state.notifications.map((el, index) => {
+              return <Notification key={index} notification={el} />;
+            })}
+          </div>
+        </header>
       </>
     );
   }

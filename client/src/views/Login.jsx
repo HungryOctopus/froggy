@@ -59,37 +59,43 @@ class Login extends Component {
   render() {
     return (
       <>
-        <h5>Login view</h5>
-        <div style={{ width: '500px' }}>
-          <form
-            onSubmit={this.handleFormSubmission}
-            style={{ display: 'flex', flexDirection: 'column' }}
-          >
-            <label htmlFor="input-email">Email</label>
-            <input
-              id="input-email"
-              type="email"
-              placeholder="Your Email"
-              name="email"
-              value={this.state.email}
-              onChange={this.handleInputChange}
-            />
-            <span style={{ color: 'red' }}>{this.state.errors['email']}</span>
-            <label htmlFor="input-password">Password</label>
-            <input
-              id="input-password"
-              type="password"
-              placeholder="Your Password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleInputChange}
-            />
-            <span style={{ color: 'red' }}>
-              {this.state.errors['password']}
-            </span>
-            <button>Log In</button>
-          </form>
-        </div>
+        <header className="masthead bg-green text-white text-center mt-5 pt-5">
+          <div className="container d-flex align-items-center flex-column">
+            <h5>Login view</h5>
+            <div style={{ width: '500px' }}>
+              <form
+                onSubmit={this.handleFormSubmission}
+                style={{ display: 'flex', flexDirection: 'column' }}
+              >
+                <label htmlFor="input-email">Email</label>
+                <input
+                  id="input-email"
+                  type="email"
+                  placeholder="Your Email"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.handleInputChange}
+                />
+                <span style={{ color: 'red' }}>
+                  {this.state.errors['email']}
+                </span>
+                <label htmlFor="input-password">Password</label>
+                <input
+                  id="input-password"
+                  type="password"
+                  placeholder="Your Password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleInputChange}
+                />
+                <span style={{ color: 'red' }}>
+                  {this.state.errors['password']}
+                </span>
+                <button>Log In</button>
+              </form>
+            </div>
+          </div>
+        </header>
       </>
     );
   }

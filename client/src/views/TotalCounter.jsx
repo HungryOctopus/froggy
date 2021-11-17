@@ -80,7 +80,7 @@ class TotalCounter extends Component {
   render() {
     return (
       <>
-        <header class="masthead bg-primary text-white text-center">
+        <header className="masthead bg-green text-white text-center mt-5 pt-5">
           <div className="container d-flex align-items-center flex-column">
             <h2>Way in</h2>
 

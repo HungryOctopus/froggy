@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <div id="footer">
+    <div id="footer" className="bg-green">
       <Link to="/about" className="nav-link">
         About us
       </Link>

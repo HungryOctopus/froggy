@@ -44,35 +44,43 @@ class AdminMessaging extends Component {
   render() {
     return (
       <>
-        <h5>Admin Messaging Dashboard</h5>
-        <div style={{ width: '500px' }}>
-          <form
-            onSubmit={this.handleFormSubmission}
-            style={{ display: 'flex', flexDirection: 'column' }}
-          >
-            <label htmlFor="input-firstName">Subject</label>
-            <input
-              id="input-subject"
-              type="text"
-              placeholder="Subject"
-              name="subject"
-              value={this.state.subject}
-              onChange={this.handleInputChange}
-            />
-            <span style={{ color: 'red' }}>{this.state.errors['subject']}</span>
-            <label htmlFor="input-body">Body</label>
-            <textarea
-              id="input-body"
-              type="text"
-              placeholder="Dear volunteers ..."
-              name="body"
-              value={this.state.body}
-              onChange={this.handleInputChange}
-            />
-            <span style={{ color: 'red' }}>{this.state.errors['body']}</span>
-            <button>Send message</button>
-          </form>
-        </div>
+        <header className="masthead bg-orange text-black text-center mt-5 pt-5">
+          <div className="container d-flex align-items-center flex-column">
+            <h5>Admin Messaging Dashboard</h5>
+            <div style={{ width: '500px' }}>
+              <form
+                onSubmit={this.handleFormSubmission}
+                style={{ display: 'flex', flexDirection: 'column' }}
+              >
+                <label htmlFor="input-firstName">Subject</label>
+                <input
+                  id="input-subject"
+                  type="text"
+                  placeholder="Subject"
+                  name="subject"
+                  value={this.state.subject}
+                  onChange={this.handleInputChange}
+                />
+                <span style={{ color: 'red' }}>
+                  {this.state.errors['subject']}
+                </span>
+                <label htmlFor="input-body">Body</label>
+                <textarea
+                  id="input-body"
+                  type="text"
+                  placeholder="Dear volunteers ..."
+                  name="body"
+                  value={this.state.body}
+                  onChange={this.handleInputChange}
+                />
+                <span style={{ color: 'red' }}>
+                  {this.state.errors['body']}
+                </span>
+                <button>Send message</button>
+              </form>
+            </div>
+          </div>
+        </header>
       </>
     );
   }
