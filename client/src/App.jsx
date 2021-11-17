@@ -9,6 +9,7 @@ import TotalCounter from "./views/TotalCounter";
 import Statistics from "./views/Statistics";
 import Footer from "./components/Footer";
 import Contact from "./views/Contact";
+import About from "./views/About";
 import { Component } from "react";
 import { signOut, loadAuthenticatedUser } from "./services/authentication";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -117,6 +118,7 @@ class App extends Component {
             exact
           />
           <Route path="/contact" component={Contact} exact />
+          <Route path="/about" component={About} exact />
           <Route path="/" component={Home} exact />
         </Switch>
         <Footer />
