@@ -1,14 +1,12 @@
-@use 'variables';
-
 // ### Import mixins/vars ###
-@import '_mixins', '_variables';
+@import "_mixins", "_variables";
 
 // ### Import scss files ###
-@import 'map-pins.scss', 'footer.scss', 'contact.scss', 'about.scss',
-  'calendar.scss', 'notification.scss', 'statistics.scss';
+@import "map-pins.scss", "footer.scss", "contact.scss", "about.scss",
+  "calendar.scss", "notification.scss", "statistics.scss";
 
 // ### Import fonts ###
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
 * {
   box-sizing: border-box;
@@ -25,22 +23,22 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 #root {
-  background-color: variables.$white;
+  background-color: $white;
 }
 
 .bg-green {
-  background-color: variables.$green;
+  background-color: $green;
 }
 
 .bg-white {
-  background-color: variables.$white;
+  background-color: $white;
 }
 
 .bg-orange {
-  background-color: variables.$orange;
+  background-color: $orange;
 }
