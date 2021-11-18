@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
   return (
@@ -12,7 +12,7 @@ const Navbar = (props) => {
           Catch 'em all
         </Link>
         <button
-          className="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
+          className="navbar-toggler text-uppercase font-weight-bold bg-green rounded"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarResponsive"
@@ -33,7 +33,7 @@ const Navbar = (props) => {
                 Home
               </Link>
             </li>
-            {props.user && props.user.role === "admin" && (
+            {props.user && props.user.role === 'admin' && (
               <li className="nav-link py-3 px-0 px-lg-3 rounded">
                 <Link
                   to="/adminmessaging"

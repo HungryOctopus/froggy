@@ -1,12 +1,12 @@
 // ### Import mixins/vars ###
-@import "_mixins", "_variables";
+@import '_mixins', '_variables';
 
 // ### Import scss files ###
-@import "map-pins.scss", "footer.scss", "contact.scss", "about.scss",
-  "calendar.scss", "notification.scss", "statistics.scss";
+@import 'map-pins.scss', 'footer.scss', 'contact.scss', 'about.scss',
+  'calendar.scss', 'notification.scss', 'statistics.scss';
 
 // ### Import fonts ###
-@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 * {
   box-sizing: border-box;
@@ -23,7 +23,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
@@ -41,4 +41,108 @@ code {
 
 .bg-orange {
   background-color: $orange;
+}
+
+.text-green {
+  color: $green;
+}
+
+.text-white {
+  color: $white;
+}
+
+.text-orange {
+  color: $orange;
+}
+
+////// NAVBAR //////
+
+#mainNav {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  a {
+    color: $dark;
+    font-weight: 700;
+  }
+  a.nav-link:hover {
+    color: $green;
+    background-color: white;
+  }
+
+  a.nav-link.active:focus {
+    color: $green;
+    background-color: white;
+  }
+
+  a.nav-link.active:hover {
+    color: $green;
+    background-color: white;
+  }
+  button {
+    background-color: $green;
+    color: $dark;
+    font-weight: 500;
+    padding: 1rem;
+    border-radius: 0.5;
+  }
+}
+
+///// HOME VIEW /////
+
+// Masterhead heading & subheading //
+
+.masthead {
+  padding-top: calc(6rem + 74px);
+  padding-bottom: 6rem;
+}
+.masthead .masthead-heading {
+  font-size: 2.75rem;
+  line-height: 2.75rem;
+}
+.masthead .masthead-subheading {
+  color: $dark;
+  font-size: 1.25rem;
+}
+.masthead .masthead-avatar {
+  width: 15rem;
+}
+
+@media (min-width: 992px) {
+  .masthead {
+    padding-top: calc(6rem + 104px);
+    padding-bottom: 6rem;
+  }
+  .masthead .masthead-heading {
+    font-size: 4rem;
+    line-height: 3.5rem;
+  }
+  .masthead .masthead-subheading {
+    color: $dark;
+    font-size: 1.5rem;
+  }
+}
+
+// Dividers //
+
+.divider-custom {
+  margin: 1.25rem 0 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.divider-custom .divider-custom-line {
+  width: 100%;
+  max-width: 7rem;
+  height: 0.25rem;
+  background-color: $green;
+  border-radius: 1rem;
+  border-color: $green;
+}
+.divider-custom .divider-custom-line:first-child {
+  margin-right: 1rem;
+}
+.divider-custom .divider-custom-line:last-child {
+  margin-left: 1rem;
 }
