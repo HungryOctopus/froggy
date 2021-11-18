@@ -17,7 +17,12 @@ const app = express();
 
 app.use(
   cors({
-    origin: [process.env.CLIENT_APP_ORIGIN, 'https://hoppscotch.io'],
+    origin: [
+      process.env.CLIENT_APP_ORIGIN,
+      'https://hoppscotch.io',
+      'https://affectionate-jennings-499da5.netlify.app/',
+      'https://ironhackfroggy.herokuapp.com/'
+    ],
     credentials: true
   })
 );
