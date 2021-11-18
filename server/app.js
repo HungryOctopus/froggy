@@ -20,8 +20,7 @@ app.use(
     origin: [
       process.env.CLIENT_APP_ORIGIN,
       'https://hoppscotch.io',
-      'https://affectionate-jennings-499da5.netlify.app/',
-      'https://ironhackfroggy.herokuapp.com/'
+      'https://affectionate-jennings-499da5.netlify.app'
     ],
     credentials: true
   })
