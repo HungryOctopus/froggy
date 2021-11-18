@@ -37,6 +37,10 @@ const schema = new mongoose.Schema({
     type: String,
     enum: ['volunteer', 'admin'],
     required: true
+  },
+  onSite: {
+    type: Boolean,
+    default: false
   }
 });
 
