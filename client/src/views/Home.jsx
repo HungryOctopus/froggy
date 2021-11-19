@@ -1,5 +1,5 @@
 import { Component } from "react";
-import GoogleMapsHome from "../components/GoogleMapsHome";
+// import GoogleMapsHome from "../components/GoogleMapsHome";
 
 class Home extends Component {
   constructor() {
