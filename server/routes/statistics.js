@@ -6,6 +6,19 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const DailyCatch = require('./../models/dailyCatch');
 
+router.get('/stats', (req, res, next) => {
+  DailyCatch.findOne({
+    volunteer: req.user._id,
+    createdAt: {
+      $gte: new Date(new Date() - (new Date() % (24 * 60 * 60 * 1000)))
+    }
+  })
+    .then((dailyCatch) => res.json({ dailyCatch }))
+    .catch((error) => {
+      res.json(error);
+    });
+});
+
 // POST route to create new statistics
 router.post('/stats', (req, res, next) => {
   const {
@@ -20,9 +33,7 @@ router.post('/stats', (req, res, next) => {
     toadsFemaleWayBack,
     toadsMaleWayBack
   } = req.body;
-  console.log(frogsFemaleWayIn);
-  console.log(frogsMaleWayIn);
-  DailyCatch.create({
+  const data = {
     // volunteer: req.user._id,
     // BEARER TOKEN & API ? Middleware
     //way in
@@ -35,7 +46,26 @@ router.post('/stats', (req, res, next) => {
     frogsMaleWayBack,
     toadsFemaleWayBack,
     toadsMaleWayBack
-  })
+  };
+  console.log(frogsFemaleWayIn);
+  console.log(frogsMaleWayIn);
+  DailyCatch.findOneAndUpdate(
+    {
+      volunteer: req.user._id,
+      createdAt: {
+        $gte: new Date(new Date() - (new Date() % (24 * 60 * 60 * 1000)))
+      }
+    },
+    data,
+    { new: true }
+  )
+    .then((dailyCatch) => {
+      if (dailyCatch) {
+        return dailyCatch;
+      } else {
+        return DailyCatch.create(data);
+      }
+    })
     .then((response) => res.json(response))
     .catch((error) => {
       res.json(error);
