@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import GoogleMapsHome from '../components/GoogleMapsHome';
+import { Component } from "react";
+import GoogleMapsHome from "../components/GoogleMapsHome";
 
 class Home extends Component {
   constructor() {
@@ -18,8 +18,8 @@ class Home extends Component {
             {/* <!-- Masthead Avatar Image--> */}
             <img
               class="masthead-avatar mb-5"
-              src="favicon.ico"
-              alt="froggy-icon"
+              src="./images/froggy.png"
+              alt="froggy"
             />
             {/* <!-- Masthead Heading--> */}
             <h1 class="masthead-heading text-uppercase text-green mb-0">
@@ -50,10 +50,10 @@ class Home extends Component {
           </div>
         </header>
 
-        <div>
+        {/* <div>
           Google maps api: event location
           <GoogleMapsHome />
-        </div>
+        </div> */}
       </>
     );
   }
