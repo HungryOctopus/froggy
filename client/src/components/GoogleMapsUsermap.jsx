@@ -1,7 +1,8 @@
 import { Component } from "react";
 import GoogleMapReact from "google-map-react";
-import USER_LOCATIONS from "../tests/maps_api_test.json";
+// import USER_LOCATIONS from "../tests/maps_api_test.json";
 import frogmarker from "../images/frogmarker.png";
+import { getAllUsers } from "../services/googlemaps";
 
 const UserPin = ({ userImg, userName }) => (
   <div>
@@ -28,8 +29,18 @@ class GoogleMapsUsermap extends Component {
         lng: 7.901442,
       },
       zoom: 12,
-      list: USER_LOCATIONS,
+      users: [],
     };
+  }
+
+  componentDidMount() {
+    getAllUsers()
+      .then((users) => {
+        this.setState({ users });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
@@ -42,7 +53,7 @@ class GoogleMapsUsermap extends Component {
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
         >
-          {this.state.list.map((user) => (
+          {this.state.users.map((user) => (
             <UserPin
               key={user.location.long}
               lat={user.location.long}
