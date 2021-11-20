@@ -55,7 +55,7 @@ class GoogleMapsUsermap extends Component {
         >
           {this.state.users.map((user) => (
             <UserPin
-              key={user.location.long}
+              key={user._id}
               lat={user.location.long}
               lng={user.location.lat}
               userName={user.firstName}
