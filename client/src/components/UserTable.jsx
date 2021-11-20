@@ -22,13 +22,14 @@ class UserTable extends Component {
 
   render() {
     return (
-      <div>
-        <table className="table table-light table-hover">
+      <div className="container">
+        <table className="table table-light table-striped table-hover user-table">
           <tbody>
             {this.state.users.map((user) => (
-              <tr key={user._id}>
+              <tr className="user-row" key={user._id}>
                 <td>
                   <img
+                    className="user-image"
                     style={{ width: "50px" }}
                     src={`../images/avatars/${user.userImage}`}
                     alt={user.fir}
@@ -39,7 +40,7 @@ class UserTable extends Component {
                 </td>
                 <td>{user.distance}</td>
                 <td>
-                  <button>avi</button>
+                  <button>today's status</button>
                 </td>
               </tr>
             ))}

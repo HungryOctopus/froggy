@@ -1,12 +1,13 @@
 // ### Import mixins/vars ###
-@import '_mixins', '_variables';
+@import "_mixins", "_variables";
 
 // ### Import scss files ###
-@import 'map-pins.scss', 'footer.scss', 'contact.scss', 'about.scss',
-  'calendar.scss', 'notification.scss', 'statistics.scss', 'googlemaps.scss';
+@import "map-pins.scss", "footer.scss", "contact.scss", "about.scss",
+  "calendar.scss", "notification.scss", "statistics.scss", "googlemaps.scss",
+  "users.scss";
 
 // ### Import fonts ###
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
 * {
   box-sizing: border-box;
@@ -23,7 +24,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
