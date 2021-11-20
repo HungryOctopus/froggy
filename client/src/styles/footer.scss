@@ -1,9 +1,17 @@
 #footer {
   display: flex;
   justify-content: center;
-  border: 2px solid #264d24;
-  margin-top: 1em;
-  border-bottom-left-radius: 1em;
-  border-bottom-right-radius: 1em;
-  width: 500px;
+  align-items: center;
+  font-size: 1.05em;
+  height: 5rem;
+  a {
+    @include nolink;
+    margin-top: 0.4em;
+    text-decoration: underline;
+  }
+}
+
+#footer-spacer {
+  background-color: $orange;
+  height: 0.5em;
 }

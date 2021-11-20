@@ -12,12 +12,17 @@ const basicAuthenticationDeserializer = require('./middleware/basic-authenticati
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
 const baseRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
+const googlemapsRouter = require('./routes/googlemaps');
 
 const app = express();
 
 app.use(
   cors({
-    origin: [process.env.CLIENT_APP_ORIGIN, 'https://hoppscotch.io'],
+    origin: [
+      process.env.CLIENT_APP_ORIGIN,
+      'https://hoppscotch.io',
+      'https://affectionate-jennings-499da5.netlify.app'
+    ],
     credentials: true
   })
 );
@@ -45,6 +50,7 @@ app.use(bindUserToViewLocals);
 
 app.use('/', baseRouter);
 app.use('/authentication', authenticationRouter);
+app.use('/', googlemapsRouter);
 
 // Handling route for the statistics
 const statsRouter = require('./routes/statistics');
