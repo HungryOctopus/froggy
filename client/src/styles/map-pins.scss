@@ -1,6 +1,8 @@
 .user-pin {
-  width: 2.5em;
+  width: 3.2em;
   border-radius: 50%;
+  background-color: $orange;
+  padding: 0.3em;
 }
 
 #frog-marker {
@@ -30,4 +32,12 @@
   background: #8bc488;
   position: absolute;
   border-radius: 50%;
+}
+
+.dummy-pin {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  background-color: $green;
+  border: 0.3em solid $orange;
 }

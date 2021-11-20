@@ -36,7 +36,9 @@ class UserTable extends Component {
         c(latUser * p) *
         (1 - c((lngUser - lngLocation) * p))) /
         2;
-    return 12742 * Math.asin(Math.sqrt(a)); // 2 * Radius earth (6371)
+    return 12742 * Math.asin(Math.sqrt(a)) > 10
+      ? Math.round(12742 * Math.asin(Math.sqrt(a)))
+      : (12742 * Math.asin(Math.sqrt(a))).toFixed(1); // 2 * Radius earth (6371)
   };
 
   render() {
@@ -46,23 +48,30 @@ class UserTable extends Component {
           <tbody>
             {this.state.users.map((user) => (
               <tr className="user-row" key={user._id}>
-                <td>
-                  <img
-                    className="user-image"
-                    style={{ width: "50px" }}
-                    src={`../images/avatars/${user.userImage}`}
-                    alt={user.fir}
-                  />
-                </td>
+                {(user.userImage && (
+                  <td>
+                    <img
+                      className="user-image"
+                      src={`../images/avatars/${user.userImage}`}
+                      alt={user.fir}
+                    />
+                  </td>
+                )) || (
+                  <td className="dummy-avatar">
+                    <div>
+                      <img src="./images/froggy.png" alt="" />
+                    </div>
+                  </td>
+                )}
                 <td>
                   {user.firstName} {user.secondName}
                 </td>
                 {(user.location.lat !== null && (
                   <td>
-                    {this.getDistance(user.location.lat, user.location.long)}
+                    {this.getDistance(user.location.lat, user.location.long)} km
+                    away
                   </td>
-                )) ||
-                  "not set"}
+                )) || <td>not set</td>}
                 <td>
                   <button>today's status</button>
                 </td>

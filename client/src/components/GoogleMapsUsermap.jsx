@@ -6,11 +6,13 @@ import { getAllUsers } from "../services/googlemaps";
 
 const UserPin = ({ userImg, userName }) => (
   <div>
-    <img
-      className="user-pin"
-      src={`../images/avatars/${userImg}`}
-      alt={userName}
-    />
+    {(userImg && (
+      <img
+        className="user-pin"
+        src={`../images/avatars/${userImg}`}
+        alt={userName}
+      />
+    )) || <div className="dummy-pin"></div>}
   </div>
 );
 
