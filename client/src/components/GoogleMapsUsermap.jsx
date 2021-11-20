@@ -28,7 +28,7 @@ class GoogleMapsUsermap extends Component {
         lat: 47.97621,
         lng: 7.901442,
       },
-      zoom: 12,
+      zoom: 12.5,
       users: [],
     };
   }
@@ -56,8 +56,8 @@ class GoogleMapsUsermap extends Component {
           {this.state.users.map((user) => (
             <UserPin
               key={user._id}
-              lat={user.location.long}
-              lng={user.location.lat}
+              lat={user.location.lat}
+              lng={user.location.long}
               userName={user.firstName}
               userImg={user.userImage}
             />
