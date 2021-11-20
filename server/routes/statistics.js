@@ -4,6 +4,7 @@ const express = require('express');
 // const User = require('./../models/user');
 const router = express.Router();
 const mongoose = require('mongoose');
+const routeGuard = require('../middleware/route-guard');
 const DailyCatch = require('./../models/dailyCatch');
 
 router.get('/stats', (req, res, next) => {
@@ -20,7 +21,8 @@ router.get('/stats', (req, res, next) => {
 });
 
 // POST route to create new statistics
-router.post('/stats', (req, res, next) => {
+router.post('/stats', routeGuard, (req, res, next) => {
+  console.log('BODY:', req.body);
   const {
     //way in
     frogsFemaleWayIn,
@@ -49,6 +51,8 @@ router.post('/stats', (req, res, next) => {
   };
   console.log(frogsFemaleWayIn);
   console.log(frogsMaleWayIn);
+  console.log('DATA', data);
+  console.log('USER', req.user._id);
   DailyCatch.findOneAndUpdate(
     {
       volunteer: req.user._id,
@@ -61,7 +65,7 @@ router.post('/stats', (req, res, next) => {
   )
     .then((dailyCatch) => {
       if (dailyCatch) {
-        return dailyCatch;
+        res.json(dailyCatch);
       } else {
         return DailyCatch.create(data);
       }
