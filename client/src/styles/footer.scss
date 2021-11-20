@@ -3,6 +3,7 @@
 #footer {
   padding-top: 1rem;
   padding-bottom: 1rem;
+  height: 9.17rem;
 }
 a.footer-link {
   color: $dark;
@@ -23,21 +24,3 @@ a.footer-link.active:hover {
   color: $green;
   background-color: white;
 }
-
-// {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   font-size: 1.05em;
-//   height: 5rem;
-//   a {
-//     @include nolink;
-//     margin-top: 0.4em;
-//     text-decoration: underline;
-//   }
-// }
-
-// #footer-spacer {
-//   background-color: $orange;
-//   height: 0.5em;
-// }

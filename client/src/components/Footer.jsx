@@ -1,12 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div id="footer" className="footer text-center bg-orange fixed-bottom">
       {/* <div class="container"> */}
       <div className="row">
-        <div className="col-lg-6 mb-5 mb-lg-0">
+        <div className="col">
           <Link to="/contact" className="footer-link text-uppercase">
             <h4 className="text-uppercase mb-4">Contact</h4>
             <div className="icon-contact mt-3 mb-3">
@@ -24,7 +24,7 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div className="col-lg-4 mb-5 mb-lg-0">
+        <div className="col">
           <Link to="/about" className="footer-link text-uppercase">
             <h4 className="text-uppercase mb-4">About us</h4>
             <div className="icon-contact mt-3 mb-3">
