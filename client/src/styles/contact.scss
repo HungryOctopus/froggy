@@ -1,3 +1,27 @@
-form {
-  width: 500px;
+// html,
+// body {
+//   background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   height: 100%;
+//   font-family: 'Numans', sans-serif;
+// }
+
+.contact-form {
+  background-image: url('./../images/lake-3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: $font-text;
+}
+
+.container {
+  height: 100%;
+  align-content: center;
+}
+
+.card {
+  margin-top: 50px;
+  margin-bottom: auto;
+  background-color: rgba(187, 182, 182, 0.5) !important;
 }

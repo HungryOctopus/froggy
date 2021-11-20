@@ -1,12 +1,12 @@
 // ### Import mixins/vars ###
-@import "_mixins", "_variables";
+@import '_mixins', '_variables';
 
 // ### Import scss files ###
-@import "map-pins.scss", "footer.scss", "contact.scss", "about.scss",
-  "calendar.scss", "notification.scss", "statistics.scss", "googlemaps.scss";
+@import 'map-pins.scss', 'footer.scss', 'contact.scss', 'about.scss',
+  'calendar.scss', 'notification.scss', 'statistics.scss', 'googlemaps.scss';
 
 // ### Import fonts ###
-@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 * {
   box-sizing: border-box;
@@ -23,20 +23,21 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 #root {
-  background-color: $white;
+  background-color: $lgrey;
+  height: 100%;
 }
 
 .bg-green {
   background-color: $green;
 }
 
-.bg-white {
-  background-color: $white;
+.bg-lgrey {
+  background-color: $lgrey;
 }
 
 .bg-orange {
@@ -47,8 +48,8 @@ code {
   color: $green;
 }
 
-.text-white {
-  color: $white;
+.text-lgrey {
+  color: $lgrey;
 }
 
 .text-orange {
@@ -133,7 +134,7 @@ code {
   }
 }
 
-// Dividers //
+// Dividers // Lines before and after the icons
 
 .divider-custom {
   margin: 1.25rem 0 1.5rem;

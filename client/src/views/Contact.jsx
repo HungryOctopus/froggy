@@ -10,69 +10,94 @@ class Contact extends Component {
 
   render() {
     return (
-      <>
-        <header className="masthead bg-primary text-white text-center mt-5 pt-5">
-          <div className="container d-flex align-items-center flex-column">
-            Contact view
-            <form method="POST">
-              <div className="form-floating mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  name="name"
-                  id="input-name"
-                  placeholder="name"
-                  required
-                />
-                <label htmlFor="input-name">Your full name</label>
+      <div className="contact-form">
+        <div className="container">
+          <div className="d-flex justify-content-center p-5 m-5 h-100">
+            <div className="card">
+              <div className="card-header">
+                <h3>Contact us</h3>
               </div>
-              <div className="form-floating mb-3">
-                <input
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  id="input-email"
-                  placeholder="email"
-                  required
-                />
-                <label htmlFor="input-email">Your email address</label>
-              </div>
-              <div className="form-floating mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  name="subject"
-                  id="input-subject"
-                  placeholder="subject"
-                  required
-                />
-                <label htmlFor="input-subject">
-                  What can we help you with?
-                </label>
-              </div>
+              <div className="card-body">
+                <form method="POST">
+                  {/* Name  */}
 
-              <div className="form-floating mb-3">
-                <textarea
-                  className="form-control"
-                  name="message"
-                  placeholder="message"
-                  id="input-message"
-                  required
-                ></textarea>
-                <label htmlFor="input-message">Your message</label>
-              </div>
+                  <div className="input-group form-group">
+                    <div className="input-group prepend">
+                      <span className="input-group text">Your name:</span>
+                    </div>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="name"
+                      id="input-name"
+                      placeholder="name"
+                      required
+                    />
+                  </div>
 
-              <button
-                id="contact-msg-btn"
-                type="submit"
-                className="btn btn-warning"
-              >
-                Send message!
-              </button>
-            </form>
+                  {/* E-mail  */}
+
+                  <div className="input-group form-group">
+                    <div className="input-group prepend">
+                      <span className="input-group text">
+                        Your e-mail address:
+                      </span>
+                    </div>
+                    <input
+                      type="email"
+                      className="form-control"
+                      name="email"
+                      id="input-email"
+                      placeholder="email"
+                      required
+                    />
+                  </div>
+
+                  {/* Do we need that?  */}
+
+                  {/* <div className="input-group prepend">
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="subject"
+                      id="input-subject"
+                      placeholder="subject"
+                      required
+                    />
+                    <label htmlFor="input-subject">
+                      What can we help you with?
+                    </label>
+                  </div> */}
+
+                  {/* Message */}
+
+                  <div className="input-group form-group">
+                    <div className="input-group prepend">
+                      <span className="input-group text">Your message:</span>
+                    </div>
+                    <textarea
+                      className="form-control"
+                      name="message"
+                      placeholder="message"
+                      id="input-message"
+                      required
+                    ></textarea>
+                  </div>
+                  <div className="form-group">
+                    <button
+                      id="contact-msg-btn"
+                      type="submit"
+                      className="btn float-right btn-warning"
+                    >
+                      Send message!
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
-        </header>
-      </>
+        </div>
+      </div>
     );
   }
 }
