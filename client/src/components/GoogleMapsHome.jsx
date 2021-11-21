@@ -22,13 +22,7 @@ class GoogleMapsHome extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          height: "250px",
-          width: "500px",
-          border: "1px solid dimgrey",
-        }}
-      >
+      <div className="map-home">
         <GoogleMapReact
           bootstrapURLKeys={{
             key: process.env.REACT_APP_GOOGLE_MAPS_API,

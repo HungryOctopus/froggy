@@ -9,6 +9,15 @@
 // ### Import fonts ###
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+// ### Hide scrollbars ###
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -63,6 +72,7 @@ code {
 #mainNav {
   padding-top: 1rem;
   padding-bottom: 1rem;
+  height: 6rem;
 
   a {
     color: $dark;
@@ -88,6 +98,10 @@ code {
     font-weight: 500;
     padding: 1rem;
     border-radius: 0.5;
+  }
+
+  .nav-item {
+    margin-left: 1em !important;
   }
 }
 
