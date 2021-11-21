@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-// const User = require('./../models/user');
+const User = require('./../models/user');
 const router = express.Router();
 const mongoose = require('mongoose');
 const routeGuard = require('../middleware/route-guard');
@@ -36,7 +36,7 @@ router.post('/stats', routeGuard, (req, res, next) => {
     toadsMaleWayBack
   } = req.body;
   const data = {
-    // volunteer: req.user._id,
+    volunteer: req.user._id,
     // BEARER TOKEN & API ? Middleware
     //way in
     frogsFemaleWayIn,
@@ -49,10 +49,11 @@ router.post('/stats', routeGuard, (req, res, next) => {
     toadsFemaleWayBack,
     toadsMaleWayBack
   };
-  console.log(frogsFemaleWayIn);
-  console.log(frogsMaleWayIn);
-  console.log('DATA', data);
-  console.log('USER', req.user._id);
+  // console.log();
+  // console.log(frogsMaleWayIn);
+  // console.log('DATA', data);
+  // console.log('USER', req.user._id);
+
   DailyCatch.findOneAndUpdate(
     {
       volunteer: req.user._id,
@@ -77,10 +78,10 @@ router.post('/stats', routeGuard, (req, res, next) => {
 });
 
 // GET route => to get all the statistics
-router.get('/stats', (req, res, next) => {
-  DailyCatch.find()
-    .then((allTheStats) => res.json(allTheStats))
-    .catch((err) => res.json(err));
-});
+// router.get('/stats', (req, res, next) => {
+//   DailyCatch.find()
+//     .then((allTheStats) => res.json(allTheStats))
+//     .catch((err) => res.json(err));
+// });
 
 module.exports = router;

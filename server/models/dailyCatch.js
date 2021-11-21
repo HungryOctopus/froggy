@@ -5,9 +5,9 @@ const { Schema, model } = mongoose;
 
 const dailyCatchSchema = new Schema({
   volunteer: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-    //required: true
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   },
   createdAt: {
     type: Date,
