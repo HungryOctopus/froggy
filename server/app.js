@@ -13,6 +13,7 @@ const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js')
 const baseRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const googlemapsRouter = require('./routes/googlemaps');
+const contactRouter = require('./routes/contactmail');
 
 const app = express();
 
@@ -52,8 +53,9 @@ app.use(basicAuthenticationDeserializer);
 app.use(bindUserToViewLocals);
 
 app.use('/', baseRouter);
-app.use('/authentication', authenticationRouter);
 app.use('/', googlemapsRouter);
+app.use('/', contactRouter);
+app.use('/authentication', authenticationRouter);
 
 // Handling route for the statistics
 const statsRouter = require('./routes/statistics');
