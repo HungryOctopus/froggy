@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component } from "react";
 
 class Contact extends Component {
   constructor() {
@@ -11,11 +11,11 @@ class Contact extends Component {
   render() {
     return (
       <div className="contact-form">
-        <div className="container">
-          <div className="d-flex justify-content-center p-5 m-5 h-100">
-            <div className="card">
-              <div className="card-header">
-                <h3>Contact us</h3>
+        <div className="container contact-container">
+          <div className="d-flex justify-content-center h-100">
+            <div className="card contact-card">
+              <div className="card-header contact-header">
+                <h2>Contact us</h2>
               </div>
               <div className="card-body">
                 <form method="POST">
@@ -23,7 +23,7 @@ class Contact extends Component {
 
                   <div className="input-group form-group">
                     <div className="input-group prepend">
-                      <span className="input-group text">Your name:</span>
+                      <span className="input-group label-text">Your name:</span>
                     </div>
                     <input
                       type="text"
@@ -39,7 +39,7 @@ class Contact extends Component {
 
                   <div className="input-group form-group">
                     <div className="input-group prepend">
-                      <span className="input-group text">
+                      <span className="input-group label-text">
                         Your e-mail address:
                       </span>
                     </div>
@@ -53,27 +53,13 @@ class Contact extends Component {
                     />
                   </div>
 
-                  {/* Do we need that?  */}
-
-                  {/* <div className="input-group prepend">
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="subject"
-                      id="input-subject"
-                      placeholder="subject"
-                      required
-                    />
-                    <label htmlFor="input-subject">
-                      What can we help you with?
-                    </label>
-                  </div> */}
-
                   {/* Message */}
 
                   <div className="input-group form-group">
                     <div className="input-group prepend">
-                      <span className="input-group text">Your message:</span>
+                      <span className="input-group label-text">
+                        Your message:
+                      </span>
                     </div>
                     <textarea
                       className="form-control"
