@@ -78,8 +78,22 @@ router.post('/stats', routeGuard, (req, res, next) => {
 });
 
 // GET route => to get all the statistics
-// router.get('/stats', (req, res, next) => {
-//   DailyCatch.find()
+
+router.get('/allstats', (req, res, next) => {
+  DailyCatch.find()
+    .sort({ createdAt: 1 })
+    .then((data) => {
+      res.json({ data });
+      console.log(data);
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+// GET route => to get all personal statistics
+// router.get('/allpersonalstats', (req, res, next) => {
+//   DailyCatch.findById()
 //     .then((allTheStats) => res.json(allTheStats))
 //     .catch((err) => res.json(err));
 // });

@@ -2,6 +2,7 @@ import { Component } from 'react';
 
 import IndividualChart from '../components/IndividualChart';
 import AllFiguresChart from '../components/AllFiguresChart';
+import GetStatistics from '../components/GetStatistics';
 
 class Statistics extends Component {
   state = {
@@ -65,6 +66,7 @@ class Statistics extends Component {
             <AllFiguresChart chartData={this.state.chartDataAll} />
           </div>
         </header>
+        <GetStatistics />;
       </>
     );
   }
