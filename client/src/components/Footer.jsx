@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div id="footer" className="footer text-center bg-orange fixed-bottom">
+    <div id="footer" className="footer text-center bg-orange">
       {/* <div class="container"> */}
       <div className="row">
-        <div className="col">
+        <div className="col footer-left">
           <Link to="/contact" className="footer-link text-uppercase">
-            <h4 className="text-uppercase mb-4">Contact</h4>
-            <div className="icon-contact mt-3 mb-3">
+            <div className="text-uppercase footer-text">Contact</div>
+            <div className="icon-contact">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="46"
-                height="46"
+                width="40"
+                height="40"
                 fill="#edece9"
                 className="bi bi-envelope"
                 viewBox="0 0 16 16"
@@ -24,14 +24,14 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div className="col">
+        <div className="col footer-right">
           <Link to="/about" className="footer-link text-uppercase">
-            <h4 className="text-uppercase mb-4">About us</h4>
-            <div className="icon-contact mt-3 mb-3">
+            <div className="text-uppercase footer-text">About us</div>
+            <div className="icon-contact">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="46"
-                height="46"
+                width="40"
+                height="40"
                 fill="#edece9"
                 className="bi bi-star-fill"
                 viewBox="0 0 16 16"

@@ -1,5 +1,5 @@
-import { Component } from 'react';
-// import GoogleMapsHome from "../components/GoogleMapsHome";
+import { Component } from "react";
+import GoogleMapsHome from "../components/GoogleMapsHome";
 
 class Home extends Component {
   constructor() {
@@ -53,7 +53,7 @@ class Home extends Component {
           className="page-section bg-green text-white pt-3 pb-3 mb-0"
           id="location"
         >
-          <div className="container">
+          <div className="container-fluid p-0">
             <h1 className="page-section-heading text-center text-uppercase text-white">
               FIND US
             </h1>
@@ -74,7 +74,7 @@ class Home extends Component {
               </div>
               <div className="divider-custom-line bg-white"></div>
             </div>
-            {/* <GoogleMapsHome /> */}
+            <GoogleMapsHome />
           </div>
         </section>
       </>

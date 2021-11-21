@@ -1,14 +1,16 @@
 // #footer
 
 #footer {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  height: 9.17rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
 }
 a.footer-link {
   color: $dark;
   font-weight: 600;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 a.footer-link:hover {
   color: $white;
@@ -23,4 +25,21 @@ a.footer-link.active:focus {
 a.footer-link.active:hover {
   color: $green;
   background-color: white;
+}
+
+.footer-text {
+  font-size: 1.5em;
+  margin-right: 1em;
+}
+
+.footer-right {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 2em;
+}
+
+.footer-left {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2em;
 }
