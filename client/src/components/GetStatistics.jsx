@@ -1,12 +1,12 @@
-import { Component } from 'react';
-import api from '../services/api';
+import { Component } from "react";
+import api from "../services/api";
 //import mongoose from 'mongoose';
 
 class GetStatistics extends Component {
   constructor() {
     super();
     this.state = {
-      statistics: []
+      statistics: [],
     };
     // this.getStats();
     // api.get('/api/allstats').then((res) => {
@@ -25,13 +25,12 @@ class GetStatistics extends Component {
     this.getStats();
   }
 
-  getStats = async () => {
-    let data = await api.get('/api/allstats').then(({ data }) => data);
-    this.setState({ statistics: [data] });
-    console.log('Data:');
-    console.log(data);
-    console.log('State:');
-    console.log(this.state);
+  getStats = () => {
+    api.get("/api/allstats").then((response) => {
+      const allStats = response.data;
+      console.log(allStats.data);
+      this.setState({ statistics: allStats.data });
+    });
   };
 
   render() {
@@ -39,7 +38,7 @@ class GetStatistics extends Component {
       <div>
         <p>test (this should map the data) </p>
         {this.state.statistics.map((stat) => (
-          <h4 key={stat.id}>{stat.frogsFemaleWayIn}</h4>
+          <h4 key={stat._id}>{stat.frogsFemaleWayIn}</h4>
         ))}
       </div>
     );
