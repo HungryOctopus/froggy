@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component } from "react";
 
 class About extends Component {
   constructor() {
@@ -10,35 +10,39 @@ class About extends Component {
 
   render() {
     return (
-      <div>
-        <header className="masthead bg-primary text-white text-center mt-5 pt-5">
-          <div className="container d-flex align-items-center flex-column">
+      <div className="container-fluid about-container">
+        <div className="row">
+          <div className="col about-col col-12 col-md-4">
             <div className="card about-card">
-              <div className="avatar">
-                <img src="./images/avatars/amelie.png" alt="amelie" />
-              </div>
-              <div className="info-box">
-                <div>Amelie</div>
-              </div>
-            </div>
-            <div className="card about-card">
-              <div className="avatar">
-                <img src="./images/avatars/jamie.png" alt="jamie" />
-              </div>
-              <div className="info-box">
-                <div>Jamie</div>
-              </div>
-            </div>
-            <div className="card about-card">
-              <div className="avatar">
-                <img src="./images/avatars/gregor.jpg" alt="gregor" />
-              </div>
-              <div className="info-box">
-                <div>Gregor</div>
-              </div>
+              <a href="https://github.com/HungryOctopus" target="_blank">
+                <div className="about-avatar">
+                  <img src="./images/avatars/amelie.png" alt="Amélie" />
+                </div>
+                <div className="about-name">Amélie</div>
+              </a>
             </div>
           </div>
-        </header>
+          <div className="col about-col col-12 col-md-4">
+            <div className="card about-card">
+              <a href="https://github.com/jamiemn86" target="_blank">
+                <div className="about-avatar">
+                  <img src="./images/avatars/jamie.png" alt="Jamie" />
+                </div>
+                <div className="about-name">Jamie</div>
+              </a>
+            </div>
+          </div>
+          <div className="col about-col col-12 col-md-4">
+            <div className="card about-card">
+              <a href="https://github.com/Senimtra" target="_blank">
+                <div className="about-avatar">
+                  <img src="./images/avatars/gregor.jpg" alt="Gregor" />
+                </div>
+                <div className="about-name">Gregor</div>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

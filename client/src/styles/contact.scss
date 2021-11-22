@@ -1,19 +1,9 @@
-// html,
-// body {
-//   background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   height: 100%;
-//   font-family: 'Numans', sans-serif;
-// }
-
 .contact-form {
   background: url("./../images/lake-3.jpg") no-repeat center fixed;
   background-size: cover;
   width: 100vw;
-  height: calc(100vh - 6.1rem);
+  height: calc(100vh - 6rem);
   font-family: $font-text;
-  overflow: hidden;
 }
 
 .container {
@@ -22,13 +12,13 @@
 }
 
 .contact-header {
-  color: $dark;
+  color: $white;
 }
 
 .contact-card {
   margin-top: 10rem;
   margin-bottom: auto;
-  background-color: rgba(187, 182, 182, 0.5) !important;
+  background-color: rgba(39, 39, 39, 0.596) !important;
   padding: 2em;
   input {
     margin-bottom: 1em;
@@ -40,5 +30,5 @@
 
 .label-text {
   font-size: 1.1em;
-  font-weight: bold;
+  color: $white;
 }
