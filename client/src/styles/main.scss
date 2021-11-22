@@ -1,13 +1,13 @@
 // ### Import mixins/vars ###
-@import "_mixins", "_variables";
+@import '_mixins', '_variables';
 
 // ### Import scss files ###
-@import "map-pins.scss", "footer.scss", "contact.scss", "about.scss",
-  "calendar.scss", "notification.scss", "statistics.scss", "googlemaps.scss",
-  "users.scss";
+@import 'map-pins.scss', 'footer.scss', 'contact.scss', 'about.scss',
+  'calendar.scss', 'notification.scss', 'statistics.scss', 'googlemaps.scss',
+  'users.scss';
 
 // ### Import fonts ###
-@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 // ### Hide scrollbars ###
 ::-webkit-scrollbar {
@@ -36,7 +36,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
@@ -150,6 +150,12 @@ code {
     color: $dark;
     font-size: 1.5rem;
   }
+}
+
+//About text on home view
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
 }
 
 // Dividers // Lines before and after the icons
