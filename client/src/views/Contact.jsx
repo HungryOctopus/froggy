@@ -1,12 +1,28 @@
-import { Component } from 'react';
+import { Component } from "react";
 
 class Contact extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      name: "",
+      email: "",
+      message: "",
+    };
   }
 
   componentDidMount() {}
+
+  handleInputChange = (event) => {
+    const { value, name } = event.target;
+    this.setState({
+      [name]: value,
+    });
+    console.log(this.state);
+  };
+
+  handleFormSubmission = (event) => {
+    event.preventDefault();
+  };
 
   render() {
     return (
@@ -18,7 +34,7 @@ class Contact extends Component {
                 <h2>Contact us</h2>
               </div>
               <div className="card-body">
-                <form method="POST">
+                <form onSubmit={this.handleFormSubmission}>
                   {/* Name  */}
 
                   <div className="input-group form-group">
@@ -31,6 +47,8 @@ class Contact extends Component {
                       name="name"
                       id="input-name"
                       placeholder="name"
+                      onChange={this.handleInputChange}
+                      value={this.state.name}
                       required
                     />
                   </div>
@@ -49,6 +67,8 @@ class Contact extends Component {
                       name="email"
                       id="input-email"
                       placeholder="email"
+                      onChange={this.handleInputChange}
+                      value={this.state.email}
                       required
                     />
                   </div>
@@ -65,6 +85,8 @@ class Contact extends Component {
                       className="form-control"
                       name="message"
                       placeholder="message"
+                      onChange={this.handleInputChange}
+                      value={this.state.message}
                       id="input-message"
                       required
                     ></textarea>

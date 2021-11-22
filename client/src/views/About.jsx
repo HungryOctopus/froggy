@@ -14,7 +14,11 @@ class About extends Component {
         <div className="row">
           <div className="col about-col col-12 col-md-4">
             <div className="card about-card">
-              <a href="https://github.com/HungryOctopus" target="_blank">
+              <a
+                href="https://github.com/HungryOctopus"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
                 <div className="about-avatar">
                   <img src="./images/avatars/amelie.png" alt="Amélie" />
                 </div>
@@ -24,7 +28,11 @@ class About extends Component {
           </div>
           <div className="col about-col col-12 col-md-4">
             <div className="card about-card">
-              <a href="https://github.com/jamiemn86" target="_blank">
+              <a
+                href="https://github.com/jamiemn86"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
                 <div className="about-avatar">
                   <img src="./images/avatars/jamie.png" alt="Jamie" />
                 </div>
@@ -34,7 +42,11 @@ class About extends Component {
           </div>
           <div className="col about-col col-12 col-md-4">
             <div className="card about-card">
-              <a href="https://github.com/Senimtra" target="_blank">
+              <a
+                href="https://github.com/Senimtra"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
                 <div className="about-avatar">
                   <img src="./images/avatars/gregor.jpg" alt="Gregor" />
                 </div>
