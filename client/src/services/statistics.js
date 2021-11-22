@@ -10,8 +10,12 @@ export const addStatistic = (body) => {
 
 export const getUserStats = (userId) => {
   const body = { user: userId };
-  return api.post("/stats-user", body).then((response) => {
-    // console.log(response);
-    return response;
-  });
+  return api
+    .post("/stats-user", body)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };

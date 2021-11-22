@@ -1,9 +1,9 @@
 // import axios from "axios";
-import React, { Component } from 'react';
-import CountInput from '../components/CountInput';
-import api from '../services/api';
-import { Redirect } from 'react-router-dom';
-import Alert from 'react-bootstrap/Alert';
+import React, { Component } from "react";
+import CountInput from "../components/CountInput";
+import api from "../services/api";
+import { Redirect } from "react-router-dom";
+// import Alert from 'react-bootstrap/Alert';
 
 class TotalCounter extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class TotalCounter extends Component {
       toadsFemaleWayBack: 0,
       toadsMaleWayBack: 0,
 
-      redirect: false
+      redirect: false,
     };
   }
 
@@ -31,7 +31,7 @@ class TotalCounter extends Component {
   // };
 
   handleCountChange = (value, statePropName) => {
-    console.log('handleCountChange:', value, statePropName);
+    console.log("handleCountChange:", value, statePropName);
     this.setState({ [statePropName]: value });
   };
 
@@ -56,7 +56,7 @@ class TotalCounter extends Component {
     const toadsMaleWayBack = this.state.toadsMaleWayBack;
 
     api
-      .post('/api/stats', {
+      .post("/api/stats", {
         //way in
         frogsFemaleWayIn,
         frogsMaleWayIn,
@@ -66,17 +66,17 @@ class TotalCounter extends Component {
         frogsFemaleWayBack,
         frogsMaleWayBack,
         toadsFemaleWayBack,
-        toadsMaleWayBack
+        toadsMaleWayBack,
       })
       .then((response) => {
         //Link is not working, why...?
         console.log(response);
-        alert('Thanks for your hard work');
+        alert("Thanks for your hard work");
         this.setState({ redirect: true });
       })
 
       .catch((error) => {
-        alert('There was an error submitting the data');
+        alert("There was an error submitting the data");
         console.log(error);
       });
   };
@@ -126,7 +126,7 @@ class TotalCounter extends Component {
                   name="Female frogs"
                   count={this.state.frogsFemaleWayIn}
                   onCountChange={(value) =>
-                    this.handleCountChange(value, 'frogsFemaleWayIn')
+                    this.handleCountChange(value, "frogsFemaleWayIn")
                   }
                 />
 
@@ -134,7 +134,7 @@ class TotalCounter extends Component {
                   name="Male frogs"
                   count={this.state.frogsMaleWayIn}
                   onCountChange={(value) =>
-                    this.handleCountChange(value, 'frogsMaleWayIn')
+                    this.handleCountChange(value, "frogsMaleWayIn")
                   }
                 />
 
@@ -142,7 +142,7 @@ class TotalCounter extends Component {
                   name="Female toads"
                   count={this.state.toadsFemaleWayIn}
                   onCountChange={(value) =>
-                    this.handleCountChange(value, 'toadsFemaleWayIn')
+                    this.handleCountChange(value, "toadsFemaleWayIn")
                   }
                 />
 
@@ -150,7 +150,7 @@ class TotalCounter extends Component {
                   name="Male toads"
                   count={this.state.toadsMaleWayIn}
                   onCountChange={(value) =>
-                    this.handleCountChange(value, 'toadsMaleWayIn')
+                    this.handleCountChange(value, "toadsMaleWayIn")
                   }
                 />
                 <div className="row pt-3 justify-content-center">
@@ -161,7 +161,7 @@ class TotalCounter extends Component {
                   name="Female frogs"
                   count={this.state.frogsFemaleWayBack}
                   onCountChange={(value) =>
-                    this.handleCountChange(value, 'frogsFemaleWayBack')
+                    this.handleCountChange(value, "frogsFemaleWayBack")
                   }
                 />
 
@@ -169,7 +169,7 @@ class TotalCounter extends Component {
                   name="Male frogs"
                   count={this.state.frogsMaleWayBack}
                   onCountChange={(value) =>
-                    this.handleCountChange(value, 'frogsMaleWayBack')
+                    this.handleCountChange(value, "frogsMaleWayBack")
                   }
                 />
 
@@ -177,7 +177,7 @@ class TotalCounter extends Component {
                   name="Female toads"
                   count={this.state.toadsFemaleWayBack}
                   onCountChange={(value) =>
-                    this.handleCountChange(value, 'toadsFemaleWayBack')
+                    this.handleCountChange(value, "toadsFemaleWayBack")
                   }
                 />
 
@@ -185,7 +185,7 @@ class TotalCounter extends Component {
                   name="Male toads"
                   count={this.state.toadsMaleWayBack}
                   onCountChange={(value) =>
-                    this.handleCountChange(value, 'toadsMaleWayBack')
+                    this.handleCountChange(value, "toadsMaleWayBack")
                   }
                 />
 
