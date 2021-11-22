@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import api from '../services/api';
+import { Component } from "react";
+import api from "../services/api";
 //import mongoose from 'mongoose';
 
 class GetStatistics extends Component {
@@ -7,7 +7,7 @@ class GetStatistics extends Component {
     super();
     this.state = {
       statistics: [],
-      totalFFWI: 0
+      totalFFWI: 0,
     };
   }
 
@@ -21,7 +21,7 @@ class GetStatistics extends Component {
 
   getStats = () => {
     api
-      .get('/api/allstats')
+      .get("/allstats")
       .then((response) => {
         const allStats = response.data;
         console.log(allStats.data);
@@ -33,7 +33,7 @@ class GetStatistics extends Component {
 
   addStats = () => {
     const sumFrogs = this.state.statistics.reduce((a, b) => ({
-      frogsFemaleWayIn: a.frogsFemaleWayIn + b.frogsFemaleWayIn
+      frogsFemaleWayIn: a.frogsFemaleWayIn + b.frogsFemaleWayIn,
     }));
     console.log(sumFrogs.frogsFemaleWayIn); // how to add this value in the state and exploit it???
   };
