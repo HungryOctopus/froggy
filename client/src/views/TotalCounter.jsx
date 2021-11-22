@@ -1,8 +1,9 @@
 // import axios from "axios";
-import React, { Component } from "react";
-import CountInput from "../components/CountInput";
-import api from "../services/api";
-// import { addStatistic } from './../services/statistics';
+import React, { Component } from 'react';
+import CountInput from '../components/CountInput';
+import api from '../services/api';
+import { Redirect } from 'react-router-dom';
+import Alert from 'react-bootstrap/Alert';
 
 class TotalCounter extends Component {
   constructor(props) {
@@ -18,6 +19,8 @@ class TotalCounter extends Component {
       frogsMaleWayBack: 0,
       toadsFemaleWayBack: 0,
       toadsMaleWayBack: 0,
+
+      redirect: false
     };
   }
 
@@ -28,7 +31,7 @@ class TotalCounter extends Component {
   // };
 
   handleCountChange = (value, statePropName) => {
-    console.log("handleCountChange:", value, statePropName);
+    console.log('handleCountChange:', value, statePropName);
     this.setState({ [statePropName]: value });
   };
 
@@ -52,10 +55,8 @@ class TotalCounter extends Component {
     const toadsFemaleWayBack = this.state.toadsFemaleWayBack;
     const toadsMaleWayBack = this.state.toadsMaleWayBack;
 
-    console.log(frogsFemaleWayIn);
-    console.log(frogsMaleWayIn);
     api
-      .post("/api/stats", {
+      .post('/api/stats', {
         //way in
         frogsFemaleWayIn,
         frogsMaleWayIn,
@@ -65,100 +66,141 @@ class TotalCounter extends Component {
         frogsFemaleWayBack,
         frogsMaleWayBack,
         toadsFemaleWayBack,
-        toadsMaleWayBack,
+        toadsMaleWayBack
       })
       .then((response) => {
+        //Link is not working, why...?
         console.log(response);
-        //Redirect here?
+        alert('Thanks for your hard work');
+        this.setState({ redirect: true });
       })
 
       .catch((error) => {
-        alert("There was an error submitting the data");
+        alert('There was an error submitting the data');
         console.log(error);
       });
   };
 
   render() {
+    {
+      const redirecthome = this.state.redirect;
+      if (redirecthome) {
+        return <Redirect to="/" />;
+      }
+    }
     return (
-      <>
-        <header className="masthead bg-green text-white text-center mt-5 pt-5">
-          <div className="container d-flex align-items-center flex-column">
-            <h2>Way in</h2>
-
-            <form onSubmit={this.handleFormSubmission}>
-              <CountInput
-                name="Female frogs"
-                count={this.state.frogsFemaleWayIn}
-                onCountChange={(value) =>
-                  this.handleCountChange(value, "frogsFemaleWayIn")
-                }
-              />
-
-              <CountInput
-                name="Male frogs"
-                count={this.state.frogsMaleWayIn}
-                onCountChange={(value) =>
-                  this.handleCountChange(value, "frogsMaleWayIn")
-                }
-              />
-
-              <CountInput
-                name="Female toads"
-                count={this.state.toadsFemaleWayIn}
-                onCountChange={(value) =>
-                  this.handleCountChange(value, "toadsFemaleWayIn")
-                }
-              />
-
-              <CountInput
-                name="Male toads"
-                count={this.state.toadsMaleWayIn}
-                onCountChange={(value) =>
-                  this.handleCountChange(value, "toadsMaleWayIn")
-                }
-              />
-
-              <h2>Way back</h2>
-
-              <CountInput
-                name="Female frogs"
-                count={this.state.frogsFemaleWayBack}
-                onCountChange={(value) =>
-                  this.handleCountChange(value, "frogsFemaleWayBack")
-                }
-              />
-
-              <CountInput
-                name="Male frogs"
-                count={this.state.frogsMaleWayBack}
-                onCountChange={(value) =>
-                  this.handleCountChange(value, "frogsMaleWayBack")
-                }
-              />
-
-              <CountInput
-                name="Female toads"
-                count={this.state.toadsFemaleWayBack}
-                onCountChange={(value) =>
-                  this.handleCountChange(value, "toadsFemaleWayBack")
-                }
-              />
-
-              <CountInput
-                name="Male toads"
-                count={this.state.toadsMaleWayBack}
-                onCountChange={(value) =>
-                  this.handleCountChange(value, "toadsMaleWayBack")
-                }
-              />
-
-              <button type="button" onClick={this.handleFormSubmission}>
-                Submit
-              </button>
-            </form>
+      <div>
+        <section className="py-5 mt-5 header text-center bg-green">
+          <div className="container py text-white pt-5">
+            <h1 className="page-section-heading text-center text-uppercase text-white">
+              AMPHIBIAN COUNTER
+            </h1>
+            {/* <!-- Icon Divider--> */}
+            <div className="divider-custom divider-light">
+              <div className="divider-custom-line bg-white"></div>
+              <div className="divider-custom-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="36"
+                  height="36"
+                  fill="white"
+                  className="bi bi-bucket-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M2.522 5H2a.5.5 0 0 0-.494.574l1.372 9.149A1.5 1.5 0 0 0 4.36 16h7.278a1.5 1.5 0 0 0 1.483-1.277l1.373-9.149A.5.5 0 0 0 14 5h-.522A5.5 5.5 0 0 0 2.522 5zm1.005 0a4.5 4.5 0 0 1 8.945 0H3.527z" />
+                </svg>
+              </div>
+              <div className="divider-custom-line bg-white"></div>
+            </div>
           </div>
-        </header>
-      </>
+        </section>
+
+        <div className="row pt-3">
+          <div className="container d-flex align-items-center text-align-center flex-column">
+            <div className="row pt-3 justify-content-center">
+              <h2>Way in</h2>
+            </div>
+            <div className="col">
+              <form onSubmit={this.handleFormSubmission}>
+                <CountInput
+                  name="Female frogs"
+                  count={this.state.frogsFemaleWayIn}
+                  onCountChange={(value) =>
+                    this.handleCountChange(value, 'frogsFemaleWayIn')
+                  }
+                />
+
+                <CountInput
+                  name="Male frogs"
+                  count={this.state.frogsMaleWayIn}
+                  onCountChange={(value) =>
+                    this.handleCountChange(value, 'frogsMaleWayIn')
+                  }
+                />
+
+                <CountInput
+                  name="Female toads"
+                  count={this.state.toadsFemaleWayIn}
+                  onCountChange={(value) =>
+                    this.handleCountChange(value, 'toadsFemaleWayIn')
+                  }
+                />
+
+                <CountInput
+                  name="Male toads"
+                  count={this.state.toadsMaleWayIn}
+                  onCountChange={(value) =>
+                    this.handleCountChange(value, 'toadsMaleWayIn')
+                  }
+                />
+                <div className="row pt-3 justify-content-center">
+                  <h2>Way back</h2>
+                </div>
+
+                <CountInput
+                  name="Female frogs"
+                  count={this.state.frogsFemaleWayBack}
+                  onCountChange={(value) =>
+                    this.handleCountChange(value, 'frogsFemaleWayBack')
+                  }
+                />
+
+                <CountInput
+                  name="Male frogs"
+                  count={this.state.frogsMaleWayBack}
+                  onCountChange={(value) =>
+                    this.handleCountChange(value, 'frogsMaleWayBack')
+                  }
+                />
+
+                <CountInput
+                  name="Female toads"
+                  count={this.state.toadsFemaleWayBack}
+                  onCountChange={(value) =>
+                    this.handleCountChange(value, 'toadsFemaleWayBack')
+                  }
+                />
+
+                <CountInput
+                  name="Male toads"
+                  count={this.state.toadsMaleWayBack}
+                  onCountChange={(value) =>
+                    this.handleCountChange(value, 'toadsMaleWayBack')
+                  }
+                />
+
+                <button
+                  type="button"
+                  className="btn btn-lg btn-warning"
+                  onClick={this.handleFormSubmission}
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

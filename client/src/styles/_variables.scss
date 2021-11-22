@@ -1,9 +1,22 @@
 // ### Colors ###
 $green: #95c60a;
+$success: #95c60a;
 $orange: #ffc02b;
+$warning: #ffc02b;
 $dark: #1f1604;
 $lgrey: #edece9;
 $white: white;
+
+$theme-colors: (
+  // 'primary': $primary,
+  // 'secondary': $secondary,
+  'success': $success,
+  // 'info': $info,
+  'warning': $warning,
+  // 'danger': $danger,
+  // 'light': $light,
+  // 'dark': $dark
+);
 
 // ### Fonts ###
 

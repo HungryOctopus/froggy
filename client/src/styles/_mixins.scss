@@ -1,3 +1,4 @@
+@import '_variables';
 // ### Mixins ###
 
 // rounded corners
@@ -11,4 +12,14 @@
 
 @mixin nolink {
   color: inherit;
+}
+
+@mixin alert-variant($lgrey, $green, $dark) {
+  color: $dark;
+  @include gradient-bg($lgrey);
+  border-color: $green;
+
+  .alert-link {
+    color: shade-color($green, 20%);
+  }
 }
