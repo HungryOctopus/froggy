@@ -1,5 +1,5 @@
-import { Component } from "react";
-import api from "../services/api";
+import { Component } from 'react';
+import api from '../services/api';
 //import mongoose from 'mongoose';
 
 class GetStatistics extends Component {
@@ -7,30 +7,35 @@ class GetStatistics extends Component {
     super();
     this.state = {
       statistics: [],
+      totalFFWI: 0
     };
-    // this.getStats();
-    // api.get('/api/allstats').then((res) => {
-    //   console.log(res.data); // res.data is an array of objects, every object is a DailyCatch entry in the DB
-    //   this.setState({ statistics: res.data });
-    //   console.log(`state: ${this.state}`);
-    // let totalfrogsFemaleWayIn = this.state.reduce(function (acc, obj) {
-    //   return acc + obj.frogsFemaleWayIn;
-    // }, 0);
-    // console.log(totalfrogsFemaleWayIn);
-    // this.setState({ statistics: res.data });
-    // });
   }
 
   componentDidMount() {
     this.getStats();
   }
 
+  componentDidUpdate() {
+    //  this.addStats();
+  }
+
   getStats = () => {
-    api.get("/api/allstats").then((response) => {
-      const allStats = response.data;
-      console.log(allStats.data);
-      this.setState({ statistics: allStats.data });
-    });
+    api
+      .get('/api/allstats')
+      .then((response) => {
+        const allStats = response.data;
+        console.log(allStats.data);
+        this.setState({ statistics: allStats.data });
+        console.log(this.state.statistics);
+      })
+      .then(this.addStats);
+  };
+
+  addStats = () => {
+    const sumFrogs = this.state.statistics.reduce((a, b) => ({
+      frogsFemaleWayIn: a.frogsFemaleWayIn + b.frogsFemaleWayIn
+    }));
+    console.log(sumFrogs.frogsFemaleWayIn); // how to add this value in the state and exploit it???
   };
 
   render() {
