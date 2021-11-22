@@ -114,7 +114,7 @@ class Home extends Component {
             </div>
             {/* About section content */}
             <div className="row pb-5 mb-5">
-              <p className="lead text-dark text-align-center px-5 py-3">
+              <p className="lead text-dark text-align-center px-5 py-4">
                 The nature conservation working group of the BUND regional
                 association near Freiburg looks after one of the largest, still
                 somewhat intact amphibian populations in southern Baden. To this
