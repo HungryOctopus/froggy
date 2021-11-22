@@ -1,52 +1,54 @@
-.about-card {
-  background-color: $green !important;
-  width: 500px;
-  margin-top: 1em;
-  height: 10em;
-  box-shadow: 0px 1px 2px #838383;
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-  flex-direction: row !important;
-  align-items: center;
+.about-container {
+  background: url("./../images/lake-3.jpg") repeat-y center fixed;
+  background-size: cover;
+  width: 100vw;
+  height: calc(100vh - 6rem);
+  font-family: $font-text;
+  display: flex;
   justify-content: center;
+  padding-top: 8rem;
 }
 
-.about-card:hover {
-  box-shadow: 0 3px 8px #00000054;
-  transform: scale(1.01);
+.about-col {
+  display: flex;
+  justify-content: center;
+  padding: 0 !important;
 }
 
-.avatar {
-  width: 7.5em;
-  height: 7.5em;
-  background-color: $orange;
-  padding: 0.6em;
-  @include shadow;
-  @include rounded;
-  img {
-    object-fit: contain;
-    width: 100%;
-    @include rounded;
+.about-card {
+  margin: 2rem 1rem 0;
+  height: 22rem;
+  width: 15rem;
+  background-color: rgba(39, 39, 39, 0.596) !important;
+  padding: 0;
+  color: $white;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:hover {
+    color: rgb(209, 209, 209);
   }
 }
 
-.info-box {
-  background-color: $orange;
-  padding: 0.6em;
-  margin-left: 1em;
-  width: 20em;
-  height: 7.5em;
-  @include shadow;
-  @include rounded;
-  div {
-    background-color: $white;
-    height: 100%;
-    @include rounded;
-    font-family: "Lobster", cursive;
-    font-size: 2.1em;
-    color: $dark;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-shadow: 2px 2px 2px rgb(66, 66, 66);
+.about-name {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5em;
+  font-size: 2em;
+  border-top: 1px solid rgb(190, 190, 190);
+  border-bottom: 1px solid rgb(190, 190, 190);
+  margin: 1.3em 0.8em 1.5em;
+  padding: 0.5em 0;
+}
+
+.about-avatar {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+  img {
+    width: 9em;
+    border-radius: 50%;
+    border: 0.25em solid $orange;
   }
 }

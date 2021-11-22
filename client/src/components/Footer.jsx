@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div
       id="footer"
-      className="footer text-center bg-orange d-flex justify-content-center"
+      className="footer text-center bg-orange d-flex justify-content-center fixed-bottom"
     >
       <div className="footer-left">
         <Link to="/contact" className="footer-link text-uppercase">
