@@ -173,3 +173,10 @@ code {
 .divider-custom .divider-custom-line:last-child {
   margin-left: 1rem;
 }
+
+// BUTTONS //@at-root
+
+.btn-green {
+  background-color: $green;
+  color: $green;
+}

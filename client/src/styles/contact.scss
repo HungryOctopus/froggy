@@ -8,7 +8,7 @@
 // }
 
 .contact-form {
-  background: url("./../images/lake-3.jpg") no-repeat center fixed;
+  background: url('./../images/lake-3.jpg') no-repeat center fixed;
   background-size: cover;
   width: 100vw;
   height: calc(100vh - 6.1rem);
@@ -26,8 +26,8 @@
 }
 
 .contact-card {
-  margin-top: 10rem;
-  margin-bottom: auto;
+  // margin-top: 10rem;
+  //margin-bottom: auto;
   background-color: rgba(187, 182, 182, 0.5) !important;
   padding: 2em;
   input {
@@ -35,6 +35,9 @@
   }
   button {
     margin-top: 1em;
+    background-color: $orange;
+    font-size: 1.1em;
+    font-weight: bold;
   }
 }
 
