@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { contactEmail } from "./../services/contact-email";
 
 class Contact extends Component {
   constructor() {
@@ -17,11 +18,19 @@ class Contact extends Component {
     this.setState({
       [name]: value,
     });
-    console.log(this.state);
   };
 
   handleFormSubmission = (event) => {
     event.preventDefault();
+    const { name, email, message } = this.state;
+    contactEmail({ name, email, message }).catch((error) => {
+      console.log(error);
+    });
+    this.setState({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
 
   render() {

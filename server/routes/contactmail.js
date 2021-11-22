@@ -16,12 +16,15 @@ const transporter = nodemailer.createTransport({
 
 // ### Contact mail route ###
 router.post('/contact', (req, res, next) => {
-  res.json('contact');
+  const { name, email, message } = req.body;
+  console.log(name, email, message);
+  res.json('The email was sent.');
   transporter
     .sendMail({
+      from: process.env.MAIL_USER,
       to: process.env.MAIL_USER,
-      subject: 'Hello my fellow Froggies',
-      text: 'quak quak quak'
+      subject: `${name}: Hello my fellow Froggies!`,
+      html: `${email}<br><i color="green">${message}</i>`
     })
     .then((result) => {
       console.log(result);
