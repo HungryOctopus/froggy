@@ -14,6 +14,7 @@ const baseRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const googlemapsRouter = require('./routes/googlemaps');
 const contactRouter = require('./routes/contactmail');
+const adminmessageRouter = require('./routes/adminmessage');
 
 const app = express();
 
@@ -54,6 +55,7 @@ app.use(bindUserToViewLocals);
 
 app.use('/', baseRouter);
 app.use('/', googlemapsRouter);
+app.use('/', adminmessageRouter);
 app.use('/', contactRouter);
 app.use('/authentication', authenticationRouter);
 
