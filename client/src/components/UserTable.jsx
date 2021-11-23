@@ -41,12 +41,26 @@ class UserTable extends Component {
       : (12742 * Math.asin(Math.sqrt(a))).toFixed(1); // 2 * Radius earth (6371)
   };
 
+  setUserStatus = (event) => {
+    const arraykey = event.target.attributes[0].value;
+    let newarr = [...this.state.users];
+    const status = newarr[arraykey].onSite;
+    status === false
+      ? (newarr[arraykey].onSite = true)
+      : (newarr[arraykey].onSite = false);
+    Promise.resolve(
+      this.setState({
+        users: newarr,
+      })
+    ).then(() => console.log(this.state.users[arraykey].onSite));
+  };
+
   render() {
     return (
       <div className="container">
         <table className="table table-light table-striped table-hover user-table">
           <tbody>
-            {this.state.users.map((user) => (
+            {this.state.users.map((user, index) => (
               <tr className="user-row" key={user._id}>
                 {(user.userImage && (
                   <td>
@@ -72,8 +86,11 @@ class UserTable extends Component {
                     away
                   </td>
                 )) || <td>not set</td>}
+                <td>{(user.onSite && "true") || "false"}</td>
                 <td>
-                  <button>today's status</button>
+                  <button arraykey={index} onClick={this.setUserStatus}>
+                    today's status
+                  </button>
                 </td>
               </tr>
             ))}
