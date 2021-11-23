@@ -1,19 +1,20 @@
 'use strict';
 
-const { Router } = require('express');
-
+const express = require('express');
 const bcryptjs = require('bcryptjs');
 const User = require('./../models/user');
-const router = new Router();
+const router = express.Router();
 
 router.post('/sign-up', (req, res, next) => {
-  const { firstName, secondName, email, password, role, location } = req.body;
+  const { firstName, secondName, imageUrl, email, password, role, location } =
+    req.body;
   bcryptjs
     .hash(password, 10)
     .then((hash) => {
       return User.create({
         firstName,
         secondName,
+        imageUrl,
         email,
         passwordHashAndSalt: hash,
         role,
@@ -23,6 +24,7 @@ router.post('/sign-up', (req, res, next) => {
     .then((user) => {
       req.session.userId = user._id;
       res.json({ user });
+      //, { secure_url: req.file.path });
     })
     .catch((error) => {
       next(error);

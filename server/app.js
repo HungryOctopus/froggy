@@ -15,8 +15,10 @@ const authenticationRouter = require('./routes/authentication');
 const googlemapsRouter = require('./routes/googlemaps');
 const contactRouter = require('./routes/contactmail');
 const adminmessageRouter = require('./routes/adminmessage');
-
+const pictureRouter = require('./routes/pictureUpload');
 const app = express();
+
+app.set('trust proxy', 1);
 
 app.use(
   cors({
@@ -32,6 +34,7 @@ app.use(
 app.use(serveFavicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(
   expressSession({
     secret: process.env.SESSION_SECRET,
@@ -58,6 +61,7 @@ app.use('/', googlemapsRouter);
 app.use('/', adminmessageRouter);
 app.use('/', contactRouter);
 app.use('/authentication', authenticationRouter);
+app.use('/api', pictureRouter);
 
 // Handling route for the statistics
 const statsRouter = require('./routes/statistics');

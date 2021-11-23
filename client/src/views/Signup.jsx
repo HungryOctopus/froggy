@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import GoogleMapsSignUp from '../components/GoogleMapsSignUp';
+import profilePicture from '../services/profilePicture';
 import { signUp } from './../services/authentication';
+// import service from './../services/profilePicture';
 
 class Signup extends Component {
   constructor() {
@@ -8,7 +10,7 @@ class Signup extends Component {
     this.state = {
       firstName: '',
       secondName: '',
-      // imageUrl: "",
+      imageUrl: '',
       location: { long: null, lat: null },
       // distance: null,
       email: '',
@@ -71,9 +73,24 @@ class Signup extends Component {
   handleFormSubmission = (event) => {
     event.preventDefault();
     if (this.handleValidation()) {
-      const { firstName, secondName, email, password, role, location } =
-        this.state;
-      signUp({ firstName, secondName, email, password, role, location })
+      const {
+        firstName,
+        secondName,
+        imageUrl,
+        email,
+        password,
+        role,
+        location
+      } = this.state;
+      signUp({
+        firstName,
+        secondName,
+        imageUrl,
+        email,
+        password,
+        role,
+        location
+      })
         .then((user) => {
           this.props.onAuthenticationChange(user);
         })
@@ -86,7 +103,22 @@ class Signup extends Component {
     }
   };
 
-  handleFileUpload = () => {};
+  handleFileUpload = (e) => {
+    console.log('The file to be uploaded is: ', e.target.files[0]);
+
+    const uploadData = new FormData();
+    // imageUrl => we pass req.body to .create() method in the POST route
+    uploadData.append('imageUrl', e.target.files[0]);
+
+    profilePicture
+      .handleUpload(uploadData)
+      .then((response) => {
+        console.log('response is: ', response);
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state
+        this.setState({ imageUrl: response.secure_url });
+      })
+      .catch((err) => console.log('Error while uploading the file: ', err));
+  };
 
   render() {
     return (
