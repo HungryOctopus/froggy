@@ -3,7 +3,6 @@ import CalendarComponent from 'react-calendar';
 import Notification from '../components/Notification';
 import DUMMY_NOTIFICATIONS from './../tests/notification_api_test.json';
 import { getadminmessage } from './../services/getadminmessage';
-
 class Calendar extends Component {
   constructor() {
     super();
@@ -12,18 +11,22 @@ class Calendar extends Component {
       notifications: DUMMY_NOTIFICATIONS
     };
   }
-
   componentDidMount() {
     // console.log(DUMMY_NOTIFICATIONS);
-    console.log(getadminmessage());
+    // console.log(getadminmessage());
+    Promise.resolve(getadminmessage())
+      .then((notifications) => {
+        return this.setState({
+          notifications: notifications
+        });
+      })
+      .then(console.log(this.state.notifications));
   }
-
   onUserClick = (event) => {
     console.log(event);
     const day = JSON.stringify(event);
     this.setState({ day });
   };
-
   render() {
     return (
       <>
@@ -46,5 +49,4 @@ class Calendar extends Component {
     );
   }
 }
-
 export default Calendar;
