@@ -1,12 +1,19 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 
-function ChartBar(props) {
+function ChartTotal(props) {
   return (
-    <div className="chart">
+    <div className="chartTotal">
       <Bar
         data={props.chartData}
         options={{
+          indexAxis: "y",
+          elements: {
+            bar: {
+              borderWidth: 2,
+            },
+          },
+          responsive: true,
           plugins: {
             legend: {
               display: false,
@@ -17,4 +24,4 @@ function ChartBar(props) {
     </div>
   );
 }
-export default ChartBar;
+export default ChartTotal;
