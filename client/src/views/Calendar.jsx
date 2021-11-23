@@ -2,6 +2,7 @@ import { Component } from 'react';
 import CalendarComponent from 'react-calendar';
 import Notification from '../components/Notification';
 import DUMMY_NOTIFICATIONS from './../tests/notification_api_test.json';
+import { getadminmessage } from './../services/getadminmessage';
 
 class Calendar extends Component {
   constructor() {
@@ -14,6 +15,7 @@ class Calendar extends Component {
 
   componentDidMount() {
     // console.log(DUMMY_NOTIFICATIONS);
+    console.log(getadminmessage());
   }
 
   onUserClick = (event) => {
