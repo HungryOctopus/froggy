@@ -6,7 +6,8 @@ class AdminMessaging extends Component {
     this.state = {
       subject: '',
       body: '',
-      errors: {}
+      errors: {},
+      success: {}
     };
   }
 
@@ -41,6 +42,9 @@ class AdminMessaging extends Component {
       adminmessage({ subject, body }).catch((error) => {
         console.log(error);
       });
+      let success = {};
+      success['messagesent'] = 'Message sent successfully';
+      this.setState({ success: success });
     } else {
     }
   };
@@ -83,6 +87,9 @@ class AdminMessaging extends Component {
                   {this.state.errors['body']}
                 </span>
                 <button>Send message</button>
+                <span style={{ color: 'green' }}>
+                  {this.state.success['messagesent']}
+                </span>
               </form>
             </div>
           </div>
