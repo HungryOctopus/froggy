@@ -1,13 +1,11 @@
 import { Component } from 'react';
-
+import { adminmessage } from './../services/adminmessage';
 class AdminMessaging extends Component {
   constructor() {
     super();
     this.state = {
       subject: '',
       body: '',
-      creator: '',
-      date: '',
       errors: {}
     };
   }
@@ -15,19 +13,16 @@ class AdminMessaging extends Component {
   handleValidation() {
     let errors = {};
     let formIsValid = true;
-
     // Subject
     if (this.state.subject === '') {
       formIsValid = false;
-      errors['email'] = 'Subject line cannot be empty';
+      errors['subject'] = 'Subject line cannot be empty';
     }
-
     // Body
     if (this.state.body === '') {
       formIsValid = false;
-      errors['password'] = 'Please include a message';
+      errors['body'] = 'Please include a message';
     }
-
     this.setState({ errors: errors });
     return formIsValid;
   }
@@ -37,6 +32,17 @@ class AdminMessaging extends Component {
     this.setState({
       [name]: value
     });
+  };
+  handleFormSubmission = (event) => {
+    event.preventDefault();
+    if (this.handleValidation()) {
+      const { subject, body } = this.state;
+      console.log({ subject, body });
+      adminmessage({ subject, body }).catch((error) => {
+        console.log(error);
+      });
+    } else {
+    }
   };
 
   componentDidMount() {}
@@ -85,5 +91,4 @@ class AdminMessaging extends Component {
     );
   }
 }
-
 export default AdminMessaging;
