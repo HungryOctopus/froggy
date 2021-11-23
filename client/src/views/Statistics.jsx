@@ -1,9 +1,10 @@
 import { Component } from "react";
 
-import IndividualChart from "../components/IndividualChart";
-import AllFiguresChart from "../components/AllFiguresChart";
+import ChartBar from "../components/ChartBar";
+// import AllFiguresChart from "../components/AllFiguresChart";
 import { loadAuthenticatedUser } from "./../services/authentication";
 import { getUserStats } from "./../services/statistics";
+import { getAllStats } from "./../services/statistics";
 
 class Statistics extends Component {
   state = {
@@ -22,11 +23,24 @@ class Statistics extends Component {
         },
       ],
     },
-    chartDataAll: this.chartDataIndividual,
+    chartDataAll: {
+      labels: ["Female frogs", "Male frogs", "Female Toads", "Male toads"],
+      datasets: [
+        {
+          data: [0, 0, 0, 0],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.6)",
+            "rgba(54, 162, 235, 0.6)",
+            "rgba(255, 206, 86, 0.6)",
+            "rgba(75, 192, 192, 0.6)",
+          ],
+        },
+      ],
+    },
   };
 
   componentDidMount() {
-    this.getChartData();
+    // this.getChartData();
     loadAuthenticatedUser()
       .then((user) => {
         this.setState({
@@ -35,10 +49,28 @@ class Statistics extends Component {
         return user;
       })
       .then((user) => {
-        getUserStats(user._id).then((data) => {
-          console.log(data);
+        return getUserStats(user._id).then((data) => {
+          // console.log(data);
           this.setState({
             chartDataIndividual: {
+              datasets: [
+                {
+                  data: [
+                    data.frogsFemaleWayIn + data.frogsFemaleWayBack,
+                    data.frogsMaleWayIn + data.frogsMaleWayBack,
+                    data.toadsFemaleWayIn + data.toadsFemaleWayBack,
+                    data.toadsMaleWayIn + data.toadsMaleWayBack,
+                  ],
+                },
+              ],
+            },
+          });
+        });
+      })
+      .then(() => {
+        return getAllStats().then((data) => {
+          this.setState({
+            chartDataAll: {
               datasets: [
                 {
                   data: [
@@ -89,9 +121,11 @@ class Statistics extends Component {
             <h2>
               Animals saved by {this.state.user && this.state.user.firstName}:
             </h2>
-            <IndividualChart chartData={this.state.chartDataIndividual} />
-            <h2>Complete statistics:</h2>
-            <AllFiguresChart chartData={this.state.chartDataAll} />
+            <ChartBar chartData={this.state.chartDataIndividual} />
+            <h2>Animals saved by the group:</h2>
+            <ChartBar chartData={this.state.chartDataAll} />
+            {/* <h2>Complete statistics:</h2> */}
+            {/* <AllFiguresChart chartData={this.state.chartDataAll} /> */}
           </div>
         </header>
       </>

@@ -19,3 +19,14 @@ export const getUserStats = (userId) => {
       console.log(error);
     });
 };
+
+export const getAllStats = () => {
+  return api
+    .get("/stats-all")
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

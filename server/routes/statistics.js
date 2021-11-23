@@ -112,4 +112,23 @@ router.post('/stats-user', (req, res, next) => {
   });
 });
 
+// ### GET route => get all statistics ###
+router.get('/stats-all', (req, res, next) => {
+  return DailyCatch.find().then((list) => {
+    const summedUp = list.reduce((prev, curr) => {
+      return {
+        frogsFemaleWayIn: prev.frogsFemaleWayIn + curr.frogsFemaleWayIn,
+        frogsFemaleWayBack: prev.frogsFemaleWayBack + curr.frogsFemaleWayBack,
+        frogsMaleWayIn: prev.frogsMaleWayIn + curr.frogsMaleWayIn,
+        frogsMaleWayBack: prev.frogsMaleWayBack + curr.frogsMaleWayBack,
+        toadsFemaleWayIn: prev.toadsFemaleWayIn + curr.toadsFemaleWayIn,
+        toadsFemaleWayBack: prev.toadsFemaleWayBack + curr.toadsFemaleWayBack,
+        toadsMaleWayIn: prev.toadsMaleWayIn + curr.toadsMaleWayIn,
+        toadsMaleWayBack: prev.toadsMaleWayBack + curr.toadsMaleWayBack
+      };
+    });
+    res.json(summedUp);
+  });
+});
+
 module.exports = router;
