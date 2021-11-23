@@ -30,3 +30,53 @@ export const getAllStats = () => {
       console.log(error);
     });
 };
+
+export const setTotalCount = (data) => {
+  return {
+    chartDataAll: {
+      datasets: [
+        {
+          data: [
+            data.frogsFemaleWayIn + data.frogsFemaleWayBack,
+            data.frogsMaleWayIn + data.frogsMaleWayBack,
+            data.toadsFemaleWayIn + data.toadsFemaleWayBack,
+            data.toadsMaleWayIn + data.toadsMaleWayBack,
+          ],
+        },
+      ],
+    },
+    chartDataTotal: {
+      datasets: [
+        {
+          data: [
+            data.frogsFemaleWayIn +
+              data.frogsFemaleWayBack +
+              data.frogsMaleWayIn +
+              data.frogsMaleWayBack +
+              data.toadsFemaleWayIn +
+              data.toadsFemaleWayBack +
+              data.toadsMaleWayIn +
+              data.toadsMaleWayBack,
+          ],
+        },
+      ],
+    },
+  };
+};
+
+export const setUserTypes = (data) => {
+  return {
+    chartDataIndividual: {
+      datasets: [
+        {
+          data: [
+            data.frogsFemaleWayIn + data.frogsFemaleWayBack,
+            data.frogsMaleWayIn + data.frogsMaleWayBack,
+            data.toadsFemaleWayIn + data.toadsFemaleWayBack,
+            data.toadsMaleWayIn + data.toadsMaleWayBack,
+          ],
+        },
+      ],
+    },
+  };
+};
