@@ -13,8 +13,10 @@ router.post('/adminmessage', (req, res, next) => {
     .catch((err) => res.json(err));
 });
 
-// router.get('/adminmessage', (req, res) =>
-//   res.send('admin messaging route testing!')
-// );
+router.get('/adminmessagesall', (req, res, next) => {
+  AdminMessage.find({})
+    .then((response) => res.json(response))
+    .catch((err) => res.json(err));
+});
 
 module.exports = router;
