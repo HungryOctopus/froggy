@@ -69,7 +69,7 @@ class App extends Component {
             path="/users"
             redirect="/signup"
             authorized={!this.state.loaded || this.state.user}
-            component={Users}
+            render={(props) => <Users {...props} user={this.state.user} />}
             exact
           />
           <ProtectedRoute

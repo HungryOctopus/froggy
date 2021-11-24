@@ -5,7 +5,7 @@ import { updateUserStatus } from "./../services/user-status";
 
 class UserTable extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       location: {
         lat: 47.97621,
@@ -45,20 +45,22 @@ class UserTable extends Component {
 
   // ### Switch user status ###
   setUserStatus = (event) => {
-    const arraykey = event.target.attributes[0].value;
-    let newarr = [...this.state.users];
-    const status = newarr[arraykey].onSite;
+    const arrayKey = event.target.attributes[0].value;
+    let newArr = [...this.state.users];
+    // User may only change his own status
+    if (newArr[arrayKey]._id !== this.props.user._id) return;
+    const status = newArr[arrayKey].onSite;
     status === false
-      ? (newarr[arraykey].onSite = true)
-      : (newarr[arraykey].onSite = false);
+      ? (newArr[arrayKey].onSite = true)
+      : (newArr[arrayKey].onSite = false);
     Promise.resolve(
       this.setState({
-        users: newarr,
+        users: newArr,
       })
     ).then(() => {
       const body = {
-        userId: newarr[arraykey]._id,
-        userStatus: this.state.users[arraykey].onSite,
+        userId: newArr[arrayKey]._id,
+        userStatus: this.state.users[arrayKey].onSite,
       };
       updateUserStatus(body);
     });
@@ -129,7 +131,7 @@ class UserTable extends Component {
                       color: user.onSite ? "white" : "black",
                     }}
                   >
-                    {(user.onSite && "I'm in") || "not today"}
+                    {(user.onSite && "I'm in!") || "not today"}
                   </button>
                 </td>
               </tr>
