@@ -1,6 +1,7 @@
 import { Component } from "react";
 // import USER_LOCATIONS from "../tests/maps_api_test.json";
 import { getAllUsers } from "../services/googlemaps";
+import { updateUserStatus } from "./../services/user-status";
 
 class UserTable extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class UserTable extends Component {
       });
   }
 
+  // ### Calculate distance user/location ###
   getDistance = (latUser, lngUser) => {
     const latLocation = this.state.location.lat;
     const lngLocation = this.state.location.lng;
@@ -41,6 +43,7 @@ class UserTable extends Component {
       : (12742 * Math.asin(Math.sqrt(a))).toFixed(1); // 2 * Radius earth (6371)
   };
 
+  // ### Switch user status ###
   setUserStatus = (event) => {
     const arraykey = event.target.attributes[0].value;
     let newarr = [...this.state.users];
@@ -52,12 +55,20 @@ class UserTable extends Component {
       this.setState({
         users: newarr,
       })
-    ).then(() => console.log(this.state.users[arraykey].onSite));
+    ).then(() => {
+      const body = {
+        userId: newarr[arraykey]._id,
+        userStatus: this.state.users[arraykey].onSite,
+      };
+      updateUserStatus(body);
+    });
   };
 
   render() {
     return (
       <div className="container">
+        <br />
+        <h5>Would you like to help today? Your status resets at midnight.</h5>
         <table className="table table-light table-striped table-hover user-table">
           <tbody>
             {this.state.users.map((user, index) => (
@@ -86,10 +97,39 @@ class UserTable extends Component {
                     away
                   </td>
                 )) || <td>not set</td>}
-                <td>{(user.onSite && "true") || "false"}</td>
                 <td>
-                  <button arraykey={index} onClick={this.setUserStatus}>
-                    today's status
+                  {(user.onSite && (
+                    <img
+                      className="frog-status"
+                      src="./images/frog_true.png"
+                      alt="_true"
+                    />
+                  )) || (
+                    <img
+                      className="frog-status"
+                      src="./images/frog_false.png"
+                      alt="_false"
+                    />
+                  )}
+                </td>
+                <td>
+                  <button
+                    arraykey={index}
+                    className="status-button btn btn-outline-dark shadow-none"
+                    onClick={this.setUserStatus}
+                    style={{
+                      backgroundColor: user.onSite
+                        ? "rgb(149, 198, 10)"
+                        : "lightgrey",
+                      fontWeight: user.onSite ? "bold" : "normal",
+                      fontSize: user.onSite && "1.2em",
+                      textShadow:
+                        user.onSite &&
+                        "0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black",
+                      color: user.onSite ? "white" : "black",
+                    }}
+                  >
+                    {(user.onSite && "I'm in") || "not today"}
                   </button>
                 </td>
               </tr>

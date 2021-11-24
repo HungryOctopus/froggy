@@ -10,7 +10,7 @@ router.get('/userlist', (req, res, next) => {
     .sort({ firstName: 1 })
     .then((users) => {
       res.json({ users });
-      console.log(users);
+      // console.log(users);
     })
     .catch((error) => {
       next(error);
