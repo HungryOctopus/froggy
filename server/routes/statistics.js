@@ -1,9 +1,7 @@
 'use strict';
 
 const express = require('express');
-const User = require('./../models/user');
 const router = express.Router();
-const mongoose = require('mongoose');
 const routeGuard = require('../middleware/route-guard');
 const DailyCatch = require('./../models/dailyCatch');
 
@@ -49,10 +47,6 @@ router.post('/stats', routeGuard, (req, res, next) => {
     toadsFemaleWayBack,
     toadsMaleWayBack
   };
-  // console.log();
-  // console.log(frogsMaleWayIn);
-  // console.log('DATA', data);
-  // console.log('USER', req.user._id);
 
   DailyCatch.findOneAndUpdate(
     {
@@ -95,40 +89,56 @@ router.post('/stats-user', (req, res, next) => {
   const { user } = req.body;
   return DailyCatch.find({
     volunteer: user
-  }).then((list) => {
-    const summedUp = list.reduce((prev, curr) => {
-      return {
-        frogsFemaleWayIn: prev.frogsFemaleWayIn + curr.frogsFemaleWayIn,
-        frogsFemaleWayBack: prev.frogsFemaleWayBack + curr.frogsFemaleWayBack,
-        frogsMaleWayIn: prev.frogsMaleWayIn + curr.frogsMaleWayIn,
-        frogsMaleWayBack: prev.frogsMaleWayBack + curr.frogsMaleWayBack,
-        toadsFemaleWayIn: prev.toadsFemaleWayIn + curr.toadsFemaleWayIn,
-        toadsFemaleWayBack: prev.toadsFemaleWayBack + curr.toadsFemaleWayBack,
-        toadsMaleWayIn: prev.toadsMaleWayIn + curr.toadsMaleWayIn,
-        toadsMaleWayBack: prev.toadsMaleWayBack + curr.toadsMaleWayBack
-      };
+  })
+    .then((list) => {
+      if (list.length) {
+        const summedUp = list.reduce((prev, curr) => {
+          return {
+            frogsFemaleWayIn: prev.frogsFemaleWayIn + curr.frogsFemaleWayIn,
+            frogsFemaleWayBack:
+              prev.frogsFemaleWayBack + curr.frogsFemaleWayBack,
+            frogsMaleWayIn: prev.frogsMaleWayIn + curr.frogsMaleWayIn,
+            frogsMaleWayBack: prev.frogsMaleWayBack + curr.frogsMaleWayBack,
+            toadsFemaleWayIn: prev.toadsFemaleWayIn + curr.toadsFemaleWayIn,
+            toadsFemaleWayBack:
+              prev.toadsFemaleWayBack + curr.toadsFemaleWayBack,
+            toadsMaleWayIn: prev.toadsMaleWayIn + curr.toadsMaleWayIn,
+            toadsMaleWayBack: prev.toadsMaleWayBack + curr.toadsMaleWayBack
+          };
+        });
+        res.json(summedUp);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
     });
-    res.json(summedUp);
-  });
 });
 
 // ### GET route => get all statistics ###
 router.get('/stats-all', (req, res, next) => {
-  return DailyCatch.find().then((list) => {
-    const summedUp = list.reduce((prev, curr) => {
-      return {
-        frogsFemaleWayIn: prev.frogsFemaleWayIn + curr.frogsFemaleWayIn,
-        frogsFemaleWayBack: prev.frogsFemaleWayBack + curr.frogsFemaleWayBack,
-        frogsMaleWayIn: prev.frogsMaleWayIn + curr.frogsMaleWayIn,
-        frogsMaleWayBack: prev.frogsMaleWayBack + curr.frogsMaleWayBack,
-        toadsFemaleWayIn: prev.toadsFemaleWayIn + curr.toadsFemaleWayIn,
-        toadsFemaleWayBack: prev.toadsFemaleWayBack + curr.toadsFemaleWayBack,
-        toadsMaleWayIn: prev.toadsMaleWayIn + curr.toadsMaleWayIn,
-        toadsMaleWayBack: prev.toadsMaleWayBack + curr.toadsMaleWayBack
-      };
+  return DailyCatch.find()
+    .then((list) => {
+      if (list.length) {
+        const summedUp = list.reduce((prev, curr) => {
+          return {
+            frogsFemaleWayIn: prev.frogsFemaleWayIn + curr.frogsFemaleWayIn,
+            frogsFemaleWayBack:
+              prev.frogsFemaleWayBack + curr.frogsFemaleWayBack,
+            frogsMaleWayIn: prev.frogsMaleWayIn + curr.frogsMaleWayIn,
+            frogsMaleWayBack: prev.frogsMaleWayBack + curr.frogsMaleWayBack,
+            toadsFemaleWayIn: prev.toadsFemaleWayIn + curr.toadsFemaleWayIn,
+            toadsFemaleWayBack:
+              prev.toadsFemaleWayBack + curr.toadsFemaleWayBack,
+            toadsMaleWayIn: prev.toadsMaleWayIn + curr.toadsMaleWayIn,
+            toadsMaleWayBack: prev.toadsMaleWayBack + curr.toadsMaleWayBack
+          };
+        });
+        res.json(summedUp);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
     });
-    res.json(summedUp);
-  });
 });
 
 module.exports = router;
