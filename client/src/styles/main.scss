@@ -14,6 +14,10 @@
   display: none;
 }
 
+// root {
+//   width: calc(100vh - 6rem);
+// }
+
 html {
   scrollbar-width: none;
 }
@@ -24,13 +28,15 @@ html {
 
 body {
   margin: 0;
+  padding: 0;
+  width: 100%;
   font-family: $font-titles, $font-text;
   // font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
   //   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
   //   sans-serif;
   // -webkit-font-smoothing: antialiased;
   // -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
+  // height: 100vh;
   // background: url("./../images/lake-3.jpg") no-repeat center fixed;
   // background-size: cover;
 }
@@ -41,8 +47,8 @@ code {
 }
 
 #root {
-  background-color: transparent;
-  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .bg-green {

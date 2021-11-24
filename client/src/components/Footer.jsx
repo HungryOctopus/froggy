@@ -1,15 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <div
       id="footer"
-      className="footer text-center bg-orange d-flex justify-content-center fixed-bottom"
+      className="footer text-center bg-orange d-flex justify-content-center mt-5 fixed-bottom"
     >
       <div className="footer-left">
         <Link to="/contact" className="footer-link text-uppercase">
-          <div className="text-uppercase footer-text">Contact</div>
+          <div className="text-uppercase footer-text fs-5">Contact</div>
           <div className="icon-contact">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@ const Footer = () => {
 
       <div className="footer-right">
         <Link to="/about" className="footer-link text-uppercase">
-          <div className="text-uppercase footer-text">About us</div>
+          <div className="text-uppercase footer-text fs-5">About us</div>
           <div className="icon-contact">
             <svg
               xmlns="http://www.w3.org/2000/svg"

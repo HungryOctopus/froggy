@@ -1,16 +1,24 @@
 .about-container {
-  background: url("./../images/lake-3.jpg") repeat-y center fixed;
-  background-size: cover;
+  background: url('./../images/lake-3.jpg') repeat-y center fixed;
+  // background-size: cover;
   width: 100vw;
-  height: calc(100vh - 6rem);
+  height: 100vh;
   font-family: $font-text;
-  display: flex;
+  //display: flex;
   justify-content: center;
   padding-top: 8rem;
 }
 
+@media only screen and (max-width: 800px) {
+  .about-container {
+    background: url('./../images/lake-3.jpg') repeat-y center fixed;
+    height: 180vh;
+  }
+}
+
 .about-col {
   display: flex;
+  align-items: center;
   justify-content: center;
   padding: 0 !important;
 }
@@ -49,6 +57,6 @@
   img {
     width: 9em;
     border-radius: 50%;
-    border: 0.25em solid $orange;
+    border: 0.2em solid $green;
   }
 }

@@ -1,13 +1,13 @@
-import { Component } from "react";
-import { contactEmail } from "./../services/contact-email";
+import { Component } from 'react';
+import { contactEmail } from './../services/contact-email';
 
 class Contact extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      email: "",
-      message: "",
+      name: '',
+      email: '',
+      message: ''
     };
   }
 
@@ -16,7 +16,7 @@ class Contact extends Component {
   handleInputChange = (event) => {
     const { value, name } = event.target;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -27,9 +27,9 @@ class Contact extends Component {
       console.log(error);
     });
     this.setState({
-      name: "",
-      email: "",
-      message: "",
+      name: '',
+      email: '',
+      message: ''
     });
   };
 
@@ -37,7 +37,7 @@ class Contact extends Component {
     return (
       <div className="contact-form">
         <div className="container contact-container">
-          <div className="d-flex justify-content-center h-100">
+          <div className="d-flex align-items-center justify-content-center h-100">
             <div className="card contact-card">
               <div className="card-header contact-header">
                 <h2>Contact us</h2>

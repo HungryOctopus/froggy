@@ -48,7 +48,7 @@ const Navbar = (props) => {
               </Link>
             </li>
             {props.user && props.user.role === 'admin' && (
-              <li className="nav-link py-3 px-0 px-lg-3 rounded">
+              <li className="nav-item mx-0 mx-lg-1">
                 <Link
                   to="/adminmessaging"
                   className="nav-link py-3 px-1 px-lg-3 rounded"
@@ -63,7 +63,7 @@ const Navbar = (props) => {
                   to="/calendar"
                   className="nav-link py-3 px-1 px-lg-3 rounded"
                 >
-                  Calendar
+                  Latest
                 </Link>
               </li>
             )}

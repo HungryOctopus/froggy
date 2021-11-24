@@ -17,32 +17,32 @@ class CountInput extends Component {
     return (
       <div className="row pb-2">
         <div className="col-md-12">
-          <label className="form-label">{this.props.name}</label>
+          <label className="form-label fs-4">{this.props.name}</label>
         </div>
-        <div className="col-md-6 align-right">
+        <div className="col-5 col-md-6 align-items-center">
           <input
             type="number"
             min={0}
             name={this.props.name}
             value={this.state.count}
-            className="form-control lg"
+            className="form-control fs-3 lg"
             onChange={(e) => this.handleChange(e.target.valueAsNumber)}
           />
         </div>
-        <div className="col-md-3 justify-content-right">
+        <div className="col-2 col-md-3 justify-content-right">
           <button
             type="button"
-            className="btn btn-success btn-lg"
+            className="btn btn-success btn-lg fs-3"
             onClick={() => this.handleChange(this.state.count + 1)}
             // maybe a high limit? More than 200 animals shouldn't go through or at least be checked
           >
             +
           </button>
         </div>
-        <div className="col-md-3">
+        <div className="col-2 col-md-3">
           <button
             type="button"
-            className="btn btn-danger btn-lg"
+            className="btn btn-danger btn-lg fs-3"
             onClick={() => this.handleChange(this.state.count - 1)}
             //here a logic should be added so the number is not negative
           >

@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component } from 'react';
 
 class About extends Component {
   constructor() {
@@ -11,9 +11,9 @@ class About extends Component {
   render() {
     return (
       <div className="container-fluid about-container">
-        <div className="row">
+        <div className="row mt-5">
           <div className="col about-col col-12 col-md-4">
-            <div className="card about-card">
+            <div className="card about-card d-flex">
               <a
                 href="https://github.com/HungryOctopus"
                 target="_blank"
