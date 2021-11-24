@@ -26,8 +26,13 @@ class Statistics extends Component {
   };
 
   componentDidMount() {
-    // this.getChartData();
-    loadAuthenticatedUser()
+    getAllStats()
+      .then((data) => {
+        return this.setState(setTotalCount(data));
+      })
+      .then(() => {
+        return loadAuthenticatedUser();
+      })
       .then((user) => {
         this.setState({
           user: user,
@@ -36,19 +41,14 @@ class Statistics extends Component {
       })
       .then((user) => {
         return getUserStats(user._id).then((data) => {
-          // console.log(data);
-          this.setState(setUserTypes(data));
+          if (data) {
+            this.setState(setUserTypes(data));
+          }
         });
       })
-      .then(() => {
-        return getAllStats().then((data) => {
-          this.setState(setTotalCount(data));
-        });
+      .catch((error) => {
+        console.log(error);
       });
-  }
-
-  getChartData() {
-    this.setState({});
   }
 
   render() {

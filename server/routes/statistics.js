@@ -77,7 +77,6 @@ router.get('/allstats', (req, res, next) => {
     .sort({ createdAt: 1 })
     .then((data) => {
       res.json({ data });
-      // console.log(data);
     })
     .catch((error) => {
       next(error);
@@ -134,7 +133,7 @@ router.get('/stats-all', (req, res, next) => {
           };
         });
         res.json(summedUp);
-      }
+      } else return;
     })
     .catch((error) => {
       console.log(error);
