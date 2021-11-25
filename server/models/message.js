@@ -15,8 +15,7 @@ const schema = new mongoose.Schema({
     maxlength: 5000
   },
   creator: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    type: String,
     required: true
   }
   // date: {

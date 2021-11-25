@@ -54,10 +54,12 @@ class AdminMessaging extends Component {
 
   componentDidMount() {
     loadAuthenticatedUser().then((user) => {
+      console.log(user.firstName);
+      const userFirstName = user.firstName;
       this.setState({
-        creator: user
+        creator: userFirstName
       });
-      return user;
+      return user.firstName;
     });
   }
 
