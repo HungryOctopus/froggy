@@ -7,7 +7,9 @@ import ChartTotal from "../components/ChartTotal";
 import { loadAuthenticatedUser } from "./../services/authentication";
 import { getUserStats } from "./../services/statistics";
 import { getAllStats } from "./../services/statistics";
+import { getStatsMonths } from "./../services/statistics";
 import { setTotalCount } from "./../services/statistics";
+import { setMonthlyCount } from "./../services/statistics";
 import { setUserTypes } from "./../services/statistics";
 import { totalCountState } from "./../services/chart-states";
 import { typesUserState } from "./../services/chart-states";
@@ -26,13 +28,13 @@ class Statistics extends Component {
   };
 
   componentDidMount() {
-    getAllStats()
-      .then((data) => {
-        return this.setState(setTotalCount(data));
-      })
-      .then(() => {
-        return loadAuthenticatedUser();
-      })
+    getAllStats().then((data) => {
+      return this.setState(setTotalCount(data));
+    });
+    getStatsMonths().then((data) => {
+      return this.setState(setMonthlyCount(data));
+    });
+    loadAuthenticatedUser()
       .then((user) => {
         this.setState({
           user: user,
@@ -56,27 +58,21 @@ class Statistics extends Component {
       <>
         <header className="masthead bg-white text-dark text-center mt-5 pt-5">
           <div className="container d-flex align-items-center flex-column">
-            <br />
             <h2>Total amount of saved animals:</h2>
             <ChartTotal chartData={this.state.chartDataTotal} />
-            <br />
             <h2>
               Animal types saved by{" "}
               {this.state.user && this.state.user.firstName}:
             </h2>
             <ChartBar chartData={this.state.chartDataIndividual} />
-            <br />
             <h2>
               {this.state.user && this.state.user.firstName}'s daily catches:
             </h2>
             <ChartLine chartData={this.state.chartDataDaily} />
-            <br />
             <h2>Animal types saved by the group:</h2>
             <ChartPie chartData={this.state.chartDataAll} />
-            <br />
             <h2>Group's monthly amount of saved animals:</h2>
             <ChartBar chartData={this.state.chartDataMonthlyCount} />
-            <br />
           </div>
         </header>
       </>

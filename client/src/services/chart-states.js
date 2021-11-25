@@ -83,8 +83,8 @@ export const monthlyCatchState = () => {
     labels: ["January", "February", "March", "April", "Mai", "June", "July"],
     datasets: [
       {
-        label: "My First Dataset",
-        data: [65, 59, 80, 81, 56, 55, 40],
+        label: "Catches",
+        data: [0, 0, 0, 0, 0, 0, 0],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(255, 159, 64, 0.2)",

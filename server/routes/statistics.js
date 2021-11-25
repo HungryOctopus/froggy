@@ -133,11 +133,103 @@ router.get('/stats-all', (req, res, next) => {
           };
         });
         res.json(summedUp);
-      } else return;
+      } else res.json();
     })
     .catch((error) => {
       console.log(error);
     });
 });
+
+// ### GET route => get monthly group stats ###
+router.get('/stats-months', (req, res, next) => {
+  const month = new Date().getMonth() + 1;
+  const monthResults = [];
+  return DailyCatch.find({
+    $expr: {
+      $eq: [{ $month: '$createdAt' }, month - 6]
+    }
+  })
+    .then((data) => {
+      monthResults.push(sumUpAnimals(data));
+      return DailyCatch.find({
+        $expr: {
+          $eq: [{ $month: '$createdAt' }, month - 5]
+        }
+      });
+    })
+    .then((data) => {
+      monthResults.push(sumUpAnimals(data));
+      return DailyCatch.find({
+        $expr: {
+          $eq: [{ $month: '$createdAt' }, month - 4]
+        }
+      });
+    })
+    .then((data) => {
+      monthResults.push(sumUpAnimals(data));
+      return DailyCatch.find({
+        $expr: {
+          $eq: [{ $month: '$createdAt' }, month - 3]
+        }
+      });
+    })
+    .then((data) => {
+      monthResults.push(sumUpAnimals(data));
+      return DailyCatch.find({
+        $expr: {
+          $eq: [{ $month: '$createdAt' }, month - 2]
+        }
+      });
+    })
+    .then((data) => {
+      monthResults.push(sumUpAnimals(data));
+      return DailyCatch.find({
+        $expr: {
+          $eq: [{ $month: '$createdAt' }, month - 1]
+        }
+      });
+    })
+    .then((data) => {
+      monthResults.push(sumUpAnimals(data));
+      return DailyCatch.find({
+        $expr: {
+          $eq: [{ $month: '$createdAt' }, month]
+        }
+      });
+    })
+    .then((data) => {
+      monthResults.push(sumUpAnimals(data));
+    })
+    .then(() => res.json(monthResults))
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+// ### Total sum of helped animals ###
+const sumUpAnimals = (list) => {
+  const summedUp = list.reduce((prev, curr) => {
+    return {
+      frogsFemaleWayIn: prev.frogsFemaleWayIn + curr.frogsFemaleWayIn,
+      frogsFemaleWayBack: prev.frogsFemaleWayBack + curr.frogsFemaleWayBack,
+      frogsMaleWayIn: prev.frogsMaleWayIn + curr.frogsMaleWayIn,
+      frogsMaleWayBack: prev.frogsMaleWayBack + curr.frogsMaleWayBack,
+      toadsFemaleWayIn: prev.toadsFemaleWayIn + curr.toadsFemaleWayIn,
+      toadsFemaleWayBack: prev.toadsFemaleWayBack + curr.toadsFemaleWayBack,
+      toadsMaleWayIn: prev.toadsMaleWayIn + curr.toadsMaleWayIn,
+      toadsMaleWayBack: prev.toadsMaleWayBack + curr.toadsMaleWayBack
+    };
+  });
+  const amountAnimals =
+    summedUp.frogsFemaleWayIn +
+    summedUp.frogsFemaleWayBack +
+    summedUp.frogsMaleWayIn +
+    summedUp.frogsMaleWayBack +
+    summedUp.toadsFemaleWayIn +
+    summedUp.toadsFemaleWayBack +
+    summedUp.toadsMaleWayIn +
+    summedUp.toadsMaleWayBack;
+  return amountAnimals;
+};
 
 module.exports = router;
