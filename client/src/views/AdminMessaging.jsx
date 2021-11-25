@@ -77,7 +77,7 @@ class AdminMessaging extends Component {
               <div className="divider-custom-line bg-white"></div>
             </div>
             <p className="masthead-subheading fs-4 text-white mb-0">
-              Keep the volunteers updated about the last infos.
+              Keep the volunteers updated about the latest infos.
             </p>
           </div>
         </section>
@@ -100,9 +100,15 @@ class AdminMessaging extends Component {
                 value={this.state.subject}
                 onChange={this.handleInputChange}
               />
-              <span style={{ color: 'red' }}>
-                {this.state.errors['subject']}
-              </span>
+              <div>
+                <span
+                  style={{ color: 'red' }}
+                  className="form-label mb-3 pt-3 fs-3"
+                >
+                  {this.state.errors['subject']}
+                </span>
+              </div>
+
               <label htmlFor="input-body" className="form-label mb-3 pt-3 fs-3">
                 Your message:
               </label>
@@ -116,14 +122,27 @@ class AdminMessaging extends Component {
                 rows="8"
                 onChange={this.handleInputChange}
               />
-              <span style={{ color: 'red' }}>{this.state.errors['body']}</span>
+              <div>
+                <span
+                  style={{ color: 'red' }}
+                  className="form-label mb-3 pt-3 fs-3"
+                >
+                  {this.state.errors['body']}
+                </span>
+              </div>
+
               <button className="btn btn-lg btn-warning mt-3 mb-5">
                 Send message
               </button>
+              <div>
+                <span
+                  style={{ color: 'green' }}
+                  className="form-label mb-3 pt-3 fs-3"
+                >
+                  {this.state.success['messagesent']}
+                </span>
+              </div>
 
-              <span style={{ color: 'green' }}>
-                {this.state.success['messagesent']}
-              </span>
               <div className="buttonbuffer"></div>
             </form>
           </div>
