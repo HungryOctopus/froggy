@@ -35,7 +35,6 @@ router.post('/stats', routeGuard, (req, res, next) => {
   } = req.body;
   const data = {
     volunteer: req.user._id,
-    // BEARER TOKEN & API ? Middleware
     //way in
     frogsFemaleWayIn,
     frogsMaleWayIn,

@@ -55,7 +55,7 @@ class Calendar extends Component {
             </div>
           </div>
         </section>
-        <div className="container-fluid">
+        <div className="container-fluid px-0">
           <div className="d-flex justify-content-center align-items-center flex-column mt-3">
             <CalendarComponent
               className="calendar"

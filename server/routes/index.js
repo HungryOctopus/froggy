@@ -23,4 +23,43 @@ router.post('/user-status', (req, res, next) => {
     });
 });
 
+/////// USER SETTINGS //////////
+
+// // ### GET route to show the user settings ###
+// router.get('/settings', (req, res, next) => {
+//   User.findById({
+//     firstName,
+//     secondName,
+//     //imageUrl,
+//     //location,
+//     email
+//     //passwordHashAndSalt
+//   })
+//     .then((userdata) => res.json(userdata))
+//     .catch((error) => {
+//       next(error);
+//     });
+
+// // ### PATCH route update user settings ###
+// router.patch('/settings', async (req, res, next) => {
+//   const {
+//     firstName,
+//     secondName,
+//     //imageUrl,
+//     //location,
+//     email
+//     //passwordHashAndSalt
+//   } = req.body;
+//   try {
+//     const user = await User.findByIdAndUpdate(
+//       req.User._id,
+//       { firstName, secondName, email }, //imageUrl, location, email, passwordHashAndSalt },
+//       { new: true }
+//     );
+//     res.json({ user });
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
 module.exports = router;

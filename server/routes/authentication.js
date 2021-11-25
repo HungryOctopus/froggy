@@ -66,4 +66,36 @@ router.get('/me', (req, res, next) => {
   res.json({ user });
 });
 
+/// Show & update settings
+
+router.get('/settings', (req, res, next) => {
+  const user = req.user;
+  res.json({ user });
+});
+
+router.post('/settings', (req, res, next) => {
+  console.log('BODY:', req.body);
+  const {
+    firstName,
+    secondName,
+    imageUrl,
+    email,
+    // passwordHashAndSalt: hash,
+    location
+  } = req.body;
+  const user = {
+    firstName,
+    secondName,
+    imageUrl,
+    email,
+    // passwordHashAndSalt: hash,
+    location
+  };
+
+  User.findByIdAndUpdate(user).then((response) => {
+    res.json(response);
+    console.log(user);
+  });
+});
+
 module.exports = router;
