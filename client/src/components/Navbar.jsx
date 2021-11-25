@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
   return (
@@ -30,7 +30,7 @@ const Navbar = (props) => {
             viewBox="0 1 16 16"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
             />
           </svg>
@@ -47,7 +47,7 @@ const Navbar = (props) => {
                 Home
               </Link>
             </li>
-            {props.user && props.user.role === 'admin' && (
+            {props.user && props.user.role === "admin" && (
               <li className="nav-item mx-0 mx-lg-1">
                 <Link
                   to="/adminmessaging"

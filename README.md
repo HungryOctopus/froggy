@@ -86,5 +86,5 @@ Our application is divided between a client-side ReactJS application and a serve
 ## TODO'S
 
 Jamie ==> notifications / admin model
-Gregor ==> calender
+Gregor ==> google maps api / user table + status
 Amélie ==> statistics / push to heroku & netlify

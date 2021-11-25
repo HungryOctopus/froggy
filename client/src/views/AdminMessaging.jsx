@@ -1,13 +1,13 @@
-import { Component } from 'react';
-import { adminmessage } from './../services/adminmessage';
+import { Component } from "react";
+import { adminmessage } from "./../services/adminmessage";
 class AdminMessaging extends Component {
   constructor() {
     super();
     this.state = {
-      subject: '',
-      body: '',
+      subject: "",
+      body: "",
       errors: {},
-      success: {}
+      success: {},
     };
   }
 
@@ -15,14 +15,14 @@ class AdminMessaging extends Component {
     let errors = {};
     let formIsValid = true;
     // Subject
-    if (this.state.subject === '') {
+    if (this.state.subject === "") {
       formIsValid = false;
-      errors['subject'] = 'Subject line cannot be empty';
+      errors["subject"] = "Subject line cannot be empty";
     }
     // Body
-    if (this.state.body === '') {
+    if (this.state.body === "") {
       formIsValid = false;
-      errors['body'] = 'Please include a message';
+      errors["body"] = "Please include a message";
     }
     this.setState({ errors: errors });
     return formIsValid;
@@ -31,7 +31,7 @@ class AdminMessaging extends Component {
   handleInputChange = (event) => {
     const { value, name } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
   handleFormSubmission = (event) => {
@@ -43,7 +43,7 @@ class AdminMessaging extends Component {
         console.log(error);
       });
       let success = {};
-      success['messagesent'] = 'Message sent successfully';
+      success["messagesent"] = "Message sent successfully";
       this.setState({ success: success });
     } else {
     }
@@ -68,7 +68,7 @@ class AdminMessaging extends Component {
                   width="36"
                   height="36"
                   fill="currentColor"
-                  class="bi bi-chat-right-text-fill"
+                  className="bi bi-chat-right-text-fill"
                   viewBox="0 0 16 16"
                 >
                   <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM3.5 3h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
@@ -100,8 +100,8 @@ class AdminMessaging extends Component {
                 value={this.state.subject}
                 onChange={this.handleInputChange}
               />
-              <span style={{ color: 'red' }}>
-                {this.state.errors['subject']}
+              <span style={{ color: "red" }}>
+                {this.state.errors["subject"]}
               </span>
               <label htmlFor="input-body" className="form-label mb-3 pt-3 fs-3">
                 Your message:
@@ -116,12 +116,12 @@ class AdminMessaging extends Component {
                 rows="8"
                 onChange={this.handleInputChange}
               />
-              <span style={{ color: 'red' }}>{this.state.errors['body']}</span>
+              <span style={{ color: "red" }}>{this.state.errors["body"]}</span>
               <button className="btn btn-lg btn-warning mt-3 mb-5">
                 Send message
               </button>
-              <span style={{ color: 'green' }}>
-                {this.state.success['messagesent']}
+              <span style={{ color: "green" }}>
+                {this.state.success["messagesent"]}
               </span>
             </form>
           </div>

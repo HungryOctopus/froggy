@@ -106,7 +106,7 @@ router.post('/stats-user', (req, res, next) => {
           };
         });
         res.json(summedUp);
-      }
+      } else res.json();
     })
     .catch((error) => {
       console.log(error);
