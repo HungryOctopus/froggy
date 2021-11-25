@@ -28,25 +28,37 @@ class Statistics extends Component {
   };
 
   componentDidMount() {
-    getAllStats().then((data) => {
-      return this.setState(setTotalCount(data));
-    });
-    getStatsMonths().then((data) => {
-      return this.setState(setMonthlyCount(data));
-    });
-    loadAuthenticatedUser()
-      .then((user) => {
-        this.setState({
-          user: user,
-        });
-        return user;
+    let stats = [];
+    getAllStats()
+      .then((dataAll) => {
+        return stats.push(dataAll);
       })
-      .then((user) => {
-        return getUserStats(user._id).then((data) => {
-          if (data) {
-            this.setState(setUserTypes(data));
-          }
-        });
+      .then(() => {
+        return getStatsMonths().then((dataMonths) => stats.push(dataMonths));
+      })
+      .then(() => {
+        return loadAuthenticatedUser()
+          .then((user) => {
+            this.setState({
+              user: user,
+            });
+            return user;
+          })
+          .then((user) => {
+            return getUserStats(user._id).then((userStats) => {
+              if (userStats) {
+                stats.push(userStats);
+              }
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .then(() => {
+        this.setState(setTotalCount(stats[0]));
+        this.setState(setMonthlyCount(stats[1]));
+        this.setState(setUserTypes(stats[2]));
       })
       .catch((error) => {
         console.log(error);
@@ -69,10 +81,10 @@ class Statistics extends Component {
               {this.state.user && this.state.user.firstName}'s daily catches:
             </h2>
             <ChartLine chartData={this.state.chartDataDaily} />
-            <h2>Animal types saved by the group:</h2>
-            <ChartPie chartData={this.state.chartDataAll} />
             <h2>Group's monthly amount of saved animals:</h2>
             <ChartBar chartData={this.state.chartDataMonthlyCount} />
+            <h2>Animal types saved by the group:</h2>
+            <ChartPie chartData={this.state.chartDataAll} />
           </div>
         </header>
       </>
