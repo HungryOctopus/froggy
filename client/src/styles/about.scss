@@ -1,6 +1,6 @@
 .about-container {
-  background: url('./../images/lake-3.jpg') repeat-y center fixed;
-  // background-size: cover;
+  background: url("./../images/lake-3.jpg") repeat-y center fixed;
+  background-size: cover;
   width: 100vw;
   height: 100vh;
   font-family: $font-text;
@@ -11,7 +11,7 @@
 
 @media only screen and (max-width: 800px) {
   .about-container {
-    background: url('./../images/lake-3.jpg') repeat-y center fixed;
+    background: url("./../images/lake-3.jpg") repeat-y center fixed;
     height: 180vh;
   }
 }

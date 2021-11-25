@@ -6,13 +6,9 @@ import { getAllUsers } from "../services/googlemaps";
 
 const UserPin = ({ userImg, userName }) => (
   <div>
-    {(userImg && (
-      <img
-        className="user-pin"
-        src={`../images/avatars/${userImg}`}
-        alt={userName}
-      />
-    )) || <div className="dummy-pin"></div>}
+    {(userImg && <img className="user-pin" src={userImg} alt={userName} />) || (
+      <div className="dummy-pin"></div>
+    )}
   </div>
 );
 
@@ -61,7 +57,7 @@ class GoogleMapsUsermap extends Component {
               lat={user.location.lat}
               lng={user.location.long}
               userName={user.firstName}
-              userImg={user.userImage}
+              userImg={user.imageUrl}
             />
           ))}
           <FrogMarker lat={47.9582669} lng={7.9012855} />

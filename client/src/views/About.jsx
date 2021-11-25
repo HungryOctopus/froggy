@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component } from "react";
 
 class About extends Component {
   constructor() {
@@ -48,7 +48,7 @@ class About extends Component {
                 rel="noreferrer noopener"
               >
                 <div className="about-avatar">
-                  <img src="./images/avatars/gregor.jpg" alt="Gregor" />
+                  <img src="./images/avatars/gregor.png" alt="Gregor" />
                 </div>
                 <div className="about-name">Gregor</div>
               </a>

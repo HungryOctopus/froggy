@@ -20,6 +20,9 @@ class UserTable extends Component {
       .then((users) => {
         this.setState({ users });
       })
+      .then(() => {
+        console.log(this.state.users);
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -75,12 +78,12 @@ class UserTable extends Component {
           <tbody>
             {this.state.users.map((user, index) => (
               <tr className="user-row" key={user._id}>
-                {(user.userImage && (
+                {(user.imageUrl && (
                   <td>
                     <img
                       className="user-image"
-                      src={`../images/avatars/${user.userImage}`}
-                      alt={user.fir}
+                      src={user.imageUrl}
+                      alt={user.firstName}
                     />
                   </td>
                 )) || (
