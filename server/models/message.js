@@ -13,12 +13,12 @@ const schema = new mongoose.Schema({
     type: String,
     trim: true,
     maxlength: 5000
+  },
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   }
-  // creator: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'User',
-  //   required: true
-  // },
   // date: {
   //   type: Date,
   //   required: true

@@ -1,11 +1,13 @@
 import { Component } from 'react';
 import { adminmessage } from './../services/adminmessage';
+import { loadAuthenticatedUser } from './../services/authentication';
 class AdminMessaging extends Component {
   constructor() {
     super();
     this.state = {
       subject: '',
       body: '',
+      creator: null,
       errors: {},
       success: {}
     };
@@ -34,12 +36,13 @@ class AdminMessaging extends Component {
       [name]: value
     });
   };
+
   handleFormSubmission = (event) => {
     event.preventDefault();
     if (this.handleValidation()) {
-      const { subject, body } = this.state;
-      console.log({ subject, body });
-      adminmessage({ subject, body }).catch((error) => {
+      const { subject, body, creator } = this.state;
+      console.log({ subject, body, creator });
+      adminmessage({ subject, body, creator }).catch((error) => {
         console.log(error);
       });
       let success = {};
@@ -49,7 +52,14 @@ class AdminMessaging extends Component {
     }
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    loadAuthenticatedUser().then((user) => {
+      this.setState({
+        creator: user
+      });
+      return user;
+    });
+  }
 
   render() {
     return (
