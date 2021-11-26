@@ -71,25 +71,47 @@ class Statistics extends Component {
   render() {
     return (
       <>
-        <header className="masthead bg-white text-dark text-center mt-5 pt-5">
-          <div className="container d-flex align-items-center flex-column">
-            <h2>Total amount of saved animals:</h2>
-            <ChartTotal chartData={this.state.chartDataTotal} />
-            <h2>
-              Animal types saved by{" "}
-              {this.props.user && this.props.user.firstName}:
-            </h2>
-            <ChartBar chartData={this.state.chartDataIndividual} />
-            <h2>
-              {this.props.user && this.props.user.firstName}'s daily catches:
-            </h2>
-            <ChartLine chartData={this.state.chartDataDaily} />
-            <h2>Group's monthly amount of saved animals:</h2>
-            <ChartBar chartData={this.state.chartDataMonthlyCount} />
-            <h2>Animal types saved by the group:</h2>
-            <ChartPie chartData={this.state.chartDataAll} />
+        <div class="container-fluid container-stats mt-4">
+          <div class="row row-stats">
+            <div class="col stats-col">
+              <div className="card stats-card">
+                <h2>Total amount of saved animals:</h2>
+                <ChartTotal chartData={this.state.chartDataTotal} />
+              </div>
+            </div>
+            <div class="col stats-col">
+              <div className="card stats-card">
+                <h2>
+                  Animal types saved by{" "}
+                  {this.props.user && this.props.user.firstName}:
+                </h2>
+                <ChartBar chartData={this.state.chartDataIndividual} />
+              </div>
+            </div>
+            <div class="col stats-col">
+              <div className="card stats-card">
+                <h2>
+                  {this.props.user && this.props.user.firstName}'s daily
+                  catches:
+                </h2>
+                <ChartLine chartData={this.state.chartDataDaily} />
+              </div>
+            </div>
+            <div class="col stats-col">
+              <div className="card stats-card">
+                <h2>Group's monthly amount of saved animals:</h2>
+                <ChartBar chartData={this.state.chartDataMonthlyCount} />
+              </div>
+            </div>
+            <div class="col stats-col">
+              <div className="card stats-card">
+                <h2>Animal types saved by the group:</h2>
+                <ChartPie chartData={this.state.chartDataAll} />
+              </div>
+            </div>
+            <div class="col stats-col d-none d-lg-block"></div>
           </div>
-        </header>
+        </div>
       </>
     );
   }

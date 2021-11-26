@@ -1,3 +1,27 @@
-.chart {
-  width: 500px;
+.container-stats {
+  background: url("./../images/lake-3.jpg") repeat-y center fixed;
+  background-size: cover;
+  width: 100vw;
+  font-family: $font-text;
+  justify-content: center;
+  padding: 8rem 0;
+}
+
+.row-stats {
+}
+
+.stats-card {
+  width: 45em !important;
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: rgba(46, 46, 46, 0.897) !important;
+  color: $white;
+  h2 {
+    margin: 0 0 0.5em;
+  }
+}
+
+.stats-col {
+  display: flex;
+  justify-content: center;
 }
