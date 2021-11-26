@@ -42,6 +42,17 @@ export const getStatsMonths = () => {
     });
 };
 
+export const getUserDailies = () => {
+  return api
+    .post("/stats-daily")
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
 export const setTotalCount = (data) => {
   return {
     chartDataAll: {

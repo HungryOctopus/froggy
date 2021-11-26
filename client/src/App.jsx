@@ -1,27 +1,27 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './views/Home';
-import Navbar from './components/Navbar';
-import Users from './views/Users';
-import Calendar from './views/Calendar';
-import Signup from './views/Signup';
-import Login from './views/Login';
-import TotalCounter from './views/TotalCounter';
-import Statistics from './views/Statistics';
-import Footer from './components/Footer';
-import Contact from './views/Contact';
-import About from './views/About';
-import { Component } from 'react';
-import { signOut, loadAuthenticatedUser } from './services/authentication';
-import ProtectedRoute from './components/ProtectedRoute';
-import AdminMessaging from './views/AdminMessaging';
-import Settings from './views/Settings';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from "./views/Home";
+import Navbar from "./components/Navbar";
+import Users from "./views/Users";
+import Calendar from "./views/Calendar";
+import Signup from "./views/Signup";
+import Login from "./views/Login";
+import TotalCounter from "./views/TotalCounter";
+import Statistics from "./views/Statistics";
+import Footer from "./components/Footer";
+import Contact from "./views/Contact";
+import About from "./views/About";
+import { Component } from "react";
+import { signOut, loadAuthenticatedUser } from "./services/authentication";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminMessaging from "./views/AdminMessaging";
+import Settings from "./views/Settings";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       user: null,
-      loaded: false
+      loaded: false,
     };
   }
 
@@ -77,7 +77,7 @@ class App extends Component {
             path="/statistics"
             redirect="/signup"
             authorized={!this.state.loaded || this.state.user}
-            component={Statistics}
+            render={(props) => <Statistics {...props} user={this.state.user} />}
             exact
           />
           <ProtectedRoute

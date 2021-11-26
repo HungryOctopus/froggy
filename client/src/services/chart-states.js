@@ -41,7 +41,7 @@ export const userDailyState = () => {
     datasets: [
       {
         label: "frogs",
-        data: [23, 35, 58, 79, 123, 201],
+        data: [0, 0, 0, 0, 0, 0],
         fill: false,
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgba(255, 99, 132, 0.2)",
@@ -49,7 +49,7 @@ export const userDailyState = () => {
       },
       {
         label: "toads",
-        data: [36, 59, 82, 126, 212, 245],
+        data: [0, 0, 0, 0, 0, 0],
         fill: false,
         backgroundColor: "rgb(54, 162, 235)",
         borderColor: "rgba(54, 162, 235, 0.2)",
