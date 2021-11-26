@@ -208,7 +208,7 @@ router.get('/stats-months', (req, res, next) => {
 // ### POST route => get daily user stats ###
 router.post('/stats-daily', (req, res, next) => {
   const { user } = req.body;
-  const sumTypesArr = [];
+  const sumTypesArr = [[], [], [], []];
   let date1 = new Date();
   let date2 = new Date();
   date1.setDate(date1.getDate() - 5);
@@ -220,9 +220,10 @@ router.post('/stats-daily', (req, res, next) => {
       $lt: date2
     }
   })
-    .then((result) =>
-      sumTypesArr.push((result.length && sumUpTypes(result)) || [0, 0, 0, 0])
-    )
+    .then((result) => {
+      const resultArr = (result.length && sumUpTypes(result)) || [0, 0, 0, 0];
+      resultArr.forEach((el, i) => sumTypesArr[i].push(el));
+    })
     .then(() => {
       date1 = new Date();
       date2 = new Date();
@@ -236,9 +237,10 @@ router.post('/stats-daily', (req, res, next) => {
         }
       });
     })
-    .then((result) =>
-      sumTypesArr.push((result.length && sumUpTypes(result)) || [0, 0, 0, 0])
-    )
+    .then((result) => {
+      const resultArr = (result.length && sumUpTypes(result)) || [0, 0, 0, 0];
+      resultArr.forEach((el, i) => sumTypesArr[i].push(el));
+    })
     .then(() => {
       date1 = new Date();
       date2 = new Date();
@@ -252,9 +254,10 @@ router.post('/stats-daily', (req, res, next) => {
         }
       });
     })
-    .then((result) =>
-      sumTypesArr.push((result.length && sumUpTypes(result)) || [0, 0, 0, 0])
-    )
+    .then((result) => {
+      const resultArr = (result.length && sumUpTypes(result)) || [0, 0, 0, 0];
+      resultArr.forEach((el, i) => sumTypesArr[i].push(el));
+    })
     .then(() => {
       date1 = new Date();
       date2 = new Date();
@@ -268,9 +271,10 @@ router.post('/stats-daily', (req, res, next) => {
         }
       });
     })
-    .then((result) =>
-      sumTypesArr.push((result.length && sumUpTypes(result)) || [0, 0, 0, 0])
-    )
+    .then((result) => {
+      const resultArr = (result.length && sumUpTypes(result)) || [0, 0, 0, 0];
+      resultArr.forEach((el, i) => sumTypesArr[i].push(el));
+    })
     .then(() => {
       date1 = new Date();
       date2 = new Date();
@@ -284,9 +288,10 @@ router.post('/stats-daily', (req, res, next) => {
         }
       });
     })
-    .then((result) =>
-      sumTypesArr.push((result.length && sumUpTypes(result)) || [0, 0, 0, 0])
-    )
+    .then((result) => {
+      const resultArr = (result.length && sumUpTypes(result)) || [0, 0, 0, 0];
+      resultArr.forEach((el, i) => sumTypesArr[i].push(el));
+    })
     .then(() => {
       const date = new Date();
       return DailyCatch.find({
@@ -296,11 +301,12 @@ router.post('/stats-daily', (req, res, next) => {
         }
       });
     })
-    .then((result) =>
-      sumTypesArr.push((result.length && sumUpTypes(result)) || [0, 0, 0, 0])
-    )
+    .then((result) => {
+      const resultArr = (result.length && sumUpTypes(result)) || [0, 0, 0, 0];
+      resultArr.forEach((el, i) => sumTypesArr[i].push(el));
+    })
     .then(() => {
-      return res.json();
+      return res.json(sumTypesArr);
     });
 });
 

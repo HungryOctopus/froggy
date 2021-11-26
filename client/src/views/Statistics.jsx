@@ -4,18 +4,25 @@ import ChartBar from "../components/ChartBar";
 import ChartPie from "../components/ChartPie";
 import ChartLine from "../components/ChartLine";
 import ChartTotal from "../components/ChartTotal";
-import { getAllStats } from "./../services/statistics";
-import { getStatsMonths } from "./../services/statistics";
-import { getUserDailies } from "./../services/statistics";
-import { getUserStats } from "./../services/statistics";
-import { setTotalCount } from "./../services/statistics";
-import { setMonthlyCount } from "./../services/statistics";
-import { setUserTypes } from "./../services/statistics";
-import { totalCountState } from "./../services/chart-states";
-import { typesUserState } from "./../services/chart-states";
-import { userDailyState } from "./../services/chart-states";
-import { animalTypesState } from "./../services/chart-states";
-import { monthlyCatchState } from "./../services/chart-states";
+
+import {
+  totalCountState,
+  typesUserState,
+  userDailyState,
+  animalTypesState,
+  monthlyCatchState,
+} from "./../services/chart-states";
+
+import {
+  getAllStats,
+  getStatsMonths,
+  getUserDailies,
+  getUserStats,
+  setTotalCount,
+  setMonthlyCount,
+  setUserDailies,
+  setUserTypes,
+} from "./../services/statistics";
 
 class Statistics extends Component {
   constructor(props) {
@@ -51,9 +58,9 @@ class Statistics extends Component {
         });
       })
       .then(() => {
-        console.log(this.state);
         this.setState(setTotalCount(stats[0]));
         this.setState(setMonthlyCount(stats[1]));
+        this.setState(setUserDailies(stats[2]));
         this.setState(setUserTypes(stats[3]));
       })
       .catch((error) => {

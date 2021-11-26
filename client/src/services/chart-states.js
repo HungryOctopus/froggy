@@ -40,7 +40,7 @@ export const userDailyState = () => {
     labels: ["01/03", "02/03", "03/03", "04/03", "05/03", "06/03"],
     datasets: [
       {
-        label: "frogs",
+        label: "Female frogs",
         data: [0, 0, 0, 0, 0, 0],
         fill: false,
         backgroundColor: "rgb(255, 99, 132)",
@@ -48,11 +48,27 @@ export const userDailyState = () => {
         yAxisID: "y-axis-1",
       },
       {
-        label: "toads",
+        label: "Male frogs",
         data: [0, 0, 0, 0, 0, 0],
         fill: false,
         backgroundColor: "rgb(54, 162, 235)",
         borderColor: "rgba(54, 162, 235, 0.2)",
+        yAxisID: "y-axis-2",
+      },
+      {
+        label: "Female toads",
+        data: [0, 0, 0, 0, 0, 0],
+        fill: false,
+        backgroundColor: "rgb(255, 206, 86)",
+        borderColor: "rgba(255, 206, 86, 0.2)",
+        yAxisID: "y-axis-2",
+      },
+      {
+        label: "Male toads",
+        data: [0, 0, 0, 0, 0, 0],
+        fill: false,
+        backgroundColor: "rgb(75, 192, 192)",
+        borderColor: "rgba(75, 192, 192, 0.2)",
         yAxisID: "y-axis-2",
       },
     ],
