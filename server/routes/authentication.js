@@ -67,32 +67,36 @@ router.get('/me', (req, res, next) => {
 });
 
 router.post('/update', (req, res, next) => {
-  console.log(req.body);
-  const {
-    firstName,
-    secondName,
-    // imageUrl,
-    email
-    // passwordHashAndSalt: hash,
-    // location
-  } = req.body;
-  // const user = {
-  //   firstName,
-  //   secondName,
-  //   imageUrl,
-  //   email,
-  // passwordHashAndSalt: hash,
-  //   location
-  // };
-  console.log(firstName);
-  User.findByIdAndUpdate(
-    req.body.id,
-    { firstName, secondName, email },
-    { new: true }
-  ).then((response) => {
-    res.json(response);
-    // console.log(response);
-  });
+  const id = req.session.userId;
+  const { firstName, secondName, email, password, location } = req.body;
+  console.log(location, 'll');
+  bcryptjs
+    .hash(password, 10)
+    .then((hash) => {
+      return User.findById(id).then((user) => {
+        return hash === user.passwordHashAndSalt
+          ? user.passwordHashAndSalt
+          : hash;
+      });
+    })
+    .then((passUpdate) => {
+      return User.findByIdAndUpdate(
+        id,
+        {
+          firstName,
+          secondName,
+          email,
+          passwordHashAndSalt: passUpdate,
+          location
+        },
+        { new: true }
+      ).then((response) => {
+        res.json(response);
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 module.exports = router;

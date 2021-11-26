@@ -41,9 +41,9 @@ class Settings extends Component {
     }
 
     // Password
-    // if (this.state.password === "") {
+    // if (this.state.password.length > 0) {
     //   formIsValid = false;
-    //   errors["password"] = "Please include your password";
+    //   errors["password"] = "Please choose a secure password";
     // }
 
     this.setState({ errors: errors });
@@ -52,11 +52,12 @@ class Settings extends Component {
 
   componentDidMount() {
     if (this.props.user) {
-      const { firstName, secondName, email } = this.props.user;
+      const { firstName, secondName, email, location } = this.props.user;
       this.setState({
         firstName,
         secondName,
         email,
+        location,
       });
     }
   }
@@ -93,16 +94,15 @@ class Settings extends Component {
         secondName,
         // imageUrl,
         email,
-        // password,
+        password,
         // role,
-        // location,
+        location,
       } = this.state;
-      const id = this.props.user._id;
-      const body = { id, firstName, secondName, email };
+      const body = { firstName, secondName, email, password, location };
+      console.log(location);
       Promise.resolve(updateProfile(body))
         .then((user) => {
-          // console.log(user, "back");
-          // this.props.onAuthenticationChange(user);
+          this.props.onAuthenticationChange(user);
         })
         .catch((error) => {
           console.log(error);
@@ -209,7 +209,7 @@ class Settings extends Component {
                     <input
                       id="input-password"
                       type="password"
-                      placeholder="A Secure Password"
+                      placeholder="Change your password"
                       className="form-control"
                       name="password"
                       value={this.state.password}

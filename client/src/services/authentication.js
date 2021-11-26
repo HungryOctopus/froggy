@@ -23,6 +23,7 @@ export const loadAuthenticatedUser = () => {
 };
 
 export const updateProfile = (body) => {
-  return api.post("/authentication/update", body);
-  // .then((response) => console.log(response));
+  return api
+    .post("/authentication/update", body)
+    .then((response) => response.data);
 };
