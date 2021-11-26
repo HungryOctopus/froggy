@@ -205,6 +205,105 @@ router.get('/stats-months', (req, res, next) => {
     });
 });
 
+// ### POST route => get daily user stats ###
+router.post('/stats-daily', (req, res, next) => {
+  const { user } = req.body;
+  const sumTypesArr = [];
+  let date1 = new Date();
+  let date2 = new Date();
+  date1.setDate(date1.getDate() - 5);
+  date2.setDate(date2.getDate() - 4);
+  return DailyCatch.find({
+    volunteer: user,
+    createdAt: {
+      $gte: date1,
+      $lt: date2
+    }
+  })
+    .then((result) =>
+      sumTypesArr.push((result.length && sumUpTypes(result)) || [0, 0, 0, 0])
+    )
+    .then(() => {
+      date1 = new Date();
+      date2 = new Date();
+      date1.setDate(date1.getDate() - 4);
+      date2.setDate(date2.getDate() - 3);
+      return DailyCatch.find({
+        volunteer: user,
+        createdAt: {
+          $gte: date1,
+          $lt: date2
+        }
+      });
+    })
+    .then((result) =>
+      sumTypesArr.push((result.length && sumUpTypes(result)) || [0, 0, 0, 0])
+    )
+    .then(() => {
+      date1 = new Date();
+      date2 = new Date();
+      date1.setDate(date1.getDate() - 3);
+      date2.setDate(date2.getDate() - 2);
+      return DailyCatch.find({
+        volunteer: user,
+        createdAt: {
+          $gte: date1,
+          $lt: date2
+        }
+      });
+    })
+    .then((result) =>
+      sumTypesArr.push((result.length && sumUpTypes(result)) || [0, 0, 0, 0])
+    )
+    .then(() => {
+      date1 = new Date();
+      date2 = new Date();
+      date1.setDate(date1.getDate() - 2);
+      date2.setDate(date2.getDate() - 1);
+      return DailyCatch.find({
+        volunteer: user,
+        createdAt: {
+          $gte: date1,
+          $lt: date2
+        }
+      });
+    })
+    .then((result) =>
+      sumTypesArr.push((result.length && sumUpTypes(result)) || [0, 0, 0, 0])
+    )
+    .then(() => {
+      date1 = new Date();
+      date2 = new Date();
+      date1.setDate(date1.getDate() - 1);
+      date2.setDate(date2.getDate() - 0);
+      return DailyCatch.find({
+        volunteer: user,
+        createdAt: {
+          $gte: date1,
+          $lt: date2
+        }
+      });
+    })
+    .then((result) =>
+      sumTypesArr.push((result.length && sumUpTypes(result)) || [0, 0, 0, 0])
+    )
+    .then(() => {
+      const date = new Date();
+      return DailyCatch.find({
+        volunteer: user,
+        createdAt: {
+          $gte: date
+        }
+      });
+    })
+    .then((result) =>
+      sumTypesArr.push((result.length && sumUpTypes(result)) || [0, 0, 0, 0])
+    )
+    .then(() => {
+      return res.json();
+    });
+});
+
 // ### Total sum of helped animals ###
 const sumUpAnimals = (list) => {
   const summedUp = list.reduce((prev, curr) => {
@@ -228,6 +327,29 @@ const sumUpAnimals = (list) => {
     summedUp.toadsFemaleWayBack +
     summedUp.toadsMaleWayIn +
     summedUp.toadsMaleWayBack;
+  return amountAnimals;
+};
+
+// ### Total sum of helped animals by type ###
+const sumUpTypes = (list) => {
+  const summedUp = list.reduce((prev, curr) => {
+    return {
+      frogsFemaleWayIn: prev.frogsFemaleWayIn + curr.frogsFemaleWayIn,
+      frogsFemaleWayBack: prev.frogsFemaleWayBack + curr.frogsFemaleWayBack,
+      frogsMaleWayIn: prev.frogsMaleWayIn + curr.frogsMaleWayIn,
+      frogsMaleWayBack: prev.frogsMaleWayBack + curr.frogsMaleWayBack,
+      toadsFemaleWayIn: prev.toadsFemaleWayIn + curr.toadsFemaleWayIn,
+      toadsFemaleWayBack: prev.toadsFemaleWayBack + curr.toadsFemaleWayBack,
+      toadsMaleWayIn: prev.toadsMaleWayIn + curr.toadsMaleWayIn,
+      toadsMaleWayBack: prev.toadsMaleWayBack + curr.toadsMaleWayBack
+    };
+  });
+  const amountAnimals = [
+    summedUp.frogsFemaleWayIn + summedUp.frogsFemaleWayBack,
+    summedUp.frogsMaleWayIn + summedUp.frogsMaleWayBack,
+    summedUp.toadsFemaleWayIn + summedUp.toadsFemaleWayBack,
+    summedUp.toadsMaleWayIn + summedUp.toadsMaleWayBack
+  ];
   return amountAnimals;
 };
 

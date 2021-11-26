@@ -4,10 +4,10 @@ import ChartBar from "../components/ChartBar";
 import ChartPie from "../components/ChartPie";
 import ChartLine from "../components/ChartLine";
 import ChartTotal from "../components/ChartTotal";
-import { loadAuthenticatedUser } from "./../services/authentication";
-import { getUserStats } from "./../services/statistics";
 import { getAllStats } from "./../services/statistics";
 import { getStatsMonths } from "./../services/statistics";
+import { getUserDailies } from "./../services/statistics";
+import { getUserStats } from "./../services/statistics";
 import { setTotalCount } from "./../services/statistics";
 import { setMonthlyCount } from "./../services/statistics";
 import { setUserTypes } from "./../services/statistics";
@@ -18,14 +18,16 @@ import { animalTypesState } from "./../services/chart-states";
 import { monthlyCatchState } from "./../services/chart-states";
 
 class Statistics extends Component {
-  state = {
-    user: null,
-    chartDataTotal: totalCountState(),
-    chartDataIndividual: typesUserState(),
-    chartDataDaily: userDailyState(),
-    chartDataAll: animalTypesState(),
-    chartDataMonthlyCount: monthlyCatchState(),
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      chartDataTotal: totalCountState(),
+      chartDataIndividual: typesUserState(),
+      chartDataDaily: userDailyState(),
+      chartDataAll: animalTypesState(),
+      chartDataMonthlyCount: monthlyCatchState(),
+    };
+  }
 
   componentDidMount() {
     let stats = [];
@@ -37,28 +39,22 @@ class Statistics extends Component {
         return getStatsMonths().then((dataMonths) => stats.push(dataMonths));
       })
       .then(() => {
-        return loadAuthenticatedUser()
-          .then((user) => {
-            this.setState({
-              user: user,
-            });
-            return user;
-          })
-          .then((user) => {
-            return getUserStats(user._id).then((userStats) => {
-              if (userStats) {
-                stats.push(userStats);
-              }
-            });
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        return getUserDailies(this.props.user._id).then((userDailies) =>
+          stats.push(userDailies)
+        );
       })
       .then(() => {
+        return getUserStats(this.props.user._id).then((userStats) => {
+          if (userStats) {
+            stats.push(userStats);
+          }
+        });
+      })
+      .then(() => {
+        console.log(this.state);
         this.setState(setTotalCount(stats[0]));
         this.setState(setMonthlyCount(stats[1]));
-        this.setState(setUserTypes(stats[2]));
+        this.setState(setUserTypes(stats[3]));
       })
       .catch((error) => {
         console.log(error);
@@ -74,11 +70,11 @@ class Statistics extends Component {
             <ChartTotal chartData={this.state.chartDataTotal} />
             <h2>
               Animal types saved by{" "}
-              {this.state.user && this.state.user.firstName}:
+              {this.props.user && this.props.user.firstName}:
             </h2>
             <ChartBar chartData={this.state.chartDataIndividual} />
             <h2>
-              {this.state.user && this.state.user.firstName}'s daily catches:
+              {this.props.user && this.props.user.firstName}'s daily catches:
             </h2>
             <ChartLine chartData={this.state.chartDataDaily} />
             <h2>Group's monthly amount of saved animals:</h2>

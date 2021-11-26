@@ -42,9 +42,10 @@ export const getStatsMonths = () => {
     });
 };
 
-export const getUserDailies = () => {
+export const getUserDailies = (userId) => {
+  const body = { user: userId };
   return api
-    .post("/stats-daily")
+    .post("/stats-daily", body)
     .then((response) => {
       return response.data;
     })
