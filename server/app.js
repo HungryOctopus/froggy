@@ -60,7 +60,7 @@ app.use('/', baseRouter);
 app.use('/', googlemapsRouter);
 app.use('/', adminmessageRouter);
 app.use('/', contactRouter);
-app.use('/authentication', authenticationRouter);
+app.use('/', authenticationRouter);
 app.use('/api', pictureRouter);
 
 // Handling route for the statistics

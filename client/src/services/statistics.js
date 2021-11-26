@@ -137,42 +137,37 @@ export const setMonthlyCount = (data) => {
   };
 };
 
+// ### Create date array for the last 6 days ###
+export const getDates = () => {
+  const dayResults = [];
+  for (let i = 5; i >= 0; i--) {
+    const date = new Date();
+    date.setDate(date.getDate() - i);
+    dayResults.push(`${date.getDate()}/${date.getMonth() + 1}`);
+  }
+  return dayResults;
+};
+
 export const setUserDailies = (data) => {
   return {
     chartDataDaily: {
-      labels: ["01/03", "02/03", "03/03", "04/03", "05/03", "06/03"],
+      labels: getDates(),
       datasets: [
         {
           label: "Female frogs",
           data: data[0],
-          fill: false,
-          backgroundColor: "rgb(255, 99, 132)",
-          borderColor: "rgba(255, 99, 132, 0.2)",
-          yAxisID: "y-axis-1",
         },
         {
           label: "Male frogs",
           data: data[1],
-          fill: false,
-          backgroundColor: "rgb(54, 162, 235)",
-          borderColor: "rgba(54, 162, 235, 0.2)",
-          yAxisID: "y-axis-2",
         },
         {
           label: "Female toads",
           data: data[2],
-          fill: false,
-          backgroundColor: "rgb(255, 206, 86)",
-          borderColor: "rgba(255, 206, 86, 0.2)",
-          yAxisID: "y-axis-2",
         },
         {
           label: "Male toads",
           data: data[3],
-          fill: false,
-          backgroundColor: "rgb(75, 192, 192)",
-          borderColor: "rgba(75, 192, 192, 0.2)",
-          yAxisID: "y-axis-2",
         },
       ],
     },

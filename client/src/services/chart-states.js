@@ -37,7 +37,6 @@ export const typesUserState = () => {
 // ### Initial user daily catch state ###
 export const userDailyState = () => {
   return {
-    labels: ["01/03", "02/03", "03/03", "04/03", "05/03", "06/03"],
     datasets: [
       {
         label: "Female frogs",

@@ -1,7 +1,7 @@
 import api from "./api";
 
 export const signUp = (body) => {
-  return api.post("/authentication/sign-up", body).then((response) => {
+  return api.post("/sign-up", body).then((response) => {
     // window.location.href = '/counter';
     const data = response.data;
     const user = data.user;
@@ -10,20 +10,16 @@ export const signUp = (body) => {
 };
 
 export const signIn = (body) =>
-  api
-    .post("/authentication/sign-in", body)
-    .then((response) => response.data.user);
+  api.post("/sign-in", body).then((response) => response.data.user);
 
 export const signOut = () => {
-  return api.post("/authentication/sign-out");
+  return api.post("/sign-out");
 };
 
 export const loadAuthenticatedUser = () => {
-  return api.get("/authentication/me").then((response) => response.data.user);
+  return api.get("/me").then((response) => response.data.user);
 };
 
 export const updateProfile = (body) => {
-  return api
-    .post("/authentication/update", body)
-    .then((response) => response.data);
+  return api.post("/update", body).then((response) => response.data);
 };
