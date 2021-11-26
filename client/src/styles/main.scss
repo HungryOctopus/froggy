@@ -97,9 +97,9 @@ a.navbar-brand:focus {
 .nav-link {
   display: block;
   color: $dark !important;
-  font-weight: 700;
+  font-weight: 600;
   //margin-left: 1em;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 @media (prefers-reduced-motion: reduce) {
   .nav-link {

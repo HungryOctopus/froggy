@@ -12,7 +12,7 @@ const Navbar = (props) => {
           className="navbar-toggler text-uppercase rounded py-2"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarResponsive"
+          data-bs-target=".navbar-collapse"
           aria-controls="navbarResponsive"
           aria-expanded="false"
           aria-label="Toggle navigation"
@@ -34,17 +34,13 @@ const Navbar = (props) => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarResponsive">
-          <Link to="/" className="navbar-brand mt-2">
+          <Link to="/" className="navbar-brand">
             Froggy
           </Link>
 
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto mx-lg-3">
             <li className="nav-item mx-0 mx-lg-1">
-              <Link
-                to="/"
-                className="nav-link py-3 px-1 px-lg-3 rounded"
-                aria-current="page"
-              >
+              <Link to="/" className="nav-link py-3 px-1 px-lg-3 rounded">
                 Home
               </Link>
             </li>
@@ -90,17 +86,7 @@ const Navbar = (props) => {
               </li>
             )}
 
-            {(props.user && (
-              <li className="nav-item mx-0 mx-lg-1">
-                <Link
-                  to="/login"
-                  className="nav-link py-3 px-1 px-lg-3 rounded"
-                  onClick={props.onSignOut}
-                >
-                  Sign out
-                </Link>
-              </li>
-            )) || (
+            {!props.user && (
               <>
                 <li className="nav-item mx-0 mx-lg-1">
                   <Link
@@ -125,13 +111,37 @@ const Navbar = (props) => {
 
         {/* ICONS */}
 
+        {/* Admin messaging */}
+
         <div className="navbar">
-          <ul className="navbar-nav ms-auto d-flex flex-row justify-content-end">
+          <ul className="navbar-nav ms-auto d-flex flex-row align-items-center justify-content-end">
+            {props.user && props.user.role === 'admin' && (
+              <li className="nav-item mx-0 mx-lg-0">
+                <Link
+                  to="/adminmessaging"
+                  className="nav-link py-1 px-1 px-lg-2 rounded"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="26"
+                    height="24"
+                    fill="currentColor"
+                    className="bi bi-chat-right-text-fill"
+                    viewBox="0 1 16 16"
+                  >
+                    <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM3.5 3h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
+                  </svg>
+                </Link>
+              </li>
+            )}
+
+            {/* Settings */}
+
             {props.user && (
-              <li className="nav-item mx-0 mx-lg-1">
+              <li className="nav-item mx-0 mx-lg-0">
                 <Link
                   to="/settings"
-                  className="nav-link py-2 px-2 px-lg-3 rounded"
+                  className="nav-link py-1 px-1 px-lg-2 rounded"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -147,22 +157,16 @@ const Navbar = (props) => {
               </li>
             )}
 
-            {props.user && props.user.role === 'admin' && (
-              <li className="nav-item mx-0 mx-lg-1">
+            {/* Logout */}
+
+            {props.user && (
+              <li className="nav-item mx-0 mx-lg-0">
                 <Link
-                  to="/adminmessaging"
-                  className="nav-link py-2 px-2 px-lg-3 rounded"
+                  to="/login"
+                  className="nav-link py-1 px-1 px-lg-2 rounded"
+                  onClick={props.onSignOut}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="26"
-                    height="24"
-                    fill="currentColor"
-                    className="bi bi-chat-right-text-fill"
-                    viewBox="0 1 16 16"
-                  >
-                    <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM3.5 3h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1zm0 2.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1z" />
-                  </svg>
+                  <i className="fas fa-power-off"></i>
                 </Link>
               </li>
             )}
