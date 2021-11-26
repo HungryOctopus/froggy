@@ -94,13 +94,19 @@ class App extends Component {
             component={Calendar}
             exact
           />
-          {/* <ProtectedRoute
+          <ProtectedRoute
             path="/settings"
             redirect="/signup"
             authorized={!this.state.loaded || this.state.user}
-            component={Settings}
+            render={(props) => (
+              <Settings
+                {...props}
+                onAuthenticationChange={this.handleAuthenticationChange}
+                user={this.state.user}
+              />
+            )}
             exact
-          /> */}
+          />
           <ProtectedRoute
             path="/signup"
             authorized={!this.state.loaded || !this.state.user}
@@ -125,7 +131,6 @@ class App extends Component {
             )}
             exact
           />
-          <Route path="/settings" component={Settings} exact />
           <Route path="/contact" component={Contact} exact />
           <Route path="/about" component={About} exact />
           <Route path="/" component={Home} exact />

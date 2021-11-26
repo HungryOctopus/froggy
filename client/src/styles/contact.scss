@@ -1,17 +1,11 @@
 .contact-form {
-  background: url('./../images/lake-3.jpg') no-repeat center fixed;
+  background: url("./../images/lake-3.jpg") no-repeat center fixed;
   background-size: cover;
   width: 100%;
-  height: calc(100vh - 6rem);
   font-family: $font-text;
-  margin: 0em;
-  padding: 0em;
+  margin: 0;
+  padding: 0 0 100%;
 }
-
-// .container {
-//   height: 100%;
-//   align-content: center;
-// }
 
 .contact-header {
   color: $white;

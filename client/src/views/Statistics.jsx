@@ -71,15 +71,15 @@ class Statistics extends Component {
   render() {
     return (
       <>
-        <div class="container-fluid container-stats mt-4">
-          <div class="row row-stats">
-            <div class="col stats-col">
+        <div className="container-fluid container-stats mt-4">
+          <div className="row row-stats">
+            <div className="col stats-col">
               <div className="card stats-card">
                 <h2>Total amount of saved animals:</h2>
                 <ChartTotal chartData={this.state.chartDataTotal} />
               </div>
             </div>
-            <div class="col stats-col">
+            <div className="col stats-col">
               <div className="card stats-card">
                 <h2>
                   Animal types saved by{" "}
@@ -88,7 +88,7 @@ class Statistics extends Component {
                 <ChartBar chartData={this.state.chartDataIndividual} />
               </div>
             </div>
-            <div class="col stats-col">
+            <div className="col stats-col">
               <div className="card stats-card">
                 <h2>
                   {this.props.user && this.props.user.firstName}'s daily
@@ -97,19 +97,19 @@ class Statistics extends Component {
                 <ChartLine chartData={this.state.chartDataDaily} />
               </div>
             </div>
-            <div class="col stats-col">
+            <div className="col stats-col">
               <div className="card stats-card">
                 <h2>Group's monthly amount of saved animals:</h2>
                 <ChartBar chartData={this.state.chartDataMonthlyCount} />
               </div>
             </div>
-            <div class="col stats-col">
+            <div className="col stats-col">
               <div className="card stats-card">
                 <h2>Animal types saved by the group:</h2>
                 <ChartPie chartData={this.state.chartDataAll} />
               </div>
             </div>
-            <div class="col stats-col d-none d-lg-block"></div>
+            <div className="col stats-col d-none d-lg-block"></div>
           </div>
         </div>
       </>

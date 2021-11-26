@@ -66,35 +66,32 @@ router.get('/me', (req, res, next) => {
   res.json({ user });
 });
 
-/// Show & update settings
-
-router.get('/settings', (req, res, next) => {
-  const user = req.user;
-  res.json({ user });
-});
-
-router.post('/settings', (req, res, next) => {
-  console.log('BODY:', req.body);
+router.post('/update', (req, res, next) => {
+  console.log(req.body);
   const {
     firstName,
     secondName,
-    imageUrl,
-    email,
+    // imageUrl,
+    email
     // passwordHashAndSalt: hash,
-    location
+    // location
   } = req.body;
-  const user = {
-    firstName,
-    secondName,
-    imageUrl,
-    email,
-    // passwordHashAndSalt: hash,
-    location
-  };
-
-  User.findByIdAndUpdate(user).then((response) => {
+  // const user = {
+  //   firstName,
+  //   secondName,
+  //   imageUrl,
+  //   email,
+  // passwordHashAndSalt: hash,
+  //   location
+  // };
+  console.log(firstName);
+  User.findByIdAndUpdate(
+    req.body.id,
+    { firstName, secondName, email },
+    { new: true }
+  ).then((response) => {
     res.json(response);
-    console.log(user);
+    // console.log(response);
   });
 });
 
