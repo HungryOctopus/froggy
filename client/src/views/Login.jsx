@@ -61,7 +61,7 @@ class Login extends Component {
       // same styling as in the contact form
       <div className="contact-form">
         <div className="container contact-container align-items-center">
-          <div className="d-flex justify-content-center align-items-center h-100">
+          <div className="d-flex justify-content-center align-items-center">
             <div className="card contact-card pb-5">
               <div className="card-header contact-header">
                 <h2>Log in</h2>

@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = (props) => {
   return (
@@ -7,10 +7,7 @@ const Navbar = (props) => {
       className="navbar navbar-expand-lg bg-orange text-uppercase fixed-top justify-content-around"
       id="mainNav"
     >
-      <div className="container d-flex flex-row justify-content-around">
-        <Link to="/" className="navbar-brand ">
-          Froggy
-        </Link>
+      <div className="container-fluid">
         <button
           className="navbar-toggler text-uppercase rounded py-2"
           type="button"
@@ -37,6 +34,10 @@ const Navbar = (props) => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarResponsive">
+          <Link to="/" className="navbar-brand mt-2">
+            Froggy
+          </Link>
+
           <ul className="navbar-nav ms-auto">
             <li className="nav-item mx-0 mx-lg-1">
               <Link
@@ -146,7 +147,7 @@ const Navbar = (props) => {
               </li>
             )}
 
-            {props.user && props.user.role === "admin" && (
+            {props.user && props.user.role === 'admin' && (
               <li className="nav-item mx-0 mx-lg-1">
                 <Link
                   to="/adminmessaging"

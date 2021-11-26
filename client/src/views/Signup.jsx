@@ -124,7 +124,7 @@ class Signup extends Component {
     return (
       <div className="contact-form">
         <div className="container contact-container align-items-center">
-          <div className="d-flex justify-content-center align-items-center">
+          <div className="d-flex justify-content-center">
             <div className="card contact-card pb-5">
               <div className="card-header contact-header">
                 <h2>Sign up</h2>

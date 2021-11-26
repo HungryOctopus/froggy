@@ -1,5 +1,5 @@
-import { Component } from "react";
-import GoogleMapReact from "google-map-react";
+import { Component } from 'react';
+import GoogleMapReact from 'google-map-react';
 
 const Marker = () => {
   return <div className="user-marker"></div>;
@@ -11,14 +11,14 @@ class GoogleMapsSignUp extends Component {
       map: {
         center: {
           lat: 50.0,
-          lng: 10.0,
+          lng: 10.0
         },
-        zoom: 11,
+        zoom: 11
       },
       userMarker: {
         lat: null,
-        lng: null,
-      },
+        lng: null
+      }
     };
   }
 
@@ -28,8 +28,8 @@ class GoogleMapsSignUp extends Component {
     this.setState({
       userMarker: {
         lat: lat,
-        lng: lng,
-      },
+        lng: lng
+      }
     });
   };
 
@@ -37,14 +37,14 @@ class GoogleMapsSignUp extends Component {
     return (
       <div
         style={{
-          height: "250px",
-          width: "500px",
-          border: "1px solid dimgrey",
+          height: '17em',
+          width: '100%',
+          border: '1px solid dimgrey'
         }}
       >
         <GoogleMapReact
           bootstrapURLKeys={{
-            key: process.env.REACT_APP_GOOGLE_MAPS_API,
+            key: process.env.REACT_APP_GOOGLE_MAPS_API
           }}
           defaultCenter={this.state.map.center}
           defaultZoom={this.state.map.zoom}

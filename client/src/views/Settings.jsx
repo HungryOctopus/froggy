@@ -1,22 +1,25 @@
-import { Component } from "react";
-import GoogleMapsSignUp from "../components/GoogleMapsSignUp";
-import profilePicture from "../services/profilePicture";
-import { updateProfile } from "./../services/authentication";
+import { Component } from 'react';
+import { Redirect } from 'react-router';
+import GoogleMapsSignUp from '../components/GoogleMapsSignUp';
+import profilePicture from '../services/profilePicture';
+import { updateProfile } from './../services/authentication';
 // import service from './../services/profilePicture';
 
 class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: "",
-      secondName: "",
-      imageUrl: "",
+      firstName: '',
+      secondName: '',
+      imageUrl: '',
       location: { long: null, lat: null },
       distance: null,
-      email: "",
-      password: "",
-      role: "volunteer",
+      email: '',
+      password: '',
+      role: 'volunteer',
       errors: {},
+
+      redirect: false
     };
   }
 
@@ -25,19 +28,19 @@ class Settings extends Component {
     let formIsValid = true;
 
     // First name
-    if (this.state.firstName === "") {
+    if (this.state.firstName === '') {
       formIsValid = false;
-      errors["firstName"] = "Please include your first name";
+      errors['firstName'] = 'Please include your first name';
     }
     // Second name
-    if (this.state.secondName === "") {
+    if (this.state.secondName === '') {
       formIsValid = false;
-      errors["secondName"] = "Please include your last name";
+      errors['secondName'] = 'Please include your last name';
     }
     // Email
-    if (this.state.email === "") {
+    if (this.state.email === '') {
       formIsValid = false;
-      errors["email"] = "Email field cannot be empty";
+      errors['email'] = 'Email field cannot be empty';
     }
 
     // Password
@@ -52,12 +55,14 @@ class Settings extends Component {
 
   componentDidMount() {
     if (this.props.user) {
-      const { firstName, secondName, email, location } = this.props.user;
+      const { firstName, secondName, imageUrl, email, location } =
+        this.props.user;
       this.setState({
         firstName,
         secondName,
+        imageUrl,
         email,
-        location,
+        location
       });
     }
   }
@@ -73,8 +78,8 @@ class Settings extends Component {
     this.setState({
       location: {
         long: lng,
-        lat: lat,
-      },
+        lat: lat
+      }
     });
     console.log(this.state);
   };
@@ -82,7 +87,7 @@ class Settings extends Component {
   handleInputChange = (event) => {
     const { value, name } = event.target;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -92,17 +97,26 @@ class Settings extends Component {
       const {
         firstName,
         secondName,
-        // imageUrl,
+        imageUrl,
         email,
         password,
         // role,
-        location,
+        location
       } = this.state;
-      const body = { firstName, secondName, email, password, location };
+      const body = {
+        firstName,
+        secondName,
+        imageUrl,
+        email,
+        password,
+        location
+      };
       console.log(location);
       Promise.resolve(updateProfile(body))
         .then((user) => {
           this.props.onAuthenticationChange(user);
+          alert('Thank you. Your profile has been updated.');
+          this.setState({ redirect: true });
         })
         .catch((error) => {
           console.log(error);
@@ -114,32 +128,77 @@ class Settings extends Component {
   };
 
   handleFileUpload = (e) => {
-    console.log("The file to be uploaded is: ", e.target.files[0]);
+    console.log('The file to be uploaded is: ', e.target.files[0]);
 
     const uploadData = new FormData();
     // imageUrl => we pass req.body to .create() method in the POST route
-    uploadData.append("imageUrl", e.target.files[0]);
+    uploadData.append('imageUrl', e.target.files[0]);
 
     profilePicture
       .handleUpload(uploadData)
       .then((response) => {
-        console.log("response is: ", response);
+        console.log('response is: ', response);
         // after the console.log we can see that response carries 'secure_url' which we can use to update the state
         this.setState({ imageUrl: response.secure_url });
       })
-      .catch((err) => console.log("Error while uploading the file: ", err));
+      .catch((err) => console.log('Error while uploading the file: ', err));
   };
 
   render() {
+    {
+      const redirecthome = this.state.redirect;
+      if (redirecthome) {
+        return <Redirect to="/" />;
+      }
+    }
     return (
       <div className="contact-form">
         <div className="container contact-container align-items-center">
           <div className="d-flex justify-content-center align-items-center">
             <div className="card contact-card pb-5">
-              <div className="card-header contact-header">
-                <h2>Edit your profile</h2>
+              <div className="card-header contact-header d-flex flex-column align-items-center justify-content-center">
+                <h2>Welcome, {this.state.firstName}</h2>
+
+                {/* Display profile picture */}
+
+                <div className="d-flex flex-column justify-content-center">
+                  <div className="d-flex flex-row justify-content-center m-2">
+                    {this.state.imageUrl ? (
+                      <img
+                        className="user-image-settings m-2 justify-content-center"
+                        src={this.state.imageUrl}
+                        alt="profile"
+                      />
+                    ) : (
+                      <img
+                        className="dummy-avatar-settings m-2 justify-content-center"
+                        src="./images/froggy.png"
+                        alt="frog"
+                      />
+                    )}
+                  </div>
+
+                  {/* Choose / change profile picture */}
+
+                  <div className="input-group form-group d-flex flex-row justify-content-center">
+                    <span className="input-group label-text justify-content-center">
+                      {this.state.imageUrl
+                        ? `Change your profile picture`
+                        : `Choose a profile picture`}
+                    </span>
+
+                    <input
+                      id="user-image-upload"
+                      className="btn"
+                      type="file"
+                      name="imageUrl"
+                      onChange={this.handleFileUpload}
+                    />
+                  </div>
+                </div>
               </div>
               <div className="card-body">
+                <h3 className="text-white">Here you can edit your profile</h3>
                 <form onSubmit={this.handleFormSubmission}>
                   {/* First name */}
 
@@ -155,8 +214,8 @@ class Settings extends Component {
                       value={this.state.firstName}
                       onChange={this.handleInputChange}
                     />
-                    <span style={{ color: "red" }}>
-                      {this.state.errors["firstName"]}
+                    <span style={{ color: 'red' }}>
+                      {this.state.errors['firstName']}
                     </span>
                   </div>
 
@@ -175,8 +234,8 @@ class Settings extends Component {
                       value={this.state.secondName}
                       onChange={this.handleInputChange}
                     />
-                    <span style={{ color: "red" }}>
-                      {this.state.errors["secondName"]}
+                    <span style={{ color: 'red' }}>
+                      {this.state.errors['secondName']}
                     </span>
                   </div>
 
@@ -195,8 +254,8 @@ class Settings extends Component {
                       value={this.state.email}
                       onChange={this.handleInputChange}
                     />
-                    <span style={{ color: "red" }}>
-                      {this.state.errors["email"]}
+                    <span style={{ color: 'red' }}>
+                      {this.state.errors['email']}
                     </span>
                   </div>
 
@@ -215,26 +274,9 @@ class Settings extends Component {
                       value={this.state.password}
                       onChange={this.handleInputChange}
                     />
-                    <span style={{ color: "red" }}>
-                      {this.state.errors["password"]}
+                    <span style={{ color: 'red' }}>
+                      {this.state.errors['password']}
                     </span>
-                  </div>
-
-                  {/* Choose profile picture */}
-
-                  <div className="input-group form-group">
-                    <div className="input-group prepend">
-                      <span className="input-group label-text">
-                        Choose a profile picture
-                      </span>
-                    </div>
-                    <input
-                      id="user-image-upload"
-                      className="btn"
-                      type="file"
-                      name="imageUrl"
-                      onChange={this.handleFileUpload}
-                    />
                   </div>
 
                   {/* Location on map */}
