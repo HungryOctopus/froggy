@@ -99,4 +99,13 @@ router.post('/update', (req, res, next) => {
     });
 });
 
+router.post('/delete', (req, res, next) => {
+  const user = req.session.userId;
+  User.findByIdAndRemove(user)
+    .then((deletedUser) => console.log(deletedUser))
+    .then(() => req.session.destroy())
+    .then(() => res.json({}))
+    .catch((error) => console.log(error));
+});
+
 module.exports = router;

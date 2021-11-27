@@ -1,5 +1,5 @@
 .contact-form {
-  background: url('./../images/lake-3.jpg') no-repeat center fixed;
+  background: url("./../images/lake-3.jpg") no-repeat center fixed;
   background-size: cover;
   width: 100%;
   font-family: $font-text;
@@ -30,4 +30,8 @@
 .label-text {
   font-size: 1.1em;
   color: $white;
+}
+
+.delete-profile {
+  // background-color: darkred !important;
 }

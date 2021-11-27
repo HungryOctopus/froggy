@@ -23,3 +23,7 @@ export const loadAuthenticatedUser = () => {
 export const updateProfile = (body) => {
   return api.post("/update", body).then((response) => response.data);
 };
+
+export const deleteProfile = () => {
+  return api.post("/delete").then((response) => response.data);
+};

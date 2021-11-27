@@ -1,25 +1,26 @@
-import { Component } from 'react';
-import { Redirect } from 'react-router';
-import GoogleMapsSignUp from '../components/GoogleMapsSignUp';
-import profilePicture from '../services/profilePicture';
-import { updateProfile } from './../services/authentication';
+import { Component } from "react";
+import { Redirect } from "react-router";
+import GoogleMapsSignUp from "../components/GoogleMapsSignUp";
+import profilePicture from "../services/profilePicture";
+import { updateProfile } from "./../services/authentication";
+import { deleteProfile } from "./../services/authentication";
 // import service from './../services/profilePicture';
 
 class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      secondName: '',
-      imageUrl: '',
+      firstName: "",
+      secondName: "",
+      imageUrl: "",
       location: { long: null, lat: null },
       distance: null,
-      email: '',
-      password: '',
-      role: 'volunteer',
+      email: "",
+      password: "",
+      role: "volunteer",
       errors: {},
 
-      redirect: false
+      redirect: false,
     };
   }
 
@@ -28,19 +29,19 @@ class Settings extends Component {
     let formIsValid = true;
 
     // First name
-    if (this.state.firstName === '') {
+    if (this.state.firstName === "") {
       formIsValid = false;
-      errors['firstName'] = 'Please include your first name';
+      errors["firstName"] = "Please include your first name";
     }
     // Second name
-    if (this.state.secondName === '') {
+    if (this.state.secondName === "") {
       formIsValid = false;
-      errors['secondName'] = 'Please include your last name';
+      errors["secondName"] = "Please include your last name";
     }
     // Email
-    if (this.state.email === '') {
+    if (this.state.email === "") {
       formIsValid = false;
-      errors['email'] = 'Email field cannot be empty';
+      errors["email"] = "Email field cannot be empty";
     }
 
     // Password
@@ -62,7 +63,7 @@ class Settings extends Component {
         secondName,
         imageUrl,
         email,
-        location
+        location,
       });
     }
   }
@@ -78,8 +79,8 @@ class Settings extends Component {
     this.setState({
       location: {
         long: lng,
-        lat: lat
-      }
+        lat: lat,
+      },
     });
     console.log(this.state);
   };
@@ -87,7 +88,7 @@ class Settings extends Component {
   handleInputChange = (event) => {
     const { value, name } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -101,7 +102,7 @@ class Settings extends Component {
         email,
         password,
         // role,
-        location
+        location,
       } = this.state;
       const body = {
         firstName,
@@ -109,13 +110,13 @@ class Settings extends Component {
         imageUrl,
         email,
         password,
-        location
+        location,
       };
       console.log(location);
       Promise.resolve(updateProfile(body))
         .then((user) => {
           this.props.onAuthenticationChange(user);
-          alert('Thank you. Your profile has been updated.');
+          alert("Thank you. Your profile has been updated.");
           this.setState({ redirect: true });
         })
         .catch((error) => {
@@ -127,21 +128,26 @@ class Settings extends Component {
     }
   };
 
+  deleteUserProfile = () => {
+    deleteProfile();
+    window.location.href = "/signup";
+  };
+
   handleFileUpload = (e) => {
-    console.log('The file to be uploaded is: ', e.target.files[0]);
+    console.log("The file to be uploaded is: ", e.target.files[0]);
 
     const uploadData = new FormData();
     // imageUrl => we pass req.body to .create() method in the POST route
-    uploadData.append('imageUrl', e.target.files[0]);
+    uploadData.append("imageUrl", e.target.files[0]);
 
     profilePicture
       .handleUpload(uploadData)
       .then((response) => {
-        console.log('response is: ', response);
+        console.log("response is: ", response);
         // after the console.log we can see that response carries 'secure_url' which we can use to update the state
         this.setState({ imageUrl: response.secure_url });
       })
-      .catch((err) => console.log('Error while uploading the file: ', err));
+      .catch((err) => console.log("Error while uploading the file: ", err));
   };
 
   render() {
@@ -214,8 +220,8 @@ class Settings extends Component {
                       value={this.state.firstName}
                       onChange={this.handleInputChange}
                     />
-                    <span style={{ color: 'red' }}>
-                      {this.state.errors['firstName']}
+                    <span style={{ color: "red" }}>
+                      {this.state.errors["firstName"]}
                     </span>
                   </div>
 
@@ -234,8 +240,8 @@ class Settings extends Component {
                       value={this.state.secondName}
                       onChange={this.handleInputChange}
                     />
-                    <span style={{ color: 'red' }}>
-                      {this.state.errors['secondName']}
+                    <span style={{ color: "red" }}>
+                      {this.state.errors["secondName"]}
                     </span>
                   </div>
 
@@ -254,8 +260,8 @@ class Settings extends Component {
                       value={this.state.email}
                       onChange={this.handleInputChange}
                     />
-                    <span style={{ color: 'red' }}>
-                      {this.state.errors['email']}
+                    <span style={{ color: "red" }}>
+                      {this.state.errors["email"]}
                     </span>
                   </div>
 
@@ -274,8 +280,8 @@ class Settings extends Component {
                       value={this.state.password}
                       onChange={this.handleInputChange}
                     />
-                    <span style={{ color: 'red' }}>
-                      {this.state.errors['password']}
+                    <span style={{ color: "red" }}>
+                      {this.state.errors["password"]}
                     </span>
                   </div>
 
@@ -297,6 +303,12 @@ class Settings extends Component {
                     </button>
                   </div>
                 </form>
+                <button
+                  className="btn delete-profile"
+                  onClick={this.deleteUserProfile}
+                >
+                  Delete Profile
+                </button>
               </div>
             </div>
           </div>
