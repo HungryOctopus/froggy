@@ -1,10 +1,10 @@
-import { Component } from 'react';
+import { Component } from "react";
 
 class CountInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0
+      count: 0,
     };
   }
 
