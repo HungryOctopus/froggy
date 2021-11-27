@@ -43,7 +43,7 @@ class GoogleMapsUsermap extends Component {
 
   render() {
     return (
-      <div className="container map">
+      <div className="map-home">
         <GoogleMapReact
           bootstrapURLKeys={{
             key: process.env.REACT_APP_GOOGLE_MAPS_API,

@@ -13,7 +13,7 @@ class Users extends Component {
   render() {
     return (
       <>
-        <section className="py-5 my-5 header text-center bg-green">
+        <section className="py-5 mt-5 header text-center bg-green">
           <div className="container-fluid text-white px-0 py-3">
             <h1 className="page-section-heading text-center text-uppercase text-white">
               Volunteer map
@@ -50,7 +50,7 @@ class Users extends Component {
           <GoogleMapsUsermap />
         </div>
 
-        <section className="my-5 header text-center bg-green">
+        <section className="mb-5 header text-center bg-green">
           <div className="container text-white py-2">
             {/* <p className="masthead-subheading fs-4 text-white mb-0">
               Would you like to help today? Your status resets at midnight.

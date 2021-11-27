@@ -71,11 +71,14 @@ class UserTable extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid px-0">
         <table className="table table-light table-striped table-hover user-table">
           <tbody>
             {this.state.users.map((user, index) => (
               <tr className="user-row" key={user._id}>
+                <td>
+                  <div className="d-none d-lg-block table-spacer"></div>
+                </td>
                 {(user.imageUrl && (
                   <td>
                     <img
@@ -134,6 +137,9 @@ class UserTable extends Component {
                   >
                     {(user.onSite && "I'm in!") || "not today"}
                   </button>
+                </td>
+                <td>
+                  <div className="d-none d-lg-block table-spacer"></div>
                 </td>
               </tr>
             ))}

@@ -1,9 +1,15 @@
 .map-home {
   height: 350px;
-  margin: 2em 0;
 }
 
 .map {
   height: 350px;
-  // margin-top: 3.5em;
+  border: 5px solid green;
+  width: 1200px !important;
+}
+
+.container-map {
+  margin: 0 !important;
+  border: 20px solid red;
+  padding: 0 !important;
 }
