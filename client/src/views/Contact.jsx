@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { contactEmail } from './../services/contact-email';
+import { Redirect } from 'react-router-dom';
 
 class Contact extends Component {
   constructor() {
@@ -7,7 +8,9 @@ class Contact extends Component {
     this.state = {
       name: '',
       email: '',
-      message: ''
+      message: '',
+
+      redirect: false
     };
   }
 
@@ -29,11 +32,29 @@ class Contact extends Component {
     this.setState({
       name: '',
       email: '',
-      message: ''
+      message: '',
+      redirect: true
     });
+    // .then((response) => {
+    //   //Link is not working, why...?
+    //   console.log(response);
+    alert('Thanks for your message, we will get back to you soon. ');
+    //  this.setState({ redirect: true });
+    //})
+
+    // .catch((error) => {
+    //   alert('There was an error sending your message');
+    //   console.log(error);
+    // });
   };
 
   render() {
+    {
+      const redirecthome = this.state.redirect;
+      if (redirecthome) {
+        return <Redirect to="/" />;
+      }
+    }
     return (
       <div className="contact-form">
         <div className="container contact-container">

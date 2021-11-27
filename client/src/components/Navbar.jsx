@@ -35,7 +35,7 @@ const Navbar = (props) => {
 
         <div className="collapse navbar-collapse" id="navbarResponsive">
           <Link to="/" className="navbar-brand">
-            Froggy
+            RealFrogger
           </Link>
 
           <ul className="navbar-nav ms-auto mx-lg-3">
@@ -44,17 +44,17 @@ const Navbar = (props) => {
                 Home
               </Link>
             </li>
-
             {props.user && (
               <li className="nav-item mx-0 mx-lg-1">
                 <Link
-                  to="/calendar"
+                  to="/users"
                   className="nav-link py-3 px-1 px-lg-3 rounded"
                 >
-                  Latest
+                  volunteers
                 </Link>
               </li>
             )}
+
             {props.user && (
               <li className="nav-item mx-0 mx-lg-1">
                 <Link
@@ -65,16 +65,7 @@ const Navbar = (props) => {
                 </Link>
               </li>
             )}
-            {props.user && (
-              <li className="nav-item mx-0 mx-lg-1">
-                <Link
-                  to="/users"
-                  className="nav-link py-3 px-1 px-lg-3 rounded"
-                >
-                  Users
-                </Link>
-              </li>
-            )}
+
             {props.user && (
               <li className="nav-item mx-0 mx-lg-1">
                 <Link
@@ -82,6 +73,17 @@ const Navbar = (props) => {
                   className="nav-link py-3 px-1 px-lg-3 rounded py-3 px-0 px-lg-3 rounded"
                 >
                   Statistics
+                </Link>
+              </li>
+            )}
+
+            {props.user && (
+              <li className="nav-item mx-0 mx-lg-1">
+                <Link
+                  to="/calendar"
+                  className="nav-link py-3 px-1 px-lg-3 rounded"
+                >
+                  Latest
                 </Link>
               </li>
             )}
