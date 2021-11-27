@@ -1,14 +1,15 @@
-import { Component } from 'react';
-import CalendarComponent from 'react-calendar';
-import Notification from '../components/Notification';
-import DUMMY_NOTIFICATIONS from './../tests/notification_api_test.json';
-import { getadminmessage } from './../services/getadminmessage';
+import { Component } from "react";
+import CalendarComponent from "react-calendar";
+import Notification from "../components/Notification";
+import DUMMY_NOTIFICATIONS from "./../tests/notification_api_test.json";
+import { getadminmessage } from "./../services/getadminmessage";
+import "react-calendar/dist/Calendar.css";
 class Calendar extends Component {
   constructor() {
     super();
     this.state = {
       day: null,
-      notifications: DUMMY_NOTIFICATIONS
+      notifications: DUMMY_NOTIFICATIONS,
     };
   }
   componentDidMount() {
@@ -17,7 +18,7 @@ class Calendar extends Component {
     Promise.resolve(getadminmessage())
       .then((notifications) => {
         return this.setState({
-          notifications: notifications
+          notifications: notifications,
         });
       })
       .then(console.log(this.state.notifications));
@@ -58,7 +59,7 @@ class Calendar extends Component {
         <div className="container-fluid px-0">
           <div className="d-flex justify-content-center align-items-center flex-column mt-3">
             <CalendarComponent
-              className="calendar"
+              className="calendar-latest"
               onChange={this.onUserClick}
               // value={this.state.value}
             />
