@@ -7,6 +7,18 @@
   }
 }
 
+--bs-table-bg {
+  background-color: $green !important;
+}
+
+.table-striped {
+  background-color: $green !important;
+}
+
+.table-light {
+  background-color: $green !important;
+}
+
 .user-image {
   padding: 0.2em;
   background-color: $orange;
@@ -70,7 +82,7 @@
 .status-button {
   width: 8rem;
   height: 2.7rem;
-  border: 0.2rem solid $orange !important;
+  border: 0.1rem solid $orange !important;
   padding: 0 !important;
 }
 
