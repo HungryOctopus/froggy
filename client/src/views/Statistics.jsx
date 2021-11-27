@@ -1,17 +1,17 @@
-import { Component } from 'react';
+import { Component } from "react";
 
-import ChartBar from '../components/ChartBar';
-import ChartPie from '../components/ChartPie';
-import ChartLine from '../components/ChartLine';
-import ChartTotal from '../components/ChartTotal';
+import ChartBar from "../components/ChartBar";
+import ChartPie from "../components/ChartPie";
+import ChartLine from "../components/ChartLine";
+import ChartTotal from "../components/ChartTotal";
 
 import {
   totalCountState,
   typesUserState,
   userDailyState,
   animalTypesState,
-  monthlyCatchState
-} from './../services/chart-states';
+  monthlyCatchState,
+} from "./../services/chart-states";
 
 import {
   getAllStats,
@@ -21,8 +21,8 @@ import {
   setTotalCount,
   setMonthlyCount,
   setUserDailies,
-  setUserTypes
-} from './../services/statistics';
+  setUserTypes,
+} from "./../services/statistics";
 
 class Statistics extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class Statistics extends Component {
       chartDataIndividual: typesUserState(),
       chartDataDaily: userDailyState(),
       chartDataAll: animalTypesState(),
-      chartDataMonthlyCount: monthlyCatchState()
+      chartDataMonthlyCount: monthlyCatchState(),
     };
   }
 
@@ -85,7 +85,7 @@ class Statistics extends Component {
                   width="36"
                   height="36"
                   fill="currentColor"
-                  class="bi bi-bar-chart-line-fill"
+                  className="bi bi-bar-chart-line-fill"
                   viewBox="0 0 16 16"
                 >
                   <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z" />
@@ -101,7 +101,7 @@ class Statistics extends Component {
             <div className="col stats-col">
               <div className="card stats-card">
                 <h2 className="stats-title">
-                  Animal types saved by{' '}
+                  Animal types saved by{" "}
                   {this.props.user && this.props.user.firstName}:
                 </h2>
                 <ChartBar chartData={this.state.chartDataIndividual} />
@@ -133,7 +133,7 @@ class Statistics extends Component {
                   width="36"
                   height="36"
                   fill="currentColor"
-                  class="bi bi-pie-chart-fill"
+                  className="bi bi-pie-chart-fill"
                   viewBox="0 0 16 16"
                 >
                   <path d="M15.985 8.5H8.207l-5.5 5.5a8 8 0 0 0 13.277-5.5zM2 13.292A8 8 0 0 1 7.5.015v7.778l-5.5 5.5zM8.5.015V7.5h7.485A8.001 8.001 0 0 0 8.5.015z" />
