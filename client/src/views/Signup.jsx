@@ -146,6 +146,8 @@ class Signup extends Component {
                       value={this.state.firstName}
                       onChange={this.handleInputChange}
                     />
+                  </div>
+                  <div>
                     <span style={{ color: 'red' }}>
                       {this.state.errors['firstName']}
                     </span>
@@ -166,6 +168,8 @@ class Signup extends Component {
                       value={this.state.secondName}
                       onChange={this.handleInputChange}
                     />
+                  </div>
+                  <div>
                     <span style={{ color: 'red' }}>
                       {this.state.errors['secondName']}
                     </span>
@@ -186,6 +190,8 @@ class Signup extends Component {
                       value={this.state.email}
                       onChange={this.handleInputChange}
                     />
+                  </div>
+                  <div>
                     <span style={{ color: 'red' }}>
                       {this.state.errors['email']}
                     </span>
@@ -206,6 +212,8 @@ class Signup extends Component {
                       value={this.state.password}
                       onChange={this.handleInputChange}
                     />
+                  </div>
+                  <div>
                     <span style={{ color: 'red' }}>
                       {this.state.errors['password']}
                     </span>
