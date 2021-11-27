@@ -211,6 +211,8 @@ router.post('/stats-daily', (req, res, next) => {
   const sumTypesArr = [[], [], [], []];
   let date1 = new Date();
   let date2 = new Date();
+  date1.setHours(0, 0, 0, 0);
+  date2.setHours(0, 0, 0, 0);
   date1.setDate(date1.getDate() - 5);
   date2.setDate(date2.getDate() - 4);
   return DailyCatch.find({
@@ -227,6 +229,8 @@ router.post('/stats-daily', (req, res, next) => {
     .then(() => {
       date1 = new Date();
       date2 = new Date();
+      date1.setHours(0, 0, 0, 0);
+      date2.setHours(0, 0, 0, 0);
       date1.setDate(date1.getDate() - 4);
       date2.setDate(date2.getDate() - 3);
       return DailyCatch.find({
@@ -244,6 +248,8 @@ router.post('/stats-daily', (req, res, next) => {
     .then(() => {
       date1 = new Date();
       date2 = new Date();
+      date1.setHours(0, 0, 0, 0);
+      date2.setHours(0, 0, 0, 0);
       date1.setDate(date1.getDate() - 3);
       date2.setDate(date2.getDate() - 2);
       return DailyCatch.find({
@@ -261,6 +267,8 @@ router.post('/stats-daily', (req, res, next) => {
     .then(() => {
       date1 = new Date();
       date2 = new Date();
+      date1.setHours(0, 0, 0, 0);
+      date2.setHours(0, 0, 0, 0);
       date1.setDate(date1.getDate() - 2);
       date2.setDate(date2.getDate() - 1);
       return DailyCatch.find({
@@ -278,6 +286,8 @@ router.post('/stats-daily', (req, res, next) => {
     .then(() => {
       date1 = new Date();
       date2 = new Date();
+      date1.setHours(0, 0, 0, 0);
+      date2.setHours(0, 0, 0, 0);
       date1.setDate(date1.getDate() - 1);
       date2.setDate(date2.getDate() - 0);
       return DailyCatch.find({
@@ -294,6 +304,8 @@ router.post('/stats-daily', (req, res, next) => {
     })
     .then(() => {
       const date = new Date();
+      date.setHours(0, 0, 0, 0);
+      console.log(date);
       return DailyCatch.find({
         volunteer: user,
         createdAt: {
@@ -302,6 +314,7 @@ router.post('/stats-daily', (req, res, next) => {
       });
     })
     .then((result) => {
+      console.log(result);
       const resultArr = (result.length && sumUpTypes(result)) || [0, 0, 0, 0];
       resultArr.forEach((el, i) => sumTypesArr[i].push(el));
     })
