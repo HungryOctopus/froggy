@@ -63,7 +63,7 @@ class Calendar extends Component {
               onChange={this.onUserClick}
               // value={this.state.value}
             />
-            <div className="py-3 fs-3">User clicked day:{this.state.day}</div>
+            {/* <div className="py-3 fs-3">User clicked day:{this.state.day}</div> */}
           </div>
           <div>
             <section className="py-5 my-5 header text-center bg-green">

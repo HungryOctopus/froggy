@@ -1,7 +1,7 @@
-import { Component } from 'react';
+import { Component } from "react";
 // import USER_LOCATIONS from "../tests/maps_api_test.json";
-import { getAllUsers } from '../services/googlemaps';
-import { updateUserStatus } from './../services/user-status';
+import { getAllUsers } from "../services/googlemaps";
+import { updateUserStatus } from "./../services/user-status";
 
 class UserTable extends Component {
   constructor(props) {
@@ -9,9 +9,9 @@ class UserTable extends Component {
     this.state = {
       location: {
         lat: 47.97621,
-        lng: 7.901442
+        lng: 7.901442,
       },
-      users: []
+      users: [],
     };
   }
 
@@ -58,12 +58,12 @@ class UserTable extends Component {
       : (newArr[arrayKey].onSite = false);
     Promise.resolve(
       this.setState({
-        users: newArr
+        users: newArr,
       })
     ).then(() => {
       const body = {
         userId: newArr[arrayKey]._id,
-        userStatus: this.state.users[arrayKey].onSite
+        userStatus: this.state.users[arrayKey].onSite,
       };
       updateUserStatus(body);
     });
@@ -122,17 +122,17 @@ class UserTable extends Component {
                     onClick={this.setUserStatus}
                     style={{
                       backgroundColor: user.onSite
-                        ? 'rgb(149, 198, 10)'
-                        : 'lightgrey',
-                      fontWeight: user.onSite ? 'bold' : 'normal',
-                      fontSize: user.onSite && '1.2em',
-                      textShadow:
-                        user.onSite &&
-                        '0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black',
-                      color: user.onSite ? 'white' : 'black'
+                        ? "rgb(149, 198, 10)"
+                        : "lightgrey",
+                      fontWeight: user.onSite ? "bold" : "normal",
+                      fontSize: user.onSite && "1.2em",
+                      // textShadow:
+                      //   user.onSite &&
+                      //   '0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black',
+                      color: user.onSite ? "white" : "black",
                     }}
                   >
-                    {(user.onSite && "I'm in!") || 'not today'}
+                    {(user.onSite && "I'm in!") || "not today"}
                   </button>
                 </td>
               </tr>

@@ -25,7 +25,7 @@ app.use(
     origin: [
       process.env.CLIENT_APP_ORIGIN,
       'https://hoppscotch.io',
-      'https://affectionate-jennings-499da5.netlify.app'
+      'https://realfrogger.netlify.app'
     ],
     credentials: true
   })
