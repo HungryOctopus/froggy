@@ -82,6 +82,8 @@ class Login extends Component {
                       value={this.state.email}
                       onChange={this.handleInputChange}
                     />
+                  </div>
+                  <div>
                     <span style={{ color: 'red' }}>
                       {this.state.errors['email']}
                     </span>
@@ -101,6 +103,8 @@ class Login extends Component {
                       value={this.state.password}
                       onChange={this.handleInputChange}
                     />
+                  </div>
+                  <div>
                     <span style={{ color: 'red' }}>
                       {this.state.errors['password']}
                     </span>
