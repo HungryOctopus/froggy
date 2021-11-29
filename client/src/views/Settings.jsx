@@ -4,7 +4,6 @@ import GoogleMapsSignUp from "../components/GoogleMapsSignUp";
 import profilePicture from "../services/profilePicture";
 import { updateProfile } from "./../services/authentication";
 import { deleteProfile } from "./../services/authentication";
-// import service from './../services/profilePicture';
 
 class Settings extends Component {
   constructor(props) {
@@ -82,7 +81,6 @@ class Settings extends Component {
         lat: lat,
       },
     });
-    console.log(this.state);
   };
 
   handleInputChange = (event) => {
@@ -112,7 +110,6 @@ class Settings extends Component {
         password,
         location,
       };
-      console.log(location);
       Promise.resolve(updateProfile(body))
         .then((user) => {
           this.props.onAuthenticationChange(user);
@@ -134,12 +131,10 @@ class Settings extends Component {
   };
 
   handleFileUpload = (e) => {
-    console.log("The file to be uploaded is: ", e.target.files[0]);
-
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
     const uploadData = new FormData();
     // imageUrl => we pass req.body to .create() method in the POST route
     uploadData.append("imageUrl", e.target.files[0]);
-
     profilePicture
       .handleUpload(uploadData)
       .then((response) => {

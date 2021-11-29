@@ -24,7 +24,6 @@ router.post('/sign-up', (req, res, next) => {
     .then((user) => {
       req.session.userId = user._id;
       res.json({ user });
-      //, { secure_url: req.file.path });
     })
     .catch((error) => {
       next(error);
@@ -68,8 +67,8 @@ router.get('/me', (req, res, next) => {
 
 router.post('/update', (req, res, next) => {
   const id = req.session.userId;
-  const { firstName, secondName, email, password, location } = req.body;
-  console.log(location, 'll');
+  const { firstName, secondName, email, password, location, imageUrl } =
+    req.body;
   bcryptjs
     .hash(password, 10)
     .then((hash) => {
@@ -87,7 +86,8 @@ router.post('/update', (req, res, next) => {
           secondName,
           email,
           passwordHashAndSalt: passUpdate,
-          location
+          location,
+          imageUrl
         },
         { new: true }
       ).then((response) => {
