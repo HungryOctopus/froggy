@@ -23,7 +23,7 @@ class Home extends Component {
             />
             {/* <!-- Masthead Heading--> */}
             <h1 className="masthead-heading text-uppercase text-green mb-0">
-              CATCH 'EM ALL
+              REALFROGGER
             </h1>
             {/* <!-- Icon Divider--> */}
             <div className="divider-custom divider-light">
@@ -119,9 +119,9 @@ class Home extends Component {
                 association in Freiburg looks after one of the largest, still
                 somewhat intact amphibian populations in southern Baden. To this
                 end, volunteers erect fences on both sides of the road to keep
-                the amphibian safe from the street. In the last 10 years, a
-                total of 3000 to 6000 animals (common toads and grass frogs) are
-                carried across the road every year. We need as many committed
+                the amphibians safely from the street. In the last 10 years, a
+                total of 3000 to 6000 animals (common toads and grass frogs) 
+                have been carried across the road every year. We need as many committed
                 helpers as possible who are willing to carry amphibians across
                 the road so that our region continues to have a great diversity
                 of species.

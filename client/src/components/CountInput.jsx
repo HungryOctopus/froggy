@@ -1,10 +1,10 @@
-import { Component } from "react";
+import { Component } from 'react';
 
 class CountInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
+      count: 0
     };
   }
 
@@ -17,7 +17,7 @@ class CountInput extends Component {
     return (
       <div className="row pb-2">
         <div className="col-md-12">
-          <label className="form-label fs-4">{this.props.name}</label>
+          <label className="form-label text-dark fs-4">{this.props.name}</label>
         </div>
         <div className="col-5 col-md-6 align-items-center">
           <input
